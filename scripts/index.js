@@ -3,7 +3,7 @@ import {data as mainData} from "../data-sources/main.js";
 import {createPathReference} from "./main.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
-    await createMetaData("Warships Wiki","Esta plataforma multilenguaje está dedicada a recopilar y difundir Datos, Información y Conocimiento Histórico y Técnico sobre los Buques de Guerra de Latinoamérica desde los años de la Independencia hasta el Presente.",window.location.href);
+    //await createMetaData("Warships Wiki","Esta plataforma multilenguaje está dedicada a recopilar y difundir Datos, Información y Conocimiento Histórico y Técnico sobre los Buques de Guerra de Latinoamérica desde los años de la Independencia hasta el Presente.",window.location.href);
     const locale = localStorage.getItem("currentLocale");
 
     const viewNavCards = await createNavCards("Contenidos del Sitio",locale);
