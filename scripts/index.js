@@ -56,10 +56,10 @@ function createNavCard(data, locale) {
 }
 
 function createResourcesCards(newsContainer, articlesContainer, locale) {
-    newsData.forEach((news) => {
+    newsData.slice(0, 4).forEach((news) => {
         newsContainer.appendChild(createResourceCard(news, "news", locale));
     });
-    articlesData.forEach((article) => {
+    articlesData.slice(0, 4).forEach((article) => {
         articlesContainer.appendChild(createResourceCard(article, "article", locale));
     });
 }
