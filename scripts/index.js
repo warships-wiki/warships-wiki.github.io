@@ -60,43 +60,44 @@ function createResourceCard(data, locale) {
     let container = document.createElement("a");
     container.classList.add("nav-resource");
     container.setAttribute("href", data.reference);
+    container.setAttribute("target", "_blank");
 
     let card = document.createElement("div");
     card.classList.add("resource-card");
     container.appendChild(card);
 
-    let cardInner = document.createElement("div");
-    cardInner.classList.add("resource-card-innerbox");
-    card.appendChild(cardInner);
+    let imageBox = document.createElement("div");
+    imageBox.classList.add("resource-card-image-box");
+    card.appendChild(imageBox);
 
     let image = document.createElement("img");
     image.classList.add("resource-card-img");
     image.setAttribute("src", data.image);
     image.setAttribute("alt", data.translations.title[locale]);
-    cardInner.appendChild(image);
+    imageBox.appendChild(image);
 
-    let cardTextbox = document.createElement("div");
-    cardTextbox.classList.add("resource-card-textbox");
-    cardInner.appendChild(cardTextbox);
+    let cardTextBox = document.createElement("div");
+    cardTextBox.classList.add("resource-card-text-box");
+    card.appendChild(cardTextBox);
 
     let title = document.createElement("div");
     title.classList.add("resource-card-title");
     title.textContent = data.translations.title[locale];
-    cardTextbox.appendChild(title);
+    cardTextBox.appendChild(title);
 
     let subtitle = document.createElement("div");
     subtitle.classList.add("resource-card-subtitle");
     subtitle.textContent = data.translations.subtitle[locale];
-    cardTextbox.appendChild(subtitle);
+    cardTextBox.appendChild(subtitle);
 
     let cardBar = document.createElement("div");
     cardBar.classList.add("resource-card-bar");
-    cardTextbox.appendChild(cardBar);
+    cardTextBox.appendChild(cardBar);
 
     let description = document.createElement("div");
     description.classList.add("resource-card-description");
-    description.textContent = data.translations.description[locale];
-    cardTextbox.appendChild(description);
+    description.textContent = data.translations.shortDescription[locale];
+    cardTextBox.appendChild(description);
 
     return container;
 }
