@@ -1,5 +1,5 @@
 import {data as mainData} from "../../data-sources/main.js";
-import {createIcon, createPathReference, updateLang} from "../main.js";
+import {createIcon, createPathReference, updateLang} from "./main.js";
 
 export async function createNavbar(theme, locale) {
     const navbar = document.querySelector("nav");
