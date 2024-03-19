@@ -2,6 +2,18 @@ export function setTitle(newTitle) {
     document.title = newTitle;
 }
 
+export function setDescription(newDescription) {
+    const descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) {
+        descriptionTag.setAttribute('content', newDescription);
+    } else {
+        const newMetaTag = document.createElement('meta');
+        newMetaTag.setAttribute('name', 'description');
+        newMetaTag.setAttribute('content', newDescription);
+        document.head.appendChild(newMetaTag);
+    }
+}
+
 export function setOGTitle(newOGTitle) {
     const ogTitleTag = document.querySelector('meta[property="og:title"]');
     if (ogTitleTag) {
@@ -15,7 +27,7 @@ export function setOGTitle(newOGTitle) {
 }
 
 export function setTwitterTitle(newTwitterTitle) {
-    const twitterTitleTag = document.querySelector('meta[property="twitter:title"]');
+    const twitterTitleTag = document.querySelector('meta[name="twitter:title"]');
     if (twitterTitleTag) {
         twitterTitleTag.setAttribute('content', newTwitterTitle);
     } else {
@@ -34,6 +46,18 @@ export function setOGDescription(newOGDescription) {
         const newMetaTag = document.createElement('meta');
         newMetaTag.setAttribute('name', 'og:description');
         newMetaTag.setAttribute('content', newOGDescription);
+        document.head.appendChild(newMetaTag);
+    }
+}
+
+export function setTwitterDescription(newTwitterDescription) {
+    const ogDescriptionTag = document.querySelector('meta[name="twitter:description"]');
+    if (ogDescriptionTag) {
+        ogDescriptionTag.setAttribute('content', newTwitterDescription);
+    } else {
+        const newMetaTag = document.createElement('meta');
+        newMetaTag.setAttribute('name', 'twitter:description');
+        newMetaTag.setAttribute('content', newTwitterDescription);
         document.head.appendChild(newMetaTag);
     }
 }
