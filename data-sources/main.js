@@ -1,5 +1,10 @@
 const data = {
-    themes: {
+    description: {
+        es: "Esta plataforma multilenguaje está dedicada a recopilar y difundir Datos, Información y Conocimiento Histórico y Técnico sobre los Buques de Guerra de Latinoamérica desde los años de la Independencia hasta el Presente.",
+        en: "This multilingual platform is dedicated to collecting and disseminating Data, Information, and Historical and Technical Knowledge about Warships of Latin America from the years of Independence to the Present.",
+        pt: "Esta plataforma multilíngue é dedicada a coletar e disseminar Dados, Informações e Conhecimento Histórico e Técnico sobre os Navios de Guerra da América Latina desde os anos da Independência até o Presente.",
+        ru: "Эта многоязычная платформа посвящена сбору и распространению данных, информации и исторических и технических знаний о военных кораблях Латинской Америки с момента независимости до настоящего времени."
+    }, themes: {
         default: "dark", darkTheme: {
             es: "Modo Oscuro", en: "Dark Mode", pt: "Modo Escuro", ru: "Темный режим"
         }, lightTheme: {
@@ -19,10 +24,15 @@ const data = {
         id: "index", reference: "", icon: "home", hrAfter: true, disabled: false, translations: {
             es: "Inicio", en: "Home", pt: "Início", ru: "Домой"
         }, sections: {
-            viewNavCards: {
-                translations: {
-                    es: "Contenidos del sitio", en: "Site contents", pt: "Conteúdo do site", ru: "Содержание сайта"
-                }
+            contents: {
+                es: "Contenidos del sitio", en: "Site contents", pt: "Conteúdo do site", ru: "Содержание сайта"
+            }, news: {
+                es: "Novedades destacadas",
+                en: "Highlighted news",
+                pt: "Novidades em destaque",
+                ru: "Выделенные новости"
+            }, articles: {
+                es: "Artículos destacados", en: "Features Articles", pt: "Artigos em destaque", ru: "Выдающиеся статьи"
             }
         }
     }, {
