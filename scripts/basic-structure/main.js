@@ -1,22 +1,15 @@
-import {data as mainData} from "../data-sources/main.js";
-import {createNavbar, toggleTheme, updateNavbar} from "./basic-structure/nav-bar.js";
+import {data as mainData} from "../../data-sources/main.js";
+import {createNavbar, toggleTheme, updateNavbar} from "./nav-bar.js";
+import {setOGTitle, setOGUrl, setTitle, setTwitterTitle, setTwitterUrl} from "./meta.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     const {currentTheme, currentLocale} = await setBasicInfo();
     await initBasicPage(currentTheme, currentLocale);
-
-    const collapsibleContainers = document.querySelectorAll('.collapsible');
-
-    collapsibleContainers.forEach(function (header) {
-        header.addEventListener("click", function () {
-            this.parentElement.classList.toggle("collapsed");
-        });
-    });
 });
 
 async function setBasicInfo() {
-    let currentTheme = localStorage.getItem("currentTheme") || mainData.themes.default;
-    let currentLocale = localStorage.getItem("currentLocale") || mainData.locales.default;
+    const currentTheme = localStorage.getItem("currentTheme") || mainData.themes.default;
+    const currentLocale = localStorage.getItem("currentLocale") || mainData.locales.default;
     localStorage.setItem("currentTheme", currentTheme);
     localStorage.setItem("currentLocale", currentLocale);
     return {currentTheme, currentLocale};
@@ -25,10 +18,9 @@ async function setBasicInfo() {
 async function initBasicPage(theme, locale) {
 
     try {
-        const mainSection = document.querySelector("section");
-        mainSection.setAttribute("id", "main-section");
+        const mainSection = document.getElementById("main-section");
         await createLoadingScreen(mainSection);
-        updateTitle(locale);
+        updateMetadata(locale);
         await createNavbar(theme, locale);
         await createBasicStructure(mainSection, locale);
         deleteLoadingScreen(mainSection);
@@ -119,18 +111,21 @@ function getPathDepth(root, length) {
     return (length - ((root === "warships-wiki") ? 3 : 2));
 }
 
-function updateTitle(locale) {
+function updateMetadata(locale) {
     const viewId = getCurrentView(window.location.pathname).slice(0, -5);
     if (viewId === "") document.title = mainData.views[0].translations[locale]; else {
         const view = mainData.views.find(view => view.id === viewId);
-        document.title = view.translations[locale];
+        setTitle(view.translations[locale]);
+        setOGTitle(view.translations[locale]);
+        setTwitterTitle(view.translations[locale]);
+        setOGUrl(window.location.href);
+        setTwitterUrl(window.location.href);
     }
 }
 
 async function createHeader(locale) {
-    const header = document.querySelector("header");
+    const header = document.getElementById("main-header");
     header.classList.add("disable-select");
-    header.setAttribute("id", "main-header");
 
     const title = document.createElement("h1");
     header.appendChild(title);
@@ -143,9 +138,7 @@ function updateHeader(locale) {
 }
 
 async function createFooter(locale) {
-    const footer = document.querySelector("footer");
-    footer.setAttribute("id", "main-footer");
-
+    const footer = document.getElementById("main-footer");
     const footerData = mainData.footer;
 
     createSocialIcons(footerData.socialButtons, footer, locale);
@@ -226,7 +219,7 @@ function updateDeveloperInfo(data, container, locale) {
 }
 
 export function updateLang(locale) {
-    updateTitle(locale);
+    updateMetadata(locale);
     updateNavbar(locale);
     toggleTheme(localStorage.getItem("currentTheme"));
     updateHeader(locale);
@@ -234,6 +227,32 @@ export function updateLang(locale) {
     localStorage.setItem("currentLocale", locale);
 }
 
-export function createCollapsibleArticle() {
+export function createArticle(isCollapsible, isCollapsed, title, containerClasses, headerClasses, contentClasses) {
+    const container = document.createElement("article");
+    if (containerClasses) container.classList.add(containerClasses);
+    if (isCollapsible) container.classList.add("collapsible");
+    if (isCollapsed) container.classList.add("collapsed");
 
+    const header = document.createElement("h2");
+    header.classList.add("article-header");
+    if (headerClasses) header.classList.add(headerClasses);
+    header.textContent = title;
+    container.appendChild(header);
+
+    const content = document.createElement("div");
+    content.classList.add("article-content");
+    if (contentClasses) header.classList.add(contentClasses);
+    container.appendChild(content);
+
+    return container;
+}
+
+export function setCollapsibles() {
+    const containers = document.querySelectorAll('.collapsible');
+
+    containers.forEach(function (container) {
+        container.querySelector(".article-header").addEventListener("click", function () {
+            this.parentElement.classList.toggle("collapsed");
+        });
+    });
 }
