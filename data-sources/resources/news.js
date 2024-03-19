@@ -1,4 +1,5 @@
 const data = [{
+    id: 0,
     translations: {
         date: {
             es: "12 Marzo, 2024", en: "March 12, 2024", pt: "12 de Março de 2024", ru: "12 марта 2024 года"
@@ -23,6 +24,7 @@ const data = [{
     reference: "https://www.zona-militar.com/2024/03/12/patrulleros-de-los-cielos-del-peru-la-aviacion-de-la-policia-nacional-del-peru-celebra-40-anos/",
     image: "https://www.zona-militar.com/wp-content/uploads/2024/03/IMG-20240311-WA0036-1068x715.jpg"
 }, {
+    id: 1,
     translations: {
         date: {
             es: "12 Marzo, 2024", en: "March 12, 2024", pt: "12 de Março de 2024", ru: "12 марта 2024 года"
@@ -47,11 +49,12 @@ const data = [{
     reference: "https://www.zona-militar.com/2024/03/12/patrulleros-de-los-cielos-del-peru-la-aviacion-de-la-policia-nacional-del-peru-celebra-40-anos/",
     image: "https://www.zona-militar.com/wp-content/uploads/2024/03/IMG-20240311-WA0036-1068x715.jpg"
 }, {
+    id: 2,
     translations: {
         date: {
             es: "12 Marzo, 2024", en: "March 12, 2024", pt: "12 de Março de 2024", ru: "12 марта 2024 года"
         }, title: {
-            es: "Patrulleros de los cielos peruanos",
+            es: "Patrulleros de los cielos peruanosLa aviación de la Policía Nacional del Perú celebra 40 años",
             en: "Patrollers of the Peruvian skies",
             pt: "Patrulheiros dos céus peruanos",
             ru: "Патрульные небес Перу"
@@ -71,6 +74,7 @@ const data = [{
     reference: "https://www.zona-militar.com/2024/03/12/patrulleros-de-los-cielos-del-peru-la-aviacion-de-la-policia-nacional-del-peru-celebra-40-anos/",
     image: "https://www.zona-militar.com/wp-content/uploads/2024/03/IMG-20240311-WA0036-1068x715.jpg"
 }, {
+    id: 3,
     translations: {
         date: {
             es: "12 Marzo, 2024", en: "March 12, 2024", pt: "12 de Março de 2024", ru: "12 марта 2024 года"
