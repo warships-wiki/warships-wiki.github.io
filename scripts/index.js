@@ -1,41 +1,41 @@
-import {createMetaData} from "./basic-structure/meta.js";
 import {data as mainData} from "../data-sources/main.js";
-import {createPathReference} from "./main.js";
+import {data as newsData} from "../data-sources/resources/news.js";
+import {data as articlesData} from "../data-sources/resources/articles.js";
+import {createArticle, createPathReference, setCollapsibles} from "./basic-structure/main.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
-    //await createMetaData("Warships Wiki","Esta plataforma multilenguaje está dedicada a recopilar y difundir Datos, Información y Conocimiento Histórico y Técnico sobre los Buques de Guerra de Latinoamérica desde los años de la Independencia hasta el Presente.",window.location.href);
     const locale = localStorage.getItem("currentLocale");
 
-    const viewNavCards = await createNavCards("Contenidos del Sitio",locale);
+    const viewNavCards = await createNavCards("Contenidos del Sitio", locale);
     createViewNavCards(viewNavCards, locale);
 
-    const newsNavCards = await createNavCards("Novedades del Sitio",locale);
-    createViewNavCards(newsNavCards, locale);
+    const newsNavCards = await createNavCards("Novedades del Sitio", locale);
+    newsNavCards.classList.add("news-container");
 
-    const additionalNavCards = await createNavCards("Adicionales",locale);
-    createViewNavCards(additionalNavCards, locale);
+    const articlesNavCards = await createNavCards("Artículos destacados", locale);
+    articlesNavCards.classList.add("articles-container");
+
+    createResourcesCards(newsNavCards, articlesNavCards, locale);
+    setCollapsibles();
 });
 
 export async function createNavCards(title) {
-    const parentContainer = document.querySelector("main");
-    const container = document.createElement("article");
-    container.classList.add("nav-cards");
+    const container = document.getElementById("main-section");
+    const article = createArticle(true, false, title,"nav-cards","disable-select");
+    container.appendChild(article);
+    return article.querySelector(".article-content");
+}
 
-    const header = document.createElement("h2");
-    header.classList.add("article-header", "disable-select");
-    header.textContent = title;
-    container.appendChild(header);
-
-    const content = document.createElement("div");
-    content.classList.add("article-content");
-    container.appendChild(content);
-
-    parentContainer.appendChild(container);
-    return content;
+function createViewNavCards(container, locale) {
+    mainData.views.forEach((button) => {
+        if (button.hasOwnProperty("reference") && button.id !== "index") {
+            container.appendChild(createNavCard(button, locale));
+        }
+    });
 }
 
 function createNavCard(data, locale) {
-    const card = document.createElement("div");
+    const card = document.createElement("nav");
     card.classList.add("card");
 
     let container = document.createElement("a");
@@ -47,10 +47,56 @@ function createNavCard(data, locale) {
     return card;
 }
 
-function createViewNavCards(container, locale) {
-    mainData.views.forEach((button) => {
-        if (button.hasOwnProperty("reference") && button.id !== "index") {
-            container.appendChild(createNavCard(button, locale));
-        }
+function createResourcesCards(newsContainer, articlesContainer, locale) {
+    newsData.forEach((news) => {
+        newsContainer.appendChild(createResourceCard(news, locale));
     });
+    articlesData.forEach((article) => {
+        articlesContainer.appendChild(createResourceCard(article, locale));
+    });
+}
+
+function createResourceCard(data, locale) {
+    let container = document.createElement("a");
+    container.classList.add("nav-resource");
+    container.setAttribute("href", data.reference);
+
+    let card = document.createElement("div");
+    card.classList.add("resource-card");
+    container.appendChild(card);
+
+    let cardInner = document.createElement("div");
+    cardInner.classList.add("resource-card-innerbox");
+    card.appendChild(cardInner);
+
+    let image = document.createElement("img");
+    image.classList.add("resource-card-img");
+    image.setAttribute("src", data.image);
+    image.setAttribute("alt", data.translations.title[locale]);
+    cardInner.appendChild(image);
+
+    let cardTextbox = document.createElement("div");
+    cardTextbox.classList.add("resource-card-textbox");
+    cardInner.appendChild(cardTextbox);
+
+    let title = document.createElement("div");
+    title.classList.add("resource-card-title");
+    title.textContent = data.translations.title[locale];
+    cardTextbox.appendChild(title);
+
+    let subtitle = document.createElement("div");
+    subtitle.classList.add("resource-card-subtitle");
+    subtitle.textContent = data.translations.subtitle[locale];
+    cardTextbox.appendChild(subtitle);
+
+    let cardBar = document.createElement("div");
+    cardBar.classList.add("resource-card-bar");
+    cardTextbox.appendChild(cardBar);
+
+    let description = document.createElement("div");
+    description.classList.add("resource-card-description");
+    description.textContent = data.translations.description[locale];
+    cardTextbox.appendChild(description);
+
+    return container;
 }
