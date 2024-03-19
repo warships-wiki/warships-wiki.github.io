@@ -18,6 +18,12 @@ const data = {
     }, views: [{
         id: "index", reference: "", icon: "home", hrAfter: true, disabled: false, translations: {
             es: "Inicio", en: "Home", pt: "Início", ru: "Домой"
+        }, sections: {
+            viewNavCards: {
+                translations: {
+                    es: "Contenidos del sitio", en: "Site contents", pt: "Conteúdo do site", ru: "Содержание сайта"
+                }
+            }
         }
     }, {
         id: "armies",
