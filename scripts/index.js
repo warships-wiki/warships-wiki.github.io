@@ -3,25 +3,32 @@ import {data as newsData} from "../data-sources/resources/news.js";
 import {data as articlesData} from "../data-sources/resources/articles.js";
 import {createArticle, createPathReference, setCollapsibles} from "./basic-structure/main.js";
 
+const view = mainData.views.find(view => view.id === "index");
+const sectionsData = view.sections;
+
 document.addEventListener("DOMContentLoaded", async function () {
     const locale = localStorage.getItem("currentLocale");
 
-    const viewNavCards = await createNavCards("Contenidos del Sitio", locale);
+    const viewNavCards = await createNavCards(sectionsData.contents[locale], locale);
     createViewNavCards(viewNavCards, locale);
+    viewNavCards.parentElement.setAttribute("data-section-id", "contents");
 
-    const newsNavCards = await createNavCards("Novedades del Sitio", locale);
+    const newsNavCards = await createNavCards(sectionsData.news[locale], locale);
     newsNavCards.classList.add("news-container");
+    newsNavCards.parentElement.setAttribute("data-section-id", "news");
 
-    const articlesNavCards = await createNavCards("Artículos destacados", locale);
+    const articlesNavCards = await createNavCards(sectionsData.articles[locale], locale);
     articlesNavCards.classList.add("articles-container");
+    articlesNavCards.parentElement.setAttribute("data-section-id", "articles");
 
     createResourcesCards(newsNavCards, articlesNavCards, locale);
     setCollapsibles();
+    addLangEventListener();
 });
 
 export async function createNavCards(title) {
     const container = document.getElementById("main-section");
-    const article = createArticle(true, false, title,"nav-cards","disable-select");
+    const article = createArticle(true, false, title, "nav-cards", "disable-select");
     container.appendChild(article);
     return article.querySelector(".article-content");
 }
@@ -42,6 +49,7 @@ function createNavCard(data, locale) {
     container.classList.add("nav-card");
     if (!data.disabled) container.setAttribute("href", createPathReference(window.location.pathname, data.id, data.reference));
     container.textContent = data.translations[locale];
+    container.setAttribute("data-button-id", data.id);
 
     card.appendChild(container);
     return card;
@@ -49,18 +57,20 @@ function createNavCard(data, locale) {
 
 function createResourcesCards(newsContainer, articlesContainer, locale) {
     newsData.forEach((news) => {
-        newsContainer.appendChild(createResourceCard(news, locale));
+        newsContainer.appendChild(createResourceCard(news, "news", locale));
     });
     articlesData.forEach((article) => {
-        articlesContainer.appendChild(createResourceCard(article, locale));
+        articlesContainer.appendChild(createResourceCard(article, "article", locale));
     });
 }
 
-function createResourceCard(data, locale) {
+function createResourceCard(data, type, locale) {
     let container = document.createElement("a");
     container.classList.add("nav-resource");
     container.setAttribute("href", data.reference);
     container.setAttribute("target", "_blank");
+    container.setAttribute("data-resource-id", data.id);
+    container.setAttribute("data-resource-type", type);
 
     let card = document.createElement("div");
     card.classList.add("resource-card");
@@ -100,4 +110,51 @@ function createResourceCard(data, locale) {
     cardTextBox.appendChild(description);
 
     return container;
+}
+
+function updateResourceLang(container, locale) {
+    let resourceData = ((container.dataset.resourceType === "news") ? newsData[container.dataset.resourceId] : articlesData[container.dataset.resourceId]);
+    container.querySelector(".resource-card-title").textContent = resourceData.translations.title[locale];
+    container.querySelector(".resource-card-subtitle").textContent = resourceData.translations.subtitle[locale];
+    container.querySelector(".resource-card-description").textContent = resourceData.translations.shortDescription[locale];
+    container.querySelector(".resource-card-img").setAttribute("alt", resourceData.translations.title[locale]);
+}
+
+function updateResourcesLang(containers, locale) {
+    for (let container of containers) {
+        updateResourceLang(container, locale);
+    }
+}
+
+function updateArticleHeaderLang(container, locale) {
+    container.textContent = sectionsData[container.parentElement.dataset.sectionId][locale];
+}
+
+function updateArticlesHeaderLang(containers, locale) {
+    for (let container of containers) {
+        updateArticleHeaderLang(container, locale);
+    }
+}
+
+function updateNavCardsLang(containers, locale) {
+    for (let container of containers) {
+        let button = mainData.views.find(button => container.dataset.buttonId === button.id);
+        container.textContent = button.translations[locale];
+    }
+}
+
+function updateLang(locale) {
+    updateResourcesLang(document.querySelectorAll(".nav-resource"), locale);
+    updateArticlesHeaderLang(document.querySelectorAll(".article-header"), locale);
+    updateNavCardsLang(document.querySelectorAll(".nav-card"), locale);
+    addLangEventListener();
+}
+
+function addLangEventListener() {
+    const langOptions = document.querySelectorAll(".lang-option");
+    for (let langOption of langOptions) {
+        langOption.addEventListener("click", function () {
+            updateLang(langOption.dataset.langId);
+        });
+    }
 }
