@@ -1,6 +1,15 @@
 import {data as mainData} from "../../data-sources/main.js";
 import {createNavbar, toggleTheme, updateNavbar} from "./nav-bar.js";
-import {setOGTitle, setOGUrl, setTitle, setTwitterTitle, setTwitterUrl} from "./meta.js";
+import {
+    setDescription,
+    setOGDescription,
+    setOGTitle,
+    setOGUrl,
+    setTitle,
+    setTwitterDescription,
+    setTwitterTitle,
+    setTwitterUrl
+} from "./meta.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     const {currentTheme, currentLocale} = await setBasicInfo();
@@ -120,6 +129,9 @@ function updateMetadata(locale) {
         setTwitterTitle(view.translations[locale]);
         setOGUrl(window.location.href);
         setTwitterUrl(window.location.href);
+        setDescription(mainData.description[locale]);
+        setOGDescription(mainData.description[locale]);
+        setTwitterDescription(mainData.description[locale]);
     }
 }
 
