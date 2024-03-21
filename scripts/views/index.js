@@ -1,7 +1,7 @@
-import {data as mainData} from "../data-sources/main.js";
-import {data as newsData} from "../data-sources/resources/news.js";
-import {data as articlesData} from "../data-sources/resources/articles.js";
-import {createArticle, createPathReference, setCollapsibles} from "./basic-structure/main.js";
+import {data as mainData} from "../../data-sources/basic-data/main.js";
+import {data as newsData} from "../../data-sources/resources/news.js";
+import {data as articlesData} from "../../data-sources/resources/articles.js";
+import {createArticle, createPathReference, setCollapsibles} from "../basic-structure/main.js";
 
 const view = mainData.views.find(view => view.id === "index");
 const sectionsData = view.sections;
@@ -42,7 +42,7 @@ function createViewNavCards(container, locale) {
 }
 
 function createNavCard(data, locale) {
-    const card = document.createElement("nav");
+    const card = document.createElement("div");
     card.classList.add("card");
 
     let container = document.createElement("a");
