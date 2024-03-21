@@ -9,9 +9,9 @@ const sectionsData = view.sections;
 document.addEventListener("DOMContentLoaded", async function () {
     const locale = localStorage.getItem("currentLocale");
 
-    const viewNavCards = await createNavCards(sectionsData.contents[locale], locale);
+    const viewNavCards = await createNavCards(sectionsData.navigation[locale], locale);
     createViewNavCards(viewNavCards, locale);
-    viewNavCards.parentElement.setAttribute("data-section-id", "contents");
+    viewNavCards.parentElement.setAttribute("data-section-id", "navigation");
 
     const newsNavCards = await createNavCards(sectionsData.news[locale], locale);
     newsNavCards.classList.add("news-container");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 export async function createNavCards(title) {
     const container = document.getElementById("main-section");
-    const article = createArticle(true, false, title, "nav-cards", "disable-select");
+    const article = createArticle(true, false, title, "", "nav-cards", "disable-select");
     container.appendChild(article);
     return article.querySelector(".article-content");
 }
@@ -48,7 +48,7 @@ function createNavCard(data, locale) {
     let container = document.createElement("a");
     container.classList.add("nav-card");
     if (!data.disabled) container.setAttribute("href", createPathReference(window.location.pathname, data.id, data.reference));
-    container.textContent = data.translations[locale];
+    container.textContent = data.title[locale];
     container.setAttribute("data-button-id", data.id);
 
     card.appendChild(container);
@@ -83,7 +83,7 @@ function createResourceCard(data, type, locale) {
     let image = document.createElement("img");
     image.classList.add("resource-card-img");
     image.setAttribute("src", data.image);
-    image.setAttribute("alt", data.translations.title[locale]);
+    image.setAttribute("alt", data.title[locale]);
     imageBox.appendChild(image);
 
     let cardTextBox = document.createElement("div");
@@ -92,12 +92,12 @@ function createResourceCard(data, type, locale) {
 
     let title = document.createElement("div");
     title.classList.add("resource-card-title");
-    title.textContent = data.translations.title[locale];
+    title.textContent = data.title[locale];
     cardTextBox.appendChild(title);
 
     let subtitle = document.createElement("div");
     subtitle.classList.add("resource-card-subtitle");
-    subtitle.textContent = data.translations.subtitle[locale];
+    subtitle.textContent = data.subtitle[locale];
     cardTextBox.appendChild(subtitle);
 
     let cardBar = document.createElement("div");
@@ -106,7 +106,7 @@ function createResourceCard(data, type, locale) {
 
     let description = document.createElement("div");
     description.classList.add("resource-card-description");
-    description.textContent = data.translations.shortDescription[locale];
+    description.textContent = data.shortDescription[locale];
     cardTextBox.appendChild(description);
 
     return container;
@@ -114,10 +114,10 @@ function createResourceCard(data, type, locale) {
 
 function updateResourceLang(container, locale) {
     let resourceData = ((container.dataset.resourceType === "news") ? newsData[container.dataset.resourceId] : articlesData[container.dataset.resourceId]);
-    container.querySelector(".resource-card-title").textContent = resourceData.translations.title[locale];
-    container.querySelector(".resource-card-subtitle").textContent = resourceData.translations.subtitle[locale];
-    container.querySelector(".resource-card-description").textContent = resourceData.translations.shortDescription[locale];
-    container.querySelector(".resource-card-img").setAttribute("alt", resourceData.translations.title[locale]);
+    container.querySelector(".resource-card-title").textContent = resourceData.title[locale];
+    container.querySelector(".resource-card-subtitle").textContent = resourceData.subtitle[locale];
+    container.querySelector(".resource-card-description").textContent = resourceData.shortDescription[locale];
+    container.querySelector(".resource-card-img").setAttribute("alt", resourceData.title[locale]);
 }
 
 function updateResourcesLang(containers, locale) {
@@ -139,7 +139,7 @@ function updateArticlesHeaderLang(containers, locale) {
 function updateNavCardsLang(containers, locale) {
     for (let container of containers) {
         let button = mainData.views.find(button => container.dataset.buttonId === button.id);
-        container.textContent = button.translations[locale];
+        container.textContent = button.title[locale];
     }
 }
 

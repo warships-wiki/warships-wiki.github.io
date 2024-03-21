@@ -1,4 +1,4 @@
-import {data as mainData} from "../../data-sources/main.js";
+import {data as mainData} from "../../data-sources/basic-data/main.js";
 import {createNavbar, toggleTheme, updateNavbar} from "./nav-bar.js";
 import {
     setDescription,
@@ -29,9 +29,7 @@ async function initBasicPage(theme, locale) {
     try {
         const mainSection = document.getElementById("main-section");
         await createLoadingScreen(mainSection);
-        updateMetadata(locale);
-        await createNavbar(theme, locale);
-        await createBasicStructure(mainSection, locale);
+        await createBasicStructure(mainSection, theme, locale);
         deleteLoadingScreen(mainSection);
     } catch (error) {
         console.error("Error loading page: ", error);
@@ -122,11 +120,11 @@ function getPathDepth(root, length) {
 
 function updateMetadata(locale) {
     const viewId = getCurrentView(window.location.pathname).slice(0, -5);
-    if (viewId === "") document.title = mainData.views[0].translations[locale]; else {
+    if (viewId === "") document.title = mainData.views[0].title[locale]; else {
         const view = mainData.views.find(view => view.id === viewId);
-        setTitle(view.translations[locale]);
-        setOGTitle(view.translations[locale]);
-        setTwitterTitle(view.translations[locale]);
+        setTitle(view.title[locale]);
+        setOGTitle(view.title[locale]);
+        setTwitterTitle(view.title[locale]);
         setOGUrl(window.location.href);
         setTwitterUrl(window.location.href);
         setDescription(mainData.description[locale]);
@@ -146,7 +144,7 @@ async function createHeader(locale) {
 
 function updateHeader(locale) {
     const title = document.querySelector("h1");
-    title.textContent = mainData.header.translations[locale];
+    title.textContent = mainData.header.title[locale];
 }
 
 async function createFooter(locale) {
@@ -187,11 +185,13 @@ function createSocialIcon(data, locale) {
     socialIcon.classList.add("social-icon");
     socialIcon.setAttribute("href", data.reference);
 
-    socialIcon.appendChild(createIcon(["fab", `fa-${data.icon.toLowerCase()}`], data.translations[locale]));
+    socialIcon.appendChild(createIcon(["fab", `fa-${data.icon.toLowerCase()}`], data.title[locale]));
     return socialIcon;
 }
 
-async function createBasicStructure(container, locale) {
+async function createBasicStructure(container, theme, locale) {
+    updateMetadata(locale);
+    await createNavbar(theme, locale);
     await createHeader(locale);
     await createFooter(locale);
 }
@@ -209,22 +209,22 @@ function updateFooter(locale) {
 
 function updateSocialIcons(data, container, locale) {
     data.forEach((button, index) => {
-        container[index].setAttribute("title", button.translations[locale]);
+        container[index].setAttribute("title", button.title[locale]);
     });
 }
 
 function updateDonationBanner(data, container, locale) {
-    container.setAttribute("title", data.translations[locale]);
-    container.textContent = data.translations[locale];
+    container.setAttribute("title", data.title[locale]);
+    container.textContent = data.title[locale];
 
-    container.appendChild(createIcon(["fas", `fa-${data.icon.toLowerCase()}`], data.translations[locale]));
+    container.appendChild(createIcon(["fas", `fa-${data.icon.toLowerCase()}`], data.title[locale]));
 }
 
 function updateDeveloperInfo(data, container, locale) {
-    container.textContent = (data.translations[locale] + " ");
+    container.textContent = (data.title[locale] + " ");
 
     const link = document.createElement("a");
-    link.setAttribute("title", data.translations[locale] + " " + data.name);
+    link.setAttribute("title", data.title[locale] + " " + data.name);
     link.setAttribute("href", data.reference);
     link.textContent = data.name;
     container.appendChild(link);
@@ -239,7 +239,7 @@ export function updateLang(locale) {
     localStorage.setItem("currentLocale", locale);
 }
 
-export function createArticle(isCollapsible, isCollapsed, title, containerClasses, headerClasses, contentClasses) {
+export function createArticle(isCollapsible, isCollapsed, title, subtitle, containerClasses, headerClasses, contentClasses) {
     const container = document.createElement("article");
     if (containerClasses) container.classList.add(containerClasses);
     if (isCollapsible) container.classList.add("collapsible");
@@ -254,6 +254,11 @@ export function createArticle(isCollapsible, isCollapsed, title, containerClasse
     const content = document.createElement("div");
     content.classList.add("article-content");
     if (contentClasses) header.classList.add(contentClasses);
+    if (subtitle !== "") {
+        const contentTitle = document.createElement("h3");
+        contentTitle.textContent = subtitle;
+        content.appendChild(contentTitle);
+    }
     container.appendChild(content);
 
     return container;

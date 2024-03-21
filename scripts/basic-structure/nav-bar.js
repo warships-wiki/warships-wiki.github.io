@@ -1,4 +1,4 @@
-import {data as mainData} from "../../data-sources/main.js";
+import {data as mainData} from "../../data-sources/basic-data/main.js";
 import {createIcon, createPathReference, updateLang} from "./main.js";
 
 export async function createNavbar(theme, locale) {
@@ -29,8 +29,8 @@ export function updateNavbar(locale) {
             let tooltip = container.querySelector("span");
             if (container) {
                 icon.setAttribute("role", "img");
-                icon.setAttribute("aria-label", button.translations[locale]);
-                tooltip.innerHTML = button.translations[locale];
+                icon.setAttribute("aria-label", button.title[locale]);
+                tooltip.innerHTML = button.title[locale];
             }
         }
     });
@@ -43,10 +43,10 @@ export function createNavButton(data, locale) {
     container.setAttribute("data-button-id", data.id.toLowerCase());
     if (!data.disabled) container.setAttribute("href", createPathReference(window.location.pathname, data.id, data.reference));
 
-    let icon = createIcon(["fas", `fa-${data.icon.toLowerCase()}`], data.translations[locale]);
+    let icon = createIcon(["fas", `fa-${data.icon.toLowerCase()}`], data.title[locale]);
 
     let tooltip = document.createElement("span");
-    tooltip.innerHTML = data.translations[locale];
+    tooltip.innerHTML = data.title[locale];
 
     container.append(icon, tooltip);
     return container;
