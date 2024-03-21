@@ -56,6 +56,12 @@
     user-select: none;
 }
 
+.flex-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 body {
     background: var(--dark-color);
     display: grid;
@@ -568,4 +574,120 @@ article.collapsed .article-content {
     flex: 1;
     padding: 0 .5rem 0 1rem;
     background-color: var(--darkest-color);
+}
+
+.converters .article-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-around;
+    align-items: baseline;
+    flex-wrap: wrap;
+    flex: 0;
+
+    --converter-w: 400px;
+    --converter-w-min: 150px;
+    --converter-h: 400px;
+}
+
+.converters .card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    background-color: var(--darkest-color);
+    color: var(--lightest-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    flex: 0;
+}
+
+.converters .card-header {
+    font-size: 34px;
+    background-color: var(--darkest-color);
+    border: none;
+}
+
+.converters .card-title {
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.converters form {
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+.converters textarea:focus,
+.converters input:focus {
+    outline: var(--accent-color) solid 2px;
+}
+
+.converters .input-group,
+.converters .output-group {
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    row-gap: 5px;
+}
+
+.converters input,
+.converters select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--darker-color);
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    color: var(--lightest-color);
+    text-overflow: ellipsis;
+}
+
+main input[type="number"]::-webkit-inner-spin-button,
+main input[type="type"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.converters input {
+    background-color: var(--darker-color);
+}
+
+.converters select {
+    background-color: var(--darkest-color);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.converters label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+
+    .converters .article-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .converters .article-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .converters .article-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
