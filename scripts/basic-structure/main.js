@@ -1,15 +1,6 @@
 import {data as mainData} from "../../data-sources/basic-data/main.js";
 import {createNavbar, toggleTheme, updateNavbar} from "./nav-bar.js";
-import {
-    setDescription,
-    setOGDescription,
-    setOGTitle,
-    setOGUrl,
-    setTitle,
-    setTwitterDescription,
-    setTwitterTitle,
-    setTwitterUrl
-} from "./meta.js";
+import {setOGUrl, setTwitterUrl} from "./meta.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     const {currentTheme, currentLocale} = await setBasicInfo();
@@ -25,19 +16,16 @@ async function setBasicInfo() {
 }
 
 async function initBasicPage(theme, locale) {
-
     try {
         const mainSection = document.getElementById("main-section");
-        await createLoadingScreen(mainSection);
         await createBasicStructure(mainSection, theme, locale);
-        deleteLoadingScreen(mainSection);
     } catch (error) {
         console.error("Error loading page: ", error);
         throw error;
     }
 }
 
-async function createLoadingScreen(main) {
+export function createLoadingScreen(main) {
     const container = document.createElement("template");
     const wave = document.createElement("div");
 
@@ -54,11 +42,12 @@ async function createLoadingScreen(main) {
     main.appendChild(container);
 }
 
-function deleteLoadingScreen(main) {
-    setTimeout(function () {
-        const loadingScreen = document.getElementById("loading-screen");
-        main.removeChild(loadingScreen);
-    }, 1500);
+export function deleteLoadingScreen(container) {
+    // Timer loading screen deletion
+    /*setTimeout(function () {
+        container.removeChild(document.getElementById("loading-screen"));
+    }, 1500);*/
+    container.removeChild(document.getElementById("loading-screen"));
 }
 
 export function createIcon(iconClasses, label) {
@@ -106,30 +95,30 @@ export function getPreviousDirectory(path) {
     return info.pathParts[info.pathLength - 3];
 }
 
-function addBackPath(path, depth) {
+export function addBackPath(path, depth) {
     if (depth === 0) return "./" + path; else return "../".repeat(depth) + path;
 }
 
-function isRoot(path) {
+export function isRoot(path) {
     return ["", "warships-wiki"].includes(path);
 }
 
-function getPathDepth(root, length) {
+export function getPathDepth(root, length) {
     return (length - ((root === "warships-wiki") ? 3 : 2));
 }
 
 function updateMetadata(locale) {
     const viewId = getCurrentView(window.location.pathname).slice(0, -5);
     if (viewId === "") document.title = mainData.views[0].title[locale]; else {
-        const view = mainData.views.find(view => view.id === viewId);
+        /*const view = mainData.views.find(view => view.id === viewId);
         setTitle(view.title[locale]);
         setOGTitle(view.title[locale]);
-        setTwitterTitle(view.title[locale]);
+        setTwitterTitle(view.title[locale]);*/
         setOGUrl(window.location.href);
         setTwitterUrl(window.location.href);
-        setDescription(mainData.description[locale]);
+        /*setDescription(mainData.description[locale]);
         setOGDescription(mainData.description[locale]);
-        setTwitterDescription(mainData.description[locale]);
+        setTwitterDescription(mainData.description[locale]);*/
     }
 }
 
@@ -239,8 +228,9 @@ export function updateLang(locale) {
     localStorage.setItem("currentLocale", locale);
 }
 
-export function createArticle(isCollapsible, isCollapsed, title, subtitle, containerClasses, headerClasses, contentClasses) {
+export function createArticle(isCollapsible, isCollapsed, title, subtitle, containerId, containerClasses, headerClasses, contentClasses) {
     const container = document.createElement("article");
+    if (containerId) container.setAttribute("id", containerId);
     if (containerClasses) container.classList.add(containerClasses);
     if (isCollapsible) container.classList.add("collapsible");
     if (isCollapsed) container.classList.add("collapsed");
@@ -260,6 +250,67 @@ export function createArticle(isCollapsible, isCollapsed, title, subtitle, conta
         content.appendChild(contentTitle);
     }
     container.appendChild(content);
+    return container;
+}
+
+export function createNavCard(data, locale) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    let container = document.createElement("a");
+    container.classList.add("nav-card");
+    if (!data.disabled) container.setAttribute("href", createPathReference(window.location.pathname, data.id, data.reference));
+    container.textContent = data.title[locale];
+    container.setAttribute("data-button-id", data.id);
+
+    card.appendChild(container);
+    return card;
+}
+
+export function createResourceCard(data, type, locale) {
+    let container = document.createElement("a");
+    container.classList.add("nav-resource");
+    container.setAttribute("href", data.reference);
+    container.setAttribute("target", "_blank");
+    container.setAttribute("data-resource-id", data.id);
+    container.setAttribute("data-resource-type", type);
+
+    let card = document.createElement("div");
+    card.classList.add("resource-card");
+    container.appendChild(card);
+
+    let imageBox = document.createElement("div");
+    imageBox.classList.add("resource-card-image-box");
+    card.appendChild(imageBox);
+
+    let image = document.createElement("img");
+    image.classList.add("resource-card-img");
+    image.setAttribute("src", data.image);
+    image.setAttribute("alt", data.title[locale]);
+    imageBox.appendChild(image);
+
+    let cardTextBox = document.createElement("div");
+    cardTextBox.classList.add("resource-card-text-box");
+    card.appendChild(cardTextBox);
+
+    let title = document.createElement("div");
+    title.classList.add("resource-card-title");
+    title.textContent = data.title[locale];
+    cardTextBox.appendChild(title);
+
+    let subtitle = document.createElement("div");
+    subtitle.classList.add("resource-card-subtitle");
+    subtitle.textContent = data.subtitle[locale];
+    cardTextBox.appendChild(subtitle);
+
+    let cardBar = document.createElement("div");
+    cardBar.classList.add("resource-card-bar");
+    cardTextBox.appendChild(cardBar);
+
+    let description = document.createElement("div");
+    description.classList.add("resource-card-description");
+    description.textContent = data.shortDescription[locale];
+    cardTextBox.appendChild(description);
 
     return container;
 }
@@ -272,4 +323,13 @@ export function setCollapsibles() {
             this.parentElement.classList.toggle("collapsed");
         });
     });
+}
+
+export function addLangEventListener(initView) {
+    const langOptions = document.querySelectorAll(".lang-option");
+    for (let langOption of langOptions) {
+        langOption.addEventListener("click", function () {
+            initView(langOption.dataset.langId);
+        });
+    }
 }

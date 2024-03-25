@@ -1,5 +1,6 @@
-import { data as calculationsData } from "../../data-sources/views/calculations.js";
+import {data as calculationsData} from "../../data-sources/views/calculations.js";
 import {createArticle, setCollapsibles} from "../basic-structure/main.js";
+
 const convertersData = calculationsData.sections[0];
 
 document.addEventListener("DOMContentLoaded", async function () {
@@ -28,8 +29,7 @@ async function createBasicStructure(container, locale) {
 }
 
 async function createConverters(parentContainer, locale) {
-    const container = createArticle(true,false, calculationsData.title[locale],"","converters");
-    container.setAttribute("id", "converters");
+    const container = createArticle(true, false, calculationsData.title[locale], "", "converters");
     await initConverters(container.querySelector(".article-content"));
     parentContainer.appendChild(container);
 }
@@ -144,9 +144,7 @@ function calculateConversion(value, fromUnit, toUnit, output, conversions) {
 }
 
 function updateLang(locale) {
-
     const convertersContainers = document.getElementById('converters');
-
     convertersContainers.querySelector(".article-header").textContent = convertersData.title[locale]
 
     const cardHeaders = convertersContainers.querySelectorAll('.card header');

@@ -7,35 +7,35 @@ const data = {
     }, id: "warships", title: {
         es: "Buques", en: "Warships", pt: "Navios", ru: "Военные корабли"
     }, sections: [{
-        id: "description", title: {
+        id: "eras", title: {
             es: "Eras tecnológicas", en: "Technological eras", pt: "Eras tecnológicas", ru: "Технологические эпохи"
-        }, content: [{
+        }, description: [{
             title: {
                 es: "Era de la Vela", en: "Age of Sail", pt: "Era da Vela", ru: "Эпоха парусов"
-            }, description: {
+            }, content: [{
                 es: "Hasta el siglo XIX, se trata de buques mayores a aquellos con remos y con la capacidad de transportar artillería, munición y a sus sirvientes. Esta integrada por buques del tipo Navíos, Galeones, Fragatas, Corbetas, Bergantines, Bergantines de goleta, Goletas y Pailebots. No hubo posesión de buques del tipo Navíos, Galeones, Fragatas.",
                 en: "Until the 19th century, it concerns ships larger than those with oars and with the capacity to carry artillery, ammunition, and their servants. It is composed of ships such as Ships of the line, Galleons, Frigates, Corvettes, Brigantines, Schooner brigantines, Schooners, and Pailbots. There was no possession of ships of the type Ships of the line, Galleons, Frigates.",
                 pt: "Até o século XIX, trata-se de navios maiores do que aqueles com remos e com capacidade para transportar artilharia, munições e seus servos. É composta por navios do tipo Navios de linha, Galeões, Fragatas, Corvetas, Bergantins, Bergantins escuna, Escunas e Pailebots. Não houve posse de navios do tipo Navios de linha, Galeões, Fragatas.",
                 ru: "До XIX века речь идет о судах, больших, чем те, что управлялись веслами и с возможностью перевозить артиллерию, боеприпасы и своих слуг. Она состоит из судов таких как линейные корабли, галеоны, фрегаты, корветы, бригантины, бригантины-шхуны, шхуны и парусные суда. Не было владения судами типа линейные корабли, галеоны, фрегаты."
-            }
+            }]
         }, {
             title: {
                 es: "Era del Vapor", en: "Steam Age", pt: "Era do Vapor", ru: "Паровая эпоха"
-            }, description: {
+            }, content: [{
                 es: "Durante el siglo XIX y XX, se trata de buques de mayor desplazamiento y capacidades que aquellos con remos y velas y con un sistema de propulsión a rueda o hélice. Esta integrada por buques del tipo Portaaviones, Acorazados, Monitores, Cruceros protegidos, Cruceros acorazados, Cruceros de Batalla, Cruceros ligeros, Cruceros pesados, Cruceros lanzamisiles, Vapores de ruedas, Fragatas de hélice, Cazatorpederos, Destructores, Fragatas antisubmarinas, Corbetas, Minadores, Cazaminas, Escampavías, Cañoneros costeros, Cañoneros fluviales, Pontones, Lanchas rápidas de ataque, Nodrizas de submarinos, Hospitales y Escuelas. No hubo posesión de buques del tipo Navíos, Galeones, Fragatas.",
                 en: "During the 19th and 20th centuries, it concerns ships of greater displacement and capabilities than those with oars and sails and with a wheel or propeller propulsion system. It is composed of ships such as Aircraft carriers, Battleships, Monitors, Protected cruisers, Armored cruisers, Battlecruisers, Light cruisers, Heavy cruisers, Missile cruisers, Paddle steamers, Screw frigates, Torpedo boats, Destroyers, Anti-submarine frigates, Corvettes, Minelayers, Minesweepers, Patrol boats, Coastal gunboats, River gunboats, Pontoons, Fast attack craft, Submarine tenders, Hospitals, and Schools. There was no possession of ships of the type Ships of the line, Galleons, Frigates.",
                 pt: "Durante os séculos XIX e XX, trata-se de navios de maior deslocamento e capacidades do que aqueles com remos e velas e com um sistema de propulsão a roda ou hélice. É composta por navios do tipo Porta-aviões, Couraçados, Monitores, Cruzadores protegidos, Cruzadores blindados, Cruzadores de batalha, Cruzadores leves, Cruzadores pesados, Cruzadores de mísseis, Vapores de roda, Fragatas de hélice, Torpedeiros, Contratorpedeiros, Fragatas antissubmarinas, Corvetas, Dragaminas, Varredores de minas, Patrulhas, Canhoneiras costeiras, Canhoneiras fluviais, Pontões, Embarcações de ataque rápido, Nodrizas de submarinos, Hospitais e Escolas. Não houve posse de navios do tipo Navios de linha, Galeões, Fragatas.",
                 ru: "В течение XIX и XX веков речь идет о судах с большим водоизмещением и возможностями, чем у тех, что имели весла и паруса, а также с системой привода колесом или винтом. Она состоит из судов таких как авианосцы, линейные корабли, мониторы, защищенные крейсера, бронированные крейсера, боевые крейсера, легкие крейсера, тяжелые крейсера, ракетные крейсера, паровые суда с колесами, винтовые фрегаты, торпедные катера, эсминцы, противолодочные фрегаты, корветы, минные тральщики, минные миноносцы, патрульные лодки, прибрежные бронекатера, речные бронекатера, понтонные платформы, быстрые атакующие катера, подводные буксиры, больницы и школы. Не было владения судами типа линейные корабли, галеоны, фрегаты."
-            }
+            }]
         }, {
             title: {
                 es: "Era Actual", en: "Current Era", pt: "Era Atual", ru: "Современная эпоха"
-            }, description: {
+            }, content: [{
                 es: "Desde fines del siglo XX y comienzos del presente. Está integrada por buques del tipo Portaaviones, Portahelicópteros, Portadrones, Cruceros lanzamisiles, Destructores lanzamisiles, Fragatas lanzamisiles, Submarinos Nucleares, Submarinos tradicionales, Asalto Anfibio, Lanchas rápidas de ataque, Nodrizas de submarinos y Contramedidas, Hospitales y Escuelas.",
                 en: "From the late 20th century to the present. It is composed of ships such as Aircraft carriers, Helicopter carriers, Drone carriers, Missile cruisers, Missile destroyers, Missile frigates, Nuclear submarines, Conventional submarines, Amphibious assault ships, Fast attack craft, Submarine tenders and Countermeasures, Hospitals, and Schools.",
                 pt: "Desde o final do século XX até o presente. É composta por navios como Porta-aviões, Porta-helicópteros, Porta-drones, Cruzadores de mísseis, Destructores de mísseis, Fragatas de mísseis, Submarinos nucleares, Submarinos convencionais, Navios de assalto anfíbio, Embarcações de ataque rápido, Nodrizas de submarinos e Contramedidas, Hospitais e Escolas.",
                 ru: "С конца XX века и до настоящего времени. Включает в себя корабли такого типа, как авианосцы, вертолетоносцы, дронокорабли, крейсера с ракетами, эсминцы с ракетами, фрегаты с ракетами, ядерные подводные лодки, традиционные подводные лодки, амфибийные штурмовые корабли, быстрые атакующие катера, подводные буксиры и контрмеры, больницы и школы."
-            }
+            }]
         }]
     }, {
         id: "nations", title: {
@@ -139,58 +139,85 @@ const data = {
     }, {
         id: "navigation", title: {
             es: "Contenidos del sitio", en: "Site contents", pt: "Conteúdo do site", ru: "Содержание сайта"
-        }, references: [{
-            title: {
+        }, content: [{
+            id: "armaments", title: {
                 es: "Armadas de Latinoamérica",
                 en: "Latin American Navies",
                 pt: "Marinhas da América Latina",
                 ru: "Морские силы Латинской Америки"
             }, reference: "armaments.html"
         }, {
-            title: {
+            id: "evolution", title: {
                 es: "Evolución de las Armadas de Latinoamérica",
                 en: "Evolution of Latin American Navies",
                 pt: "Evolução das Marinhas da América Latina",
                 ru: "Эволюция морских сил Латинской Америки"
             }, reference: "evolution.html"
         }, {
-            title: {
-                es: "Desplazamiento de las Armadas de Latinoamérica",
-                en: "Deployment of Latin American Navies",
-                pt: "Deslocamento das Marinhas da América Latina",
-                ru: "Развертывание морских сил Латинской Америки"
-            }, reference: "evolution.html"
-        }, {
-            title: {
+            id: "index", title: {
                 es: "Menú principal", en: "Main Menu", pt: "Menu Principal", ru: "Главное меню"
-            }, reference: "/"
+            }, reference: ""
         }]
     }, {
         id: "notes", title: {
             es: "Notas de Observación", en: "Observation Notes", pt: "Notas de Observação", ru: "Заметки наблюдения"
-        }
+        }, content: [{es: "[1] Nota", en: "[1] Note", pt: "[1] Nota", ru: "[1] Примечание"}, {
+            es: "[2] Nota", en: "[2] Note", pt: "[2] Nota", ru: "[2] Примечание"
+        }, {es: "[3] Nota", en: "[3] Note", pt: "[3] Nota", ru: "[3] Примечание"}]
     }, {
-        id: "articles", title: {
+        id: "featured-articles", title: {
             es: "Artículos destacados", en: "Features Articles", pt: "Artigos em destaque", ru: "Выдающиеся статьи"
-        }
+        }, content: [0, 3]
     }, {
         id: "sources", title: {
             es: "Fuentes de Información",
             en: "Information Sources",
             pt: "Fontes de Informação",
             ru: "Источники информации"
-        }
+        }, content: [{
+            es: "Fuente de información primaria:",
+            en: "Primary Information Source:",
+            pt: "Fonte de informação primária:",
+            ru: "Основной источник информации:"
+        }, {
+            es: "Fuente de información secundaria:",
+            en: "Secondary Information Source:",
+            pt: "Fonte de informação secundária:",
+            ru: "Вторичный источник информации:"
+        }, {
+            es: "Fuente de información terciaria:",
+            en: "Tertiary Information Source:",
+            pt: "Fonte de informação terciária:",
+            ru: "Третичный источник информации:"
+        }]
     }, {
         id: "authors", title: {
             es: "Autores y Colaboradores del Artículo",
             en: "Authors and Contributors of the Article",
             pt: "Autores e Colaboradores do Artigo",
             ru: "Авторы и участники статьи"
-        }
+        }, content: [{
+            es: "Autores:", en: "Authors", pt: "Autores", ru: "Авторы"
+        }, {
+            es: "Colaboradores:", en: "Contributors", pt: "Colaboradores", ru: "Участники"
+        }, {
+            es: "Revisores:", en: "Reviewers", pt: "Revisores", ru: "Рецензенты"
+        }]
     }, {
         id: "editions", title: {
             es: "Ediciones del Artículo", en: "Article Editions", pt: "Edições do Artigo", ru: "Редакции статьи"
-        }
+        }, content: [{
+            es: "Fecha de la publicación original: XX/XX/XXXX",
+            en: "Original Publication Date: XX/XX/XXXX",
+            pt: "Data de publicação original: XX/XX/XXXX",
+            ru: "Дата первоначальной публикации: XX/XX/XXXX"
+        }, {
+            es: "Fecha de la última edición: XX/XX/XXXX",
+            en: "Date of Last Edit: XX/XX/XXXX",
+            pt: "Data da última edição: XX/XX/XXXX",
+            ru: "Дата последнего редактирования: XX/XX/XXXX"
+        }]
+
     }]
 }
 

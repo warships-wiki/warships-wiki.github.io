@@ -23,18 +23,23 @@ const data = {
     }, views: [{
         id: "index", reference: "", icon: "home", hrAfter: true, disabled: false, title: {
             es: "Inicio", en: "Home", pt: "Início", ru: "Домой"
-        }, sections: {
-            navigation: {
+        }, sections: [{
+
+            id: "navigation", title: {
                 es: "Contenidos del sitio", en: "Site contents", pt: "Conteúdo do site", ru: "Содержание сайта"
-            }, news: {
+            }
+        }, {
+            id: "latest-news", title: {
                 es: "Novedades destacadas",
                 en: "Highlighted news",
                 pt: "Novidades em destaque",
                 ru: "Выделенные новости"
-            }, articles: {
+            }
+        }, {
+            id: "featured-articles", title: {
                 es: "Artículos destacados", en: "Features Articles", pt: "Artigos em destaque", ru: "Выдающиеся статьи"
             }
-        }
+        }]
     }, {
         id: "armies", reference: "armies.html", icon: "person-military-rifle", hrAfter: false, disabled: true, title: {
             es: "Armadas", en: "Armies", pt: "Forças Armadas", ru: "Армии"

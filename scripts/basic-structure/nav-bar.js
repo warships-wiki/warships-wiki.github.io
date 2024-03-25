@@ -1,7 +1,7 @@
 import {data as mainData} from "../../data-sources/basic-data/main.js";
 import {createIcon, createPathReference, updateLang} from "./main.js";
 
-export async function createNavbar(theme, locale) {
+export function createNavbar(theme, locale) {
     const navbar = document.querySelector("nav");
     navbar.classList.add("disable-select");
     navbar.setAttribute("id", "nav-bar");
