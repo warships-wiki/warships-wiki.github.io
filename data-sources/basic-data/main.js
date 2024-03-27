@@ -41,7 +41,7 @@ const data = {
         }]
     }, {
         id: "armies", reference: "armies.html", icon: "person-military-rifle", hrAfter: false, disabled: true, title: {
-            es: "Armadas", en: "Armies", pt: "Forças Armadas", ru: "Армии"
+            es: "Armadas", en: "Navies", pt: "Marinhas", ru: "Военно-морские силы"
         }
     }, {
         id: "aircraft", reference: "aircraft.html", icon: "jet-fighter-up", hrAfter: false, disabled: true, title: {
@@ -125,25 +125,22 @@ const data = {
             es: "Buque", en: "Warship", pt: "Navio", ru: "Военный корабль"
         }
     }, {
-        id: "country-warships", title: {
+        id: "warships", subId: "nation", title: {
+            "es": "Buques del país", "en": "Ships of the country", "pt": "Navios do país", "ru": "Корабли страны"
+        }
+    }, {
+        id: "warships", subId: "type", title: {
             es: "Tipos de buques del país",
             en: "Types of ships of the country",
             pt: "Tipos de navios do país",
             ru: "Типы судов страны"
-        },
+        }
     }, {
-        id: "evolution", title: {
+        id: "armies", subId: "evolution", title: {
             "es": "Evolución de las Armadas",
             "en": "Evolution of the Navies",
             "pt": "Evolução das Marinhas",
             "ru": "Эволюция военно-морских"
-        }
-    }, {
-        id: "armies", title: {
-            "es": "Armadas de Latinoamérica",
-            "en": "Navies of Latin America",
-            "pt": "Marinhas da América Latina",
-            "ru": "Военно-морские силы Латинской Америки"
         }
     }], header: {
         title: {

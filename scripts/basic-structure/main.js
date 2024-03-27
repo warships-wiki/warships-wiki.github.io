@@ -112,7 +112,7 @@ function updateMetadata(locale) {
     if (viewId === "") document.title = mainData.views[0].title[locale]; else {
         /*setOGTitle(view.title[locale]);
         setTwitterTitle(view.title[locale]);*/
-        const view = mainData.views.find(view => view.id === viewId);
+        const view = mainData.views.find(view => (view.hasOwnProperty("subId") ? view.subId : view.id) === viewId);
         setTitle(view.title[locale]);
         setOGUrl(window.location.href);
         setTwitterUrl(window.location.href);
@@ -261,7 +261,7 @@ export function createCountryCard(data, type, locale) {
     card.setAttribute("data-country-id", data.id);
 
     const container = document.createElement("a");
-    container.setAttribute("href", `./country-${type}.html?id=${data.id}`);
+    container.setAttribute("href", `./warships/${type}.html?id=${data.id}`);
     container.classList.add("card-wave-container");
 
     const wave = createSimpleDiv(container, "card-wave");

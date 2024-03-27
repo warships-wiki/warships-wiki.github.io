@@ -64,12 +64,26 @@ function createViewNavCards(locale) {
     });
 }
 
+function createTypeNavCard(data, reference, locale) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    let container = document.createElement("a");
+    container.classList.add("nav-card");
+    container.setAttribute("href", reference + "?id=" + data.id);
+    container.textContent = data.title[locale];
+    container.setAttribute("data-button-id", data.id);
+
+    card.appendChild(container);
+    return card;
+}
+
 function createTypesNavCards(locale) {
     const section = warshipsData.sections.find(section => section.id === "types");
     const container = document.getElementById("types");
     container.classList.add("nav-cards");
     section.content.forEach((button) => {
-        getArticleContent(container).appendChild(createNavCard(button, locale));
+        getArticleContent(container).appendChild(createTypeNavCard(button, section.reference, locale));
     });
 }
 
@@ -80,7 +94,7 @@ function createCountriesNavCards(locale) {
         let container = createArticle(true, false, article.title[locale], article.subtitle[locale], article.id, "countries");
         getArticleContent(nationsContainer).appendChild(container);
         countriesData[article.id === "sovereign" ? "sovereign" : "nonSovereign"].forEach((country) => {
-            getArticleContent(container).appendChild(createCountryCard(country, "warships", locale));
+            getArticleContent(container).appendChild(createCountryCard(country, "nation", locale));
         });
     });
 }
