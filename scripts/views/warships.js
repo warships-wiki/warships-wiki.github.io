@@ -1,13 +1,16 @@
 import {data as warshipsData} from "../../data-sources/views/warships.js";
+import {data as countriesData} from "../../data-sources/basic-data/countries.js";
 import {data as articlesData} from "../../data-sources/resources/articles.js";
 import {
     addLangEventListener,
     createArticle,
+    createCountryCard,
     createLoadingScreen,
     createNavCard,
     createResourceCard,
     deleteLoadingScreen,
-    setCollapsibles,
+    getArticleContent,
+    setCollapsibles
 } from "../basic-structure/main.js";
 
 // noinspection DuplicatedCode
@@ -37,9 +40,9 @@ function createErasArticle(locale) {
         for (let content of description.content) {
             let descriptionContainer = document.createElement("p");
             descriptionContainer.textContent = content[locale];
-            container.querySelector(".article-content").appendChild(descriptionContainer);
+            getArticleContent(container).appendChild(descriptionContainer);
         }
-        erasContainer.querySelector(".article-content").appendChild((container));
+        getArticleContent(erasContainer).appendChild((container));
     }
 }
 
@@ -48,16 +51,37 @@ function createFeaturedArticles(locale) {
     const featuredArticlesContainer = document.getElementById("featured-articles");
     featuredArticlesContainer.classList.add("articles-container");
     for (let articleId of section.content) {
-        featuredArticlesContainer.querySelector(".article-content").appendChild(createResourceCard(articlesData.find(article => article.id === articleId), "article", locale));
+        getArticleContent(featuredArticlesContainer).appendChild(createResourceCard(articlesData.find(article => article.id === articleId), "article", locale));
     }
 }
 
 function createViewNavCards(locale) {
     const section = warshipsData.sections.find(section => section.id === "navigation");
-    const navigationContainer = document.getElementById("navigation");
-    navigationContainer.classList.add("nav-cards");
+    const container = document.getElementById("navigation");
+    container.classList.add("nav-cards");
     section.content.forEach((button) => {
-        navigationContainer.querySelector(".article-content").appendChild(createNavCard(button, locale));
+        getArticleContent(container).appendChild(createNavCard(button, locale));
+    });
+}
+
+function createTypesNavCards(locale) {
+    const section = warshipsData.sections.find(section => section.id === "types");
+    const container = document.getElementById("types");
+    container.classList.add("nav-cards");
+    section.content.forEach((button) => {
+        getArticleContent(container).appendChild(createNavCard(button, locale));
+    });
+}
+
+function createCountriesNavCards(locale) {
+    const section = warshipsData.sections.find(section => section.id === "nations");
+    const nationsContainer = document.getElementById("nations");
+    section.content.forEach((article) => {
+        let container = createArticle(true, false, article.title[locale], article.subtitle[locale], article.id, "countries");
+        getArticleContent(nationsContainer).appendChild(container);
+        countriesData[article.id === "sovereign" ? "sovereign" : "nonSovereign"].forEach((country) => {
+            getArticleContent(container).appendChild(createCountryCard(country, "warships", locale));
+        });
     });
 }
 
@@ -66,17 +90,23 @@ function createBasicStructure(container, locale) {
     createErasArticle(locale);
     createFeaturedArticles(locale);
     createViewNavCards(locale);
+    createCountriesNavCards(locale);
+    createTypesNavCards(locale);
 }
 
 function createBasicArticles(parentContainer, locale) {
     for (let section of warshipsData.sections) {
         let container = createArticle(true, false, section.title[locale], "", section.id);
         parentContainer.appendChild(container);
-        if ((section.id !== "navigation") && (section.id !== "featured-articles") && (section.hasOwnProperty("content"))) {
+        if (section.id === "featured-articles") {
+            container.classList.add("nav-cards");
+            getArticleContent(container).classList.add("articles-container");
+        }
+        if ((section.id !== "navigation") && (section.id !== "featured-articles") && (section.id !== "nations") && (section.id !== "types") && (section.hasOwnProperty("content"))) {
             for (let content of section.content) {
-                let descriptionContainer = document.createElement("p");
-                descriptionContainer.textContent = content[locale];
-                container.querySelector(".article-content").appendChild(descriptionContainer);
+                let description = document.createElement("p");
+                description.textContent = content[locale];
+                getArticleContent(container).appendChild(description);
             }
         }
     }

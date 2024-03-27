@@ -24,7 +24,6 @@ const data = {
         id: "index", reference: "", icon: "home", hrAfter: true, disabled: false, title: {
             es: "Inicio", en: "Home", pt: "Início", ru: "Домой"
         }, sections: [{
-
             id: "navigation", title: {
                 es: "Contenidos del sitio", en: "Site contents", pt: "Conteúdo do site", ru: "Содержание сайта"
             }
@@ -126,9 +125,25 @@ const data = {
             es: "Buque", en: "Warship", pt: "Navio", ru: "Военный корабль"
         }
     }, {
-        id: "country", title: {
-            title: {es: "Pais", en: "Country", pt: "País", ru: "Страна"},
-            subtitle: {es: "Tipos", en: "Types", pt: "Tipos", ru: "Типы"},
+        id: "country-warships", title: {
+            es: "Tipos de buques del país",
+            en: "Types of ships of the country",
+            pt: "Tipos de navios do país",
+            ru: "Типы судов страны"
+        },
+    }, {
+        id: "evolution", title: {
+            "es": "Evolución de las Armadas",
+            "en": "Evolution of the Navies",
+            "pt": "Evolução das Marinhas",
+            "ru": "Эволюция военно-морских"
+        }
+    }, {
+        id: "armies", title: {
+            "es": "Armadas de Latinoamérica",
+            "en": "Navies of Latin America",
+            "pt": "Marinhas da América Latina",
+            "ru": "Военно-морские силы Латинской Америки"
         }
     }], header: {
         title: {

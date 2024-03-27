@@ -1,6 +1,6 @@
 import {data as mainData} from "../../data-sources/basic-data/main.js";
 import {createNavbar, toggleTheme, updateNavbar} from "./nav-bar.js";
-import {setOGUrl, setTwitterUrl} from "./meta.js";
+import {setOGUrl, setTitle, setTwitterUrl} from "./meta.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     const {currentTheme, currentLocale} = await setBasicInfo();
@@ -110,10 +110,10 @@ export function getPathDepth(root, length) {
 function updateMetadata(locale) {
     const viewId = getCurrentView(window.location.pathname).slice(0, -5);
     if (viewId === "") document.title = mainData.views[0].title[locale]; else {
-        /*const view = mainData.views.find(view => view.id === viewId);
-        setTitle(view.title[locale]);
-        setOGTitle(view.title[locale]);
+        /*setOGTitle(view.title[locale]);
         setTwitterTitle(view.title[locale]);*/
+        const view = mainData.views.find(view => view.id === viewId);
+        setTitle(view.title[locale]);
         setOGUrl(window.location.href);
         setTwitterUrl(window.location.href);
         /*setDescription(mainData.description[locale]);
@@ -228,6 +228,56 @@ export function updateLang(locale) {
     localStorage.setItem("currentLocale", locale);
 }
 
+export function createCompleteNavCard(data, locale) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    let container = document.createElement("a");
+    container.classList.add("nav-card");
+    if (!data.disabled) container.setAttribute("href", createPathReference(window.location.pathname, data.id, data.reference));
+    container.appendChild(data.title[locale]);
+    container.appendChild(data.year[locale]);
+    container.appendChild(data.type[locale]);
+    container.appendChild(data.subtitle[locale]);
+    container.setAttribute("data-button-id", data.id);
+
+    card.appendChild(container);
+    return card;
+}
+
+export function getArticleContent(container) {
+    return container.querySelector(".article-content");
+}
+
+export function createCountryCard(data, type, locale) {
+    const colors = data.colors;
+    const primary = colors.primary;
+    const secondary = colors.secondary;
+    const tertiary = colors.tertiary;
+    const fontColor = colors.text;
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.setAttribute("data-country-id", data.id);
+
+    const container = document.createElement("a");
+    container.setAttribute("href", `./country-${type}.html?id=${data.id}`);
+    container.classList.add("card-wave-container");
+
+    const wave = createSimpleDiv(container, "card-wave");
+    wave.style.boxShadow = `inset 0 0 8px 2px rgba(${secondary.r}, ${secondary.g}, ${secondary.b}, 1)`;
+    wave.style.background = `linear-gradient(30deg, rgba(${secondary.r}, ${secondary.g}, ${secondary.b}, 1), rgba(${tertiary.r}, ${tertiary.g}, ${tertiary.b}, 1))`;
+
+    const waveInner = createSimpleDiv(container, "card-wave-inner");
+    waveInner.style.background = `rgba(${primary.r}, ${primary.g}, ${primary.b}, 1)`;
+
+    const cardTitle = createSimpleDiv(container, "card-title", data.title[locale]);
+    cardTitle.style.color = `rgba(${fontColor.r}, ${fontColor.g}, ${fontColor.b}, 1)`;
+
+    card.appendChild(container);
+    return card;
+}
+
 export function createArticle(isCollapsible, isCollapsed, title, subtitle, containerId, containerClasses, headerClasses, contentClasses) {
     const container = document.createElement("article");
     if (containerId) container.setAttribute("id", containerId);
@@ -245,9 +295,9 @@ export function createArticle(isCollapsible, isCollapsed, title, subtitle, conta
     content.classList.add("article-content");
     if (contentClasses) header.classList.add(contentClasses);
     if (subtitle !== "") {
-        const contentTitle = document.createElement("h3");
-        contentTitle.textContent = subtitle;
-        content.appendChild(contentTitle);
+        const contentSubtitle = document.createElement("small");
+        contentSubtitle.textContent = subtitle;
+        header.append(contentSubtitle);
     }
     container.appendChild(content);
     return container;
@@ -267,6 +317,23 @@ export function createNavCard(data, locale) {
     return card;
 }
 
+export function createSimpleDiv(parent, classes, title) {
+    const container = document.createElement("div");
+    container.classList.add(classes);
+    if (title) container.textContent = title;
+    parent.appendChild(container);
+    return container;
+}
+
+export function createImage(parent, classes, source, altText) {
+    const container = document.createElement("img");
+    container.setAttribute("src", source);
+    container.setAttribute("alt", altText);
+    container.classList.add(classes);
+    parent.appendChild(container);
+    return container;
+}
+
 export function createResourceCard(data, type, locale) {
     let container = document.createElement("a");
     container.classList.add("nav-resource");
@@ -275,49 +342,23 @@ export function createResourceCard(data, type, locale) {
     container.setAttribute("data-resource-id", data.id);
     container.setAttribute("data-resource-type", type);
 
-    let card = document.createElement("div");
-    card.classList.add("resource-card");
-    container.appendChild(card);
+    let card = createSimpleDiv(container, "resource-card");
+    let imageBox = createSimpleDiv(card, "resource-card-image-box");
 
-    let imageBox = document.createElement("div");
-    imageBox.classList.add("resource-card-image-box");
-    card.appendChild(imageBox);
+    let image = createImage(imageBox, "resource-card-img", data.image, data.title[locale]);
 
-    let image = document.createElement("img");
-    image.classList.add("resource-card-img");
-    image.setAttribute("src", data.image);
-    image.setAttribute("alt", data.title[locale]);
-    imageBox.appendChild(image);
+    let cardTextBox = createSimpleDiv(card, "resource-card-text-box");
 
-    let cardTextBox = document.createElement("div");
-    cardTextBox.classList.add("resource-card-text-box");
-    card.appendChild(cardTextBox);
-
-    let title = document.createElement("div");
-    title.classList.add("resource-card-title");
-    title.textContent = data.title[locale];
-    cardTextBox.appendChild(title);
-
-    let subtitle = document.createElement("div");
-    subtitle.classList.add("resource-card-subtitle");
-    subtitle.textContent = data.subtitle[locale];
-    cardTextBox.appendChild(subtitle);
-
-    let cardBar = document.createElement("div");
-    cardBar.classList.add("resource-card-bar");
-    cardTextBox.appendChild(cardBar);
-
-    let description = document.createElement("div");
-    description.classList.add("resource-card-description");
-    description.textContent = data.shortDescription[locale];
-    cardTextBox.appendChild(description);
+    let title = createSimpleDiv(cardTextBox, "resource-card-title", data.title[locale]);
+    let subtitle = createSimpleDiv(cardTextBox, "resource-card-subtitle", data.subtitle[locale]);
+    let cardBar = createSimpleDiv(cardTextBox, "resource-card-bar");
+    let description = createSimpleDiv(cardTextBox, "resource-card-description", data.shortDescription[locale]);
 
     return container;
 }
 
 export function setCollapsibles() {
     const containers = document.querySelectorAll('.collapsible');
-
     containers.forEach(function (container) {
         container.querySelector(".article-header").addEventListener("click", function () {
             this.parentElement.classList.toggle("collapsed");

@@ -44,6 +44,7 @@ const data = {
             pt: "Navios de Guerra por Nação",
             ru: "Военные корабли по нациям"
         }, content: [{
+            id: "sovereign",
             title: {
                 es: "Estados Libres o Soberanos",
                 en: "Free or Sovereign States",
@@ -56,6 +57,7 @@ const data = {
                 ru: "Список всех кораблей нации от дней независимости до настоящего времени"
             }
         }, {
+            id: "non-sovereign",
             title: {
                 es: "Dependencias y/o Territorios No Soberanos",
                 en: "Dependent Territories or Non-Sovereign Territories",
@@ -82,59 +84,59 @@ const data = {
         }, content: [{
             id: "battleship", title: {
                 es: "Acorazado", en: "Battleship", pt: "Couraçado", ru: "Линкор"
-            }
+            }, reference: "type-warship.html?id=battleship"
         }, {
             id: "amphibious", title: {
                 es: "Anfibio", en: "Amphibious", pt: "Anfíbio", ru: "Амфибийный"
-            }
+            }, reference: "type-warship.html?id=amphibious"
         }, {
             id: "antique", title: {
                 es: "Antiguo", en: "Antique", pt: "Antigo", ru: "Старый"
-            }
+            }, reference: "type-warship.html?id=antique"
         }, {
             id: "auxiliary", title: {
                 es: "Auxiliar", en: "Auxiliary", pt: "Auxiliar", ru: "Вспомогательный"
-            }
+            }, reference: "type-warship.html?id=auxiliary"
         }, {
             id: "gunboat", title: {
                 es: "Cañonero", en: "Gunboat", pt: "Canhoneira", ru: "Канонерская лодка"
-            }
+            }, reference: "type-warship.html?id=gunboat"
         }, {
             id: "cruiser", title: {
                 es: "Crucero", en: "Cruiser", pt: "Cruzador", ru: "Крейсер"
-            }
+            }, reference: "type-warship.html?id=cruiser"
         }, {
             id: "destroyer", title: {
                 es: "Destructor", en: "Destroyer", pt: "Destróier", ru: "Эсминец"
-            }
+            }, reference: "type-warship.html?id=destroyer"
         }, {
             id: "escort", title: {
                 es: "Escolta", en: "Escort", pt: "Escolta", ru: "Эскорт"
-            }
+            }, reference: "type-warship.html?id=escort"
         }, {
             id: "trainingShip", title: {
                 es: "Escuela", en: "Training Ship", pt: "Navio Escola", ru: "Учебный корабль"
-            }
+            }, reference: "type-warship.html?id=trainingShip"
         }, {
             id: "hybrid", title: {
                 es: "Híbrido", en: "Hybrid", pt: "Híbrido", ru: "Гибридный"
-            }
+            }, reference: "type-warship.html?id=hybrid"
         }, {
             id: "minor", title: {
                 es: "Menor", en: "Minor", pt: "Menor", ru: "Малый"
-            }
+            }, reference: "type-warship.html?id=minor"
         }, {
             id: "mineLayer", title: {
                 es: "Minador", en: "Mine layer", pt: "Minador", ru: "Минный заградитель"
-            }
+            }, reference: "type-warship.html?id=mineLayer"
         }, {
             id: "aircraftCarrier", title: {
                 es: "Portaaeronave", en: "Aircraft carrier", pt: "Porta-aviões", ru: "Авианосец"
-            }
+            }, reference: "type-warship.html?id=aircraftCarrier"
         }, {
             id: "submersible", title: {
                 es: "Sumergible", en: "Submersible", pt: "Submersível", ru: "Подводный"
-            }
+            }, reference: "type-warship.html?id=submersible"
         }]
     }, {
         id: "navigation", title: {
@@ -145,7 +147,7 @@ const data = {
                 en: "Latin American Navies",
                 pt: "Marinhas da América Latina",
                 ru: "Морские силы Латинской Америки"
-            }, reference: "armaments.html"
+            }, reference: "armies.html"
         }, {
             id: "evolution", title: {
                 es: "Evolución de las Armadas de Latinoamérica",
