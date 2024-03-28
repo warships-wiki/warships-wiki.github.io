@@ -6,18 +6,19 @@ import {
     createArticle,
     createCountryCard,
     createLoadingScreen,
-    createNavCard,
+    createNavCards,
     createResourceCard,
     deleteLoadingScreen,
-    getArticleContent,
+    getArticleContent, getSectionData,
     setCollapsibles
 } from "../basic-structure/main.js";
+import {getViewLang} from "../basic-structure/meta.js";
 
 // noinspection DuplicatedCode
 function initView(locale) {
     const mainSection = document.getElementById("main-section");
     mainSection.innerHTML = "";
-    reloadView(mainSection, locale)
+    reloadView(mainSection, locale);
     deleteLoadingScreen(mainSection);
 }
 
@@ -29,7 +30,7 @@ function reloadView(container, locale) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-    initView(localStorage.getItem("currentLocale") || "en");
+    initView(getViewLang());
 });
 
 function createErasArticle(locale) {
@@ -55,38 +56,6 @@ function createFeaturedArticles(locale) {
     }
 }
 
-function createViewNavCards(locale) {
-    const section = warshipsData.sections.find(section => section.id === "navigation");
-    const container = document.getElementById("navigation");
-    container.classList.add("nav-cards");
-    section.content.forEach((button) => {
-        getArticleContent(container).appendChild(createNavCard(button, locale));
-    });
-}
-
-function createTypeNavCard(data, reference, locale) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    let container = document.createElement("a");
-    container.classList.add("nav-card");
-    container.setAttribute("href", reference + "?id=" + data.id);
-    container.textContent = data.title[locale];
-    container.setAttribute("data-button-id", data.id);
-
-    card.appendChild(container);
-    return card;
-}
-
-function createTypesNavCards(locale) {
-    const section = warshipsData.sections.find(section => section.id === "types");
-    const container = document.getElementById("types");
-    container.classList.add("nav-cards");
-    section.content.forEach((button) => {
-        getArticleContent(container).appendChild(createTypeNavCard(button, section.reference, locale));
-    });
-}
-
 function createCountriesNavCards(locale) {
     const section = warshipsData.sections.find(section => section.id === "nations");
     const nationsContainer = document.getElementById("nations");
@@ -94,7 +63,7 @@ function createCountriesNavCards(locale) {
         let container = createArticle(true, false, article.title[locale], article.subtitle[locale], article.id, "countries");
         getArticleContent(nationsContainer).appendChild(container);
         countriesData[article.id === "sovereign" ? "sovereign" : "nonSovereign"].forEach((country) => {
-            getArticleContent(container).appendChild(createCountryCard(country, "nation", locale));
+            getArticleContent(container).appendChild(createCountryCard(country,"warships", "nation", locale));
         });
     });
 }
@@ -103,9 +72,9 @@ function createBasicStructure(container, locale) {
     createBasicArticles(container, locale);
     createErasArticle(locale);
     createFeaturedArticles(locale);
-    createViewNavCards(locale);
+    createNavCards(getSectionData(warshipsData, "navigation"),"navigation", "", "static", locale);
+    createNavCards(getSectionData(warshipsData, "types"),"types", "", "dynamic", locale);
     createCountriesNavCards(locale);
-    createTypesNavCards(locale);
 }
 
 function createBasicArticles(parentContainer, locale) {

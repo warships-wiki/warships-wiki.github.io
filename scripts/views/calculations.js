@@ -1,17 +1,18 @@
 import {data as calculationsData} from "../../data-sources/views/calculations.js";
 import {createArticle, setCollapsibles} from "../basic-structure/main.js";
+import {getViewLang} from "../basic-structure/meta.js";
 
 const convertersData = calculationsData.sections[0];
 
 document.addEventListener("DOMContentLoaded", async function () {
-    let currentLocale = localStorage.getItem("currentLocale");
+    let currentLocale = getViewLang();
     await createBasicStructure(document.getElementById('main-section'), currentLocale);
     setCollapsibles();
 });
 
 async function initConverters(container) {
     try {
-        let currentLocale = localStorage.getItem("currentLocale");
+        let currentLocale = getViewLang();
         for (let i = 0; i < 3; i++) {
             for (const unitType of convertersData.types) {
                 generateCommonConverterCard(container, unitType, currentLocale, i);

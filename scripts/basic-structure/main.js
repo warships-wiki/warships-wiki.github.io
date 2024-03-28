@@ -1,6 +1,19 @@
 import {data as mainData} from "../../data-sources/basic-data/main.js";
 import {createNavbar, toggleTheme, updateNavbar} from "./nav-bar.js";
-import {setOGUrl, setTitle, setTwitterUrl} from "./meta.js";
+import {
+    getViewLang,
+    getViewTheme,
+    setDescription,
+    setOGDescription,
+    setOGTitle,
+    setOGUrl,
+    setTitle,
+    setTwitterDescription,
+    setTwitterTitle,
+    setTwitterUrl,
+    setViewLang,
+    setViewTheme
+} from "./meta.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     const {currentTheme, currentLocale} = await setBasicInfo();
@@ -8,10 +21,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 async function setBasicInfo() {
-    const currentTheme = localStorage.getItem("currentTheme") || mainData.themes.default;
-    const currentLocale = localStorage.getItem("currentLocale") || mainData.locales.default;
-    localStorage.setItem("currentTheme", currentTheme);
-    localStorage.setItem("currentLocale", currentLocale);
+    const currentTheme = getViewTheme() || mainData.themes.default;
+    const currentLocale = getViewLang() || mainData.locales.default;
     return {currentTheme, currentLocale};
 }
 
@@ -107,18 +118,20 @@ export function getPathDepth(root, length) {
     return (length - ((root === "warships-wiki") ? 3 : 2));
 }
 
-function updateMetadata(locale) {
+export function updateMetadata(theme, locale) {
     const viewId = getCurrentView(window.location.pathname).slice(0, -5);
     if (viewId === "") document.title = mainData.views[0].title[locale]; else {
-        /*setOGTitle(view.title[locale]);
-        setTwitterTitle(view.title[locale]);*/
         const view = mainData.views.find(view => (view.hasOwnProperty("subId") ? view.subId : view.id) === viewId);
+        setOGTitle(view.title[locale]);
+        setTwitterTitle(view.title[locale]);
+        setViewLang(locale);
+        setViewTheme(theme);
         setTitle(view.title[locale]);
         setOGUrl(window.location.href);
         setTwitterUrl(window.location.href);
-        /*setDescription(mainData.description[locale]);
+        setDescription(mainData.description[locale]);
         setOGDescription(mainData.description[locale]);
-        setTwitterDescription(mainData.description[locale]);*/
+        setTwitterDescription(mainData.description[locale]);
     }
 }
 
@@ -179,7 +192,6 @@ function createSocialIcon(data, locale) {
 }
 
 async function createBasicStructure(container, theme, locale) {
-    updateMetadata(locale);
     await createNavbar(theme, locale);
     await createHeader(locale);
     await createFooter(locale);
@@ -220,12 +232,11 @@ function updateDeveloperInfo(data, container, locale) {
 }
 
 export function updateLang(locale) {
-    updateMetadata(locale);
     updateNavbar(locale);
-    toggleTheme(localStorage.getItem("currentTheme"));
+    toggleTheme(getViewTheme());
     updateHeader(locale);
     updateFooter(locale);
-    localStorage.setItem("currentLocale", locale);
+    updateMetadata(getViewTheme(), locale);
 }
 
 export function createCompleteNavCard(data, locale) {
@@ -249,7 +260,7 @@ export function getArticleContent(container) {
     return container.querySelector(".article-content");
 }
 
-export function createCountryCard(data, type, locale) {
+export function createCountryCard(data, section, type, locale) {
     const colors = data.colors;
     const primary = colors.primary;
     const secondary = colors.secondary;
@@ -261,7 +272,7 @@ export function createCountryCard(data, type, locale) {
     card.setAttribute("data-country-id", data.id);
 
     const container = document.createElement("a");
-    container.setAttribute("href", `./warships/${type}.html?id=${data.id}`);
+    container.setAttribute("href", `/${section}/${type}.html?id=${data.id}`);
     container.classList.add("card-wave-container");
 
     const wave = createSimpleDiv(container, "card-wave");
@@ -303,18 +314,37 @@ export function createArticle(isCollapsible, isCollapsed, title, subtitle, conta
     return container;
 }
 
-export function createNavCard(data, locale) {
+export function createNavCards(data, containerId, classes, type, locale) {
+    const container = document.getElementById(containerId);
+    container.classList.add("nav-cards");
+    data.content.forEach((item) => {
+        getArticleContent(container).appendChild(createNavCard(item.id, item.title[locale], ((item.hasOwnProperty("backPath")) ? item.backPath : ""), classes, type));
+    });
+}
+
+export function createNavCard(id, title, refBackPath, classes, type) {
     const card = document.createElement("div");
     card.classList.add("card");
 
     let container = document.createElement("a");
     container.classList.add("nav-card");
-    if (!data.disabled) container.setAttribute("href", createPathReference(window.location.pathname, data.id, data.reference));
-    container.textContent = data.title[locale];
-    container.setAttribute("data-button-id", data.id);
+    if (classes) container.classList.add(classes);
+
+    if (refBackPath && type === "dynamic") {
+        container.setAttribute("href", refBackPath + ".html?id=" + id);
+    } else {
+        container.setAttribute("href", ((refBackPath) ? refBackPath : "") + id + ".html");
+    }
+
+    //container.setAttribute(attrName, id);
+    container.textContent = title;
 
     card.appendChild(container);
     return card;
+}
+
+export function getSectionData(data, sectionId) {
+    return data.sections.find(section => section.id === sectionId)
 }
 
 export function createSimpleDiv(parent, classes, title) {
@@ -344,15 +374,13 @@ export function createResourceCard(data, type, locale) {
 
     let card = createSimpleDiv(container, "resource-card");
     let imageBox = createSimpleDiv(card, "resource-card-image-box");
-
-    let image = createImage(imageBox, "resource-card-img", data.image, data.title[locale]);
+    createImage(imageBox, "resource-card-img", data.image, data.title[locale]);
 
     let cardTextBox = createSimpleDiv(card, "resource-card-text-box");
-
-    let title = createSimpleDiv(cardTextBox, "resource-card-title", data.title[locale]);
-    let subtitle = createSimpleDiv(cardTextBox, "resource-card-subtitle", data.subtitle[locale]);
-    let cardBar = createSimpleDiv(cardTextBox, "resource-card-bar");
-    let description = createSimpleDiv(cardTextBox, "resource-card-description", data.shortDescription[locale]);
+    createSimpleDiv(cardTextBox, "resource-card-title", data.title[locale]);
+    createSimpleDiv(cardTextBox, "resource-card-subtitle", data.subtitle[locale]);
+    createSimpleDiv(cardTextBox, "resource-card-bar");
+    createSimpleDiv(cardTextBox, "resource-card-description", data.shortDescription[locale]);
 
     return container;
 }

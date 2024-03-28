@@ -69,7 +69,7 @@ const data = {
             }
         }]
     }, {
-        id: "types", reference: "/warships/type.html", title: {
+        id: "types", reference: "type", title: {
             es: "Buques de Guerra por Tipo",
             en: "Warships by Type",
             pt: "Navios de Guerra por Tipo",
@@ -82,81 +82,81 @@ const data = {
         }, content: [{
             id: "battleship", title: {
                 es: "Acorazado", en: "Battleship", pt: "Couraçado", ru: "Линкор"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "amphibious", title: {
                 es: "Anfibio", en: "Amphibious", pt: "Anfíbio", ru: "Амфибийный"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "antique", title: {
                 es: "Antiguo", en: "Antique", pt: "Antigo", ru: "Старый"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "auxiliary", title: {
                 es: "Auxiliar", en: "Auxiliary", pt: "Auxiliar", ru: "Вспомогательный"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "gunboat", title: {
                 es: "Cañonero", en: "Gunboat", pt: "Canhoneira", ru: "Канонерская лодка"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "cruiser", title: {
                 es: "Crucero", en: "Cruiser", pt: "Cruzador", ru: "Крейсер"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "destroyer", title: {
                 es: "Destructor", en: "Destroyer", pt: "Destróier", ru: "Эсминец"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "escort", title: {
                 es: "Escolta", en: "Escort", pt: "Escolta", ru: "Эскорт"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "training-ship", title: {
                 es: "Escuela", en: "Training Ship", pt: "Navio Escola", ru: "Учебный корабль"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "hybrid", title: {
                 es: "Híbrido", en: "Hybrid", pt: "Híbrido", ru: "Гибридный"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "minor", title: {
                 es: "Menor", en: "Minor", pt: "Menor", ru: "Малый"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "mine-layer", title: {
                 es: "Minador", en: "Mine layer", pt: "Minador", ru: "Минный заградитель"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "aircraft-carrier", title: {
                 es: "Portaaeronave", en: "Aircraft carrier", pt: "Porta-aviões", ru: "Авианосец"
-            }
+            }, backPath: "/warships/type"
         }, {
             id: "submersible", title: {
                 es: "Sumergible", en: "Submersible", pt: "Submersível", ru: "Подводный"
-            }
+            }, backPath: "/warships/type"
         }]
     }, {
         id: "navigation", title: {
             es: "Contenidos del sitio", en: "Site contents", pt: "Conteúdo do site", ru: "Содержание сайта"
         }, content: [{
-            id: "armaments", title: {
+            id: "armies", title: {
                 es: "Armadas de Latinoamérica",
                 en: "Latin American Navies",
                 pt: "Marinhas da América Latina",
                 ru: "Морские силы Латинской Америки"
-            }, reference: "armies.html"
+            }, backPath: ""
         }, {
             id: "evolution", title: {
                 es: "Evolución de las Armadas de Latinoamérica",
                 en: "Evolution of Latin American Navies",
                 pt: "Evolução das Marinhas da América Latina",
                 ru: "Эволюция морских сил Латинской Америки"
-            }, reference: "armies/evolution.html"
+            }, backPath: "/armies/"
         }, {
             id: "index", title: {
                 es: "Menú principal", en: "Main Menu", pt: "Menu Principal", ru: "Главное меню"
-            }, reference: ""
+            }, backPath: ""
         }]
     }, {
         id: "notes", title: {

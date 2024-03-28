@@ -2,6 +2,24 @@ export function setTitle(newTitle) {
     document.title = newTitle;
 }
 
+export function setViewLang(locale) {
+    document.querySelector("html").setAttribute("lang", locale);
+    localStorage.setItem("lang", locale);
+}
+
+export function setViewTheme(theme) {
+    document.body.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+}
+
+export function getViewLang() {
+    return localStorage.getItem("lang");
+}
+
+export function getViewTheme() {
+    return localStorage.getItem("theme");
+}
+
 export function setDescription(newDescription) {
     const descriptionTag = document.querySelector('meta[name="description"]');
     if (descriptionTag) {

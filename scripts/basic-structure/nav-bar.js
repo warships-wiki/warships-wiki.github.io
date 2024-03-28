@@ -1,5 +1,6 @@
 import {data as mainData} from "../../data-sources/basic-data/main.js";
-import {createIcon, createPathReference, updateLang} from "./main.js";
+import {createIcon, createPathReference, updateLang, updateMetadata} from "./main.js";
+import {getViewLang, getViewTheme, setViewLang, setViewTheme} from "./meta.js";
 
 export function createNavbar(theme, locale) {
     const navbar = document.querySelector("nav");
@@ -73,7 +74,6 @@ export function createLangOption(optionData) {
 
     option.setAttribute("data-lang-id", optionId);
     option.addEventListener("click", function () {
-        localStorage.setItem("currentLocale", optionId);
         updateLang(optionId);
     });
 
@@ -108,18 +108,17 @@ export function createThemeToggle(navbar, theme) {
     toggleTheme(theme);
 
     container.addEventListener("click", function () {
-        let newTheme = localStorage.getItem("currentTheme") === "dark" ? "light" : "dark";
+        let newTheme = getViewTheme() === "dark" ? "light" : "dark";
         toggleTheme(newTheme);
     });
 }
 
 export function toggleTheme(theme) {
-    const locale = localStorage.getItem("currentLocale");
+    const locale = getViewTheme();
     const icon = document.getElementById("theme-toggle").querySelector("i");
 
     icon.className = `fas fa-${theme === "dark" ? "sun" : "moon"}`;
     icon.setAttribute("aria-label", theme === "dark" ? mainData.themes.lightTheme[locale] : mainData.themes.darkTheme[locale]);
 
-    document.body.className = `${theme}-theme`;
-    localStorage.setItem("currentTheme", theme);
+    setViewTheme(theme);
 }

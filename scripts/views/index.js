@@ -8,10 +8,13 @@ import {
     createNavCard,
     createResourceCard,
     deleteLoadingScreen,
-    setCollapsibles
+    setCollapsibles, updateMetadata
 } from "../basic-structure/main.js";
+import {getViewLang, getViewTheme, setViewLang} from "../basic-structure/meta.js";
 
 const sectionsData = viewData.sections;
+
+updateMetadata(getViewTheme(), getViewLang());
 
 function createBasicStructure(container, locale) {
     const viewNavCards = createNavCards(container, sectionsData[0].title[locale], "navigation");
@@ -22,7 +25,6 @@ function createBasicStructure(container, locale) {
 
     const articlesNavCards = createNavCards(container, sectionsData[2].title[locale], "featured-articles");
     articlesNavCards.classList.add("articles-container");
-
     createResourcesCards(newsNavCards, articlesNavCards, locale);
 }
 
@@ -30,7 +32,8 @@ function createBasicStructure(container, locale) {
 function initView(locale) {
     const mainSection = document.getElementById("main-section");
     mainSection.innerHTML = "";
-    reloadView(mainSection, locale)
+    reloadView(mainSection, locale);
+    setViewLang(locale);
     deleteLoadingScreen(mainSection);
 }
 
@@ -42,7 +45,7 @@ function reloadView(container, locale) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-    initView(localStorage.getItem("currentLocale") || "en");
+    initView(getViewLang());
 });
 
 function createNavCards(container, title, containerId) {
@@ -52,9 +55,9 @@ function createNavCards(container, title, containerId) {
 }
 
 function createViewNavCards(container, locale) {
-    sectionsData[0].content.forEach((button) => {
-        if (button.id !== "index") {
-            container.appendChild(createNavCard(button, locale));
+    sectionsData[0].content.forEach((section) => {
+        if (section.id !== "index") {
+            container.appendChild(createNavCard(section.id, section.title[locale], ""));
         }
     });
 }

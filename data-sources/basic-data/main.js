@@ -40,11 +40,11 @@ const data = {
             }
         }]
     }, {
-        id: "armies", reference: "armies.html", icon: "person-military-rifle", hrAfter: false, disabled: true, title: {
+        id: "armies", reference: "armies.html", icon: "person-military-rifle", hrAfter: false, disabled: false, title: {
             es: "Armadas", en: "Navies", pt: "Marinhas", ru: "Военно-морские силы"
         }
     }, {
-        id: "aircraft", reference: "aircraft.html", icon: "jet-fighter-up", hrAfter: false, disabled: true, title: {
+        id: "aircrafts", reference: "aircrafts.html", icon: "jet-fighter-up", hrAfter: false, disabled: false, title: {
             es: "Aeronaves", en: "Aircraft", pt: "Aeronaves", ru: "Самолёты"
         }
     }, {
@@ -52,42 +52,42 @@ const data = {
             es: "Buques", en: "Warships", pt: "Navios", ru: "Военные корабли"
         }
     }, {
-        id: "armaments", reference: "armaments.html", icon: "gun", hrAfter: true, disabled: true, title: {
+        id: "armaments", reference: "armaments.html", icon: "gun", hrAfter: true, disabled: false, title: {
             es: "Armamentos", en: "Armaments", pt: "Armamentos", ru: "Вооружение"
         }
     }, {
-        id: "technologies", reference: "technologies.html", icon: "microchip", hrAfter: false, disabled: true, title: {
+        id: "technologies", reference: "technologies.html", icon: "microchip", hrAfter: false, disabled: false, title: {
             es: "Tecnologías", en: "Technologies", pt: "Tecnologias", ru: "Технологии"
         }
     }, {
-        id: "policies", reference: "policies.html", icon: "landmark", hrAfter: false, disabled: true, title: {
+        id: "policies", reference: "policies.html", icon: "landmark", hrAfter: false, disabled: false, title: {
             es: "Políticas Navales", en: "Naval Policies", pt: "Políticas Navais", ru: "Военная политика"
         }
     }, {
-        id: "terms", reference: "terms.html", icon: "spell-check", hrAfter: true, disabled: true, title: {
+        id: "terms", reference: "terms.html", icon: "spell-check", hrAfter: true, disabled: false, title: {
             es: "Terminologías", en: "Terminologies", pt: "Terminologias", ru: "Терминологии"
         }
     }, {
-        id: "cinema", reference: "cinema.html", icon: "film", hrAfter: false, disabled: true, title: {
+        id: "cinema", reference: "cinema.html", icon: "film", hrAfter: false, disabled: false, title: {
             es: "Cinematografía y Música",
             en: "Cinematography & Music",
             pt: "Cinematografia e Música",
             ru: "Кинематография и музыка"
         }
     }, {
-        id: "gaming", reference: "gaming.html", icon: "gamepad", hrAfter: true, disabled: true, title: {
+        id: "gaming", reference: "gaming.html", icon: "gamepad", hrAfter: true, disabled: false, title: {
             es: "Videojuegos", en: "Gaming", pt: "Videojogos", ru: "Игры"
         }
     }, {
-        id: "misc", reference: "misc.html", icon: "shuffle", hrAfter: false, disabled: true, title: {
+        id: "misc", reference: "misc.html", icon: "shuffle", hrAfter: false, disabled: false, title: {
             es: "Misceláneos", en: "Miscellaneous", pt: "Diversos", ru: "Разное"
         }
     }, {
-        id: "docs", reference: "docs.html", icon: "file", hrAfter: false, disabled: true, title: {
+        id: "docs", reference: "docs.html", icon: "file", hrAfter: false, disabled: false, title: {
             es: "Documentación", en: "Documentation", pt: "Documentação", ru: "Документация"
         }
     }, {
-        id: "links", reference: "links.html", icon: "link", hrAfter: false, disabled: true, title: {
+        id: "links", reference: "links.html", icon: "link", hrAfter: false, disabled: false, title: {
             es: "Enlaces Destacados", en: "Featured Links", pt: "Links em Destaque", ru: "Избранные ссылки"
         }
     }, {
@@ -95,29 +95,29 @@ const data = {
             es: "Cálculos", en: "Calculations", pt: "Cálculos", ru: "Расчеты"
         }
     }, {
-        id: "about", reference: "about.html", icon: "anchor", hrAfter: false, disabled: true, title: {
+        id: "about", reference: "about.html", icon: "anchor", hrAfter: false, disabled: false, title: {
             es: "Proyecto Warships Wiki",
             en: "Warships Wiki Project",
             pt: "Projeto Warships Wiki",
             ru: "Военные корабли Вики Проекта"
         }
     }, {
-        id: "faq", reference: "faq.html", icon: "question", hrAfter: false, disabled: true, title: {
+        id: "faq", reference: "faq.html", icon: "question", hrAfter: false, disabled: false, title: {
             es: "Preguntas Frecuentes",
             en: "Frequently Asked Questions",
             pt: "Perguntas Frequentes",
             ru: "Часто задаваемые вопросы"
         }
     }, {
-        id: "our-team", reference: "our-team.html", icon: "people-group", hrAfter: false, disabled: true, title: {
+        id: "our-team", reference: "our-team.html", icon: "people-group", hrAfter: false, disabled: false, title: {
             es: "Nuestros integrantes", en: "Our Team", pt: "Nossa Equipe", ru: "Наша команда"
         }
     }, {
-        id: "collaborators", reference: "collaborators.html", icon: "user-pen", hrAfter: false, disabled: true, title: {
+        id: "collaborators", reference: "collaborators.html", icon: "user-pen", hrAfter: false, disabled: false, title: {
             es: "Nuestros colaboradores", en: "Our Collaborators", pt: "Nossos Colaboradores", ru: "Наши соавторы"
         }
     }, {
-        id: "partners", reference: "partners.html", icon: "handshake", hrAfter: true, disabled: true, title: {
+        id: "partners", reference: "partners.html", icon: "handshake", hrAfter: true, disabled: false, title: {
             es: "Vuestras colaboraciones", en: "Your Contributions", pt: "Suas Contribuições", ru: "Ваши вклады"
         }
     }, {

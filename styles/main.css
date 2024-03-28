@@ -19,7 +19,7 @@
     --card-h: 75px;
 }
 
-.light-theme {
+body[data-theme="light"] {
     --darkest-color: #e0f0fe;
     --darker-color: #bae1fd;
     --dark-color: #7ccafd;
@@ -88,7 +88,7 @@ main {
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
     width: var(--nav-button-w);
     background: var(--darkest-color);
     color: var(--lightest-color);
@@ -797,7 +797,7 @@ main input[type="type"]::-webkit-outer-spin-button {
     justify-content: center;
     align-items: center;
     z-index: 2;
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: bold;
     text-shadow: 0 0 5px rgba(0, 0, 0, 1);
     width: 100%;
