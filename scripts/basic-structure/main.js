@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 async function setBasicInfo() {
     const currentTheme = getViewTheme() || mainData.themes.default;
     const currentLocale = getViewLang() || mainData.locales.default;
+    setViewLang(currentLocale);
+    setViewTheme(currentTheme);
     return {currentTheme, currentLocale};
 }
 
