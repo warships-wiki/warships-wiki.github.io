@@ -14,6 +14,8 @@ import {
     setViewLang,
     setViewTheme
 } from "./meta.js";
+import {data as articlesData} from "../../data-sources/resources/articles.js";
+import {data as newsData} from "../../data-sources/resources/news.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     const {currentTheme, currentLocale} = await setBasicInfo();
@@ -294,19 +296,22 @@ export function createCountryCard(data, section, type, locale) {
 export function createArticle(isCollapsible, isCollapsed, title, subtitle, containerId, containerClasses, headerClasses, contentClasses) {
     const container = document.createElement("article");
     if (containerId) container.setAttribute("id", containerId);
-    if (containerClasses) container.classList.add(containerClasses);
+    if (containerClasses) for (let c of containerClasses.split(",")) container.classList.add(c.trim());
+
     if (isCollapsible) container.classList.add("collapsible");
     if (isCollapsed) container.classList.add("collapsed");
 
     const header = document.createElement("h2");
     header.classList.add("article-header");
-    if (headerClasses) header.classList.add(headerClasses);
+    if (headerClasses) for (let c of headerClasses.split(",")) container.classList.add(c.trim());
+
     header.textContent = title;
     container.appendChild(header);
 
     const content = document.createElement("div");
     content.classList.add("article-content");
-    if (contentClasses) header.classList.add(contentClasses);
+    if (contentClasses) for (let c of contentClasses.split(",")) container.classList.add(c.trim());
+
     if (subtitle !== "") {
         const contentSubtitle = document.createElement("small");
         contentSubtitle.textContent = subtitle;
@@ -322,6 +327,25 @@ export function createNavCards(data, containerId, classes, type, locale) {
     data.content.forEach((item) => {
         getArticleContent(container).appendChild(createNavCard(item.id, item.title[locale], ((item.hasOwnProperty("backPath")) ? item.backPath : ""), classes, type));
     });
+}
+
+export function createResourcesCards(data, containerId, type, locale) {
+    const container = document.getElementById(containerId);
+    container.classList.add("resources-container");
+    const sectionData = (type === "news") ? newsData : articlesData;
+
+    if (data) {
+        for (let id of data) {
+            const item = sectionData.find(item => item.id === id);
+            getArticleContent(container).appendChild(createResourceCard(item, type, locale));
+        }
+    } else {
+        sectionData.slice(0, 4).forEach((item) => {
+            if (!data || data.includes(item.id)) {
+                getArticleContent(container).appendChild(createResourceCard(item, type, locale));
+            }
+        });
+    }
 }
 
 export function createNavCard(id, title, refBackPath, classes, type) {

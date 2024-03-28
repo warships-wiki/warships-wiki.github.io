@@ -168,6 +168,10 @@ const data = {
         id: "featured-articles", title: {
             es: "Artículos destacados", en: "Features Articles", pt: "Artigos em destaque", ru: "Выдающиеся статьи"
         }, content: [0, 3]
+    },{
+        id: "latest-news", title: {
+            es: "Novedades destacadas", en: "Highlighted news", pt: "Novidades em destaque", ru: "Выделенные новости"
+        }, content: [1, 2]
     }, {
         id: "sources", title: {
             es: "Fuentes de Información",

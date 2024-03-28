@@ -7,9 +7,10 @@ import {
     createCountryCard,
     createLoadingScreen,
     createNavCards,
-    createResourceCard,
+    createResourceCard, createResourcesCards,
     deleteLoadingScreen,
-    getArticleContent, getSectionData,
+    getArticleContent,
+    getSectionData,
     setCollapsibles
 } from "../basic-structure/main.js";
 import {getViewLang} from "../basic-structure/meta.js";
@@ -37,7 +38,7 @@ function createErasArticle(locale) {
     const section = warshipsData.sections.find(section => section.id === "eras");
     const erasContainer = document.getElementById("eras");
     for (let description of section.description) {
-        let container = createArticle(true, false, description.title[locale], (description.hasOwnProperty("subtitle") ? description.subtitle[locale] : ""));
+        let container = createArticle(true, false, description.title[locale], (description.hasOwnProperty("subtitle") ? description.subtitle[locale] : ""), "", "inner-article");
         for (let content of description.content) {
             let descriptionContainer = document.createElement("p");
             descriptionContainer.textContent = content[locale];
@@ -47,23 +48,14 @@ function createErasArticle(locale) {
     }
 }
 
-function createFeaturedArticles(locale) {
-    const section = warshipsData.sections.find(section => section.id === "featured-articles");
-    const featuredArticlesContainer = document.getElementById("featured-articles");
-    featuredArticlesContainer.classList.add("articles-container");
-    for (let articleId of section.content) {
-        getArticleContent(featuredArticlesContainer).appendChild(createResourceCard(articlesData.find(article => article.id === articleId), "article", locale));
-    }
-}
-
 function createCountriesNavCards(locale) {
     const section = warshipsData.sections.find(section => section.id === "nations");
     const nationsContainer = document.getElementById("nations");
     section.content.forEach((article) => {
-        let container = createArticle(true, false, article.title[locale], article.subtitle[locale], article.id, "countries");
+        let container = createArticle(true, false, article.title[locale], article.subtitle[locale], article.id, "countries,inner-article");
         getArticleContent(nationsContainer).appendChild(container);
         countriesData[article.id === "sovereign" ? "sovereign" : "nonSovereign"].forEach((country) => {
-            getArticleContent(container).appendChild(createCountryCard(country,"warships", "nation", locale));
+            getArticleContent(container).appendChild(createCountryCard(country, "warships", "nation", locale));
         });
     });
 }
@@ -71,9 +63,10 @@ function createCountriesNavCards(locale) {
 function createBasicStructure(container, locale) {
     createBasicArticles(container, locale);
     createErasArticle(locale);
-    createFeaturedArticles(locale);
-    createNavCards(getSectionData(warshipsData, "navigation"),"navigation", "", "static", locale);
-    createNavCards(getSectionData(warshipsData, "types"),"types", "", "dynamic", locale);
+    createResourcesCards(getSectionData(warshipsData, "featured-articles").content,"featured-articles", "article",locale);
+    createResourcesCards(getSectionData(warshipsData, "latest-news").content,"latest-news", "news",locale);
+    createNavCards(getSectionData(warshipsData, "navigation"), "navigation", "", "static", locale);
+    createNavCards(getSectionData(warshipsData, "types"), "types", "", "dynamic", locale);
     createCountriesNavCards(locale);
 }
 
@@ -81,11 +74,7 @@ function createBasicArticles(parentContainer, locale) {
     for (let section of warshipsData.sections) {
         let container = createArticle(true, false, section.title[locale], "", section.id);
         parentContainer.appendChild(container);
-        if (section.id === "featured-articles") {
-            container.classList.add("nav-cards");
-            getArticleContent(container).classList.add("articles-container");
-        }
-        if ((section.id !== "navigation") && (section.id !== "featured-articles") && (section.id !== "nations") && (section.id !== "types") && (section.hasOwnProperty("content"))) {
+        if ((section.id !== "navigation") && (section.id !== "featured-articles") && (section.id !== "latest-news") && (section.id !== "nations") && (section.id !== "types") && (section.hasOwnProperty("content"))) {
             for (let content of section.content) {
                 let description = document.createElement("p");
                 description.textContent = content[locale];

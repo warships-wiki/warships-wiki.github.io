@@ -1,14 +1,14 @@
 import {data as viewData} from "../../data-sources/views/index.js";
-import {data as newsData} from "../../data-sources/resources/news.js";
-import {data as articlesData} from "../../data-sources/resources/articles.js";
 import {
     addLangEventListener,
     createArticle,
     createLoadingScreen,
     createNavCard,
-    createResourceCard,
+    createResourcesCards,
     deleteLoadingScreen,
-    setCollapsibles, updateMetadata
+    getSectionData,
+    setCollapsibles,
+    updateMetadata
 } from "../basic-structure/main.js";
 import {getViewLang, getViewTheme, setViewLang} from "../basic-structure/meta.js";
 
@@ -20,12 +20,18 @@ function createBasicStructure(container, locale) {
     const viewNavCards = createNavCards(container, sectionsData[0].title[locale], "navigation");
     createViewNavCards(viewNavCards, locale);
 
-    const newsNavCards = createNavCards(container, sectionsData[1].title[locale], "latest-news");
+    /*const newsNavCards = createNavCards(container, sectionsData[1].title[locale], "latest-news");
     newsNavCards.classList.add("news-container");
 
     const articlesNavCards = createNavCards(container, sectionsData[2].title[locale], "featured-articles");
     articlesNavCards.classList.add("articles-container");
-    createResourcesCards(newsNavCards, articlesNavCards, locale);
+    createResourcesCards(newsNavCards, articlesNavCards, locale);*/
+    for (let section of viewData.sections) {
+        let article = createArticle(true, false, section.title[locale], "", section.id);
+        container.appendChild(article);
+    }
+    createResourcesCards(getSectionData(viewData, "featured-articles").content, "featured-articles", "article", locale);
+    createResourcesCards(getSectionData(viewData, "latest-news").content, "latest-news", "news", locale);
 }
 
 // noinspection DuplicatedCode
@@ -59,14 +65,5 @@ function createViewNavCards(container, locale) {
         if (section.id !== "index") {
             container.appendChild(createNavCard(section.id, section.title[locale], ""));
         }
-    });
-}
-
-function createResourcesCards(newsContainer, articlesContainer, locale) {
-    newsData.slice(0, 4).forEach((news) => {
-        newsContainer.appendChild(createResourceCard(news, "news", locale));
-    });
-    articlesData.slice(0, 4).forEach((article) => {
-        articlesContainer.appendChild(createResourceCard(article, "article", locale));
     });
 }
