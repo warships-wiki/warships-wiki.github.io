@@ -22,7 +22,7 @@ const data = {
                 es: "Aeronaves", en: "Aircraft", pt: "Aeronaves", ru: "Самолёты"
             }
         }, {
-            id: "warships", disabled: false, reference: "warships.html", title: {
+            id: "warships", reference: "warships.html", title: {
                 es: "Buques", en: "Warships", pt: "Navios", ru: "Военные корабли"
             }
         }, {
@@ -65,7 +65,7 @@ const data = {
                 es: "Enlaces Destacados", en: "Featured Links", pt: "Links em Destaque", ru: "Избранные ссылки"
             }
         }, {
-            id: "calculations", disabled: false, reference: "calculations.html", title: {
+            id: "calculations", reference: "calculations.html", title: {
                 es: "Cálculos", en: "Calculations", pt: "Cálculos", ru: "Расчеты"
             }
         }, {
