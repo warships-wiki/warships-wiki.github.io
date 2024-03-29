@@ -75,10 +75,10 @@ const data = {
             pt: "Navios de Guerra por Tipo",
             ru: "Военные корабли по типам"
         }, subtitle: {
-            es: "Enlistado de buques de guerra de un mismo tipo.",
-            en: "List of warships of the same type.",
-            pt: "Lista de navios de guerra do mesmo tipo.",
-            ru: "Список военных кораблей одного типа."
+            es: "Enlistado de buques de guerra de un mismo tipo",
+            en: "List of warships of the same type",
+            pt: "Lista de navios de guerra do mesmo tipo",
+            ru: "Список военных кораблей одного типа"
         }, content: [{
             id: "battleship", title: {
                 es: "Acorazado", en: "Battleship", pt: "Couraçado", ru: "Линкор"
@@ -168,7 +168,7 @@ const data = {
         id: "featured-articles", title: {
             es: "Artículos destacados", en: "Features Articles", pt: "Artigos em destaque", ru: "Выдающиеся статьи"
         }, content: [0, 3]
-    },{
+    }, {
         id: "latest-news", title: {
             es: "Novedades destacadas", en: "Highlighted news", pt: "Novidades em destaque", ru: "Выделенные новости"
         }, content: [1, 2]

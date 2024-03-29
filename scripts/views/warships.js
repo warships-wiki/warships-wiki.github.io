@@ -1,13 +1,11 @@
 import {data as warshipsData} from "../../data-sources/views/warships.js";
 import {data as countriesData} from "../../data-sources/basic-data/countries.js";
-import {data as articlesData} from "../../data-sources/resources/articles.js";
 import {
     addLangEventListener,
     createArticle,
     createCountryCard,
     createLoadingScreen,
-    createNavCards,
-    createResourceCard, createResourcesCards,
+    createNavCards, createResourcesCards,
     deleteLoadingScreen,
     getArticleContent,
     getSectionData,
@@ -72,9 +70,9 @@ function createBasicStructure(container, locale) {
 
 function createBasicArticles(parentContainer, locale) {
     for (let section of warshipsData.sections) {
-        let container = createArticle(true, false, section.title[locale], "", section.id);
+        let container = createArticle(true, false, section.title[locale], (section.hasOwnProperty("subtitle") ? section.subtitle[locale] : ""), section.id);
         parentContainer.appendChild(container);
-        if ((section.id !== "navigation") && (section.id !== "featured-articles") && (section.id !== "latest-news") && (section.id !== "nations") && (section.id !== "types") && (section.hasOwnProperty("content"))) {
+        if (((section.id === "eras") || (section.id === "notes") || (section.id === "sources") || (section.id === "authors") || (section.id === "editions")) && (section.hasOwnProperty("content"))) {
             for (let content of section.content) {
                 let description = document.createElement("p");
                 description.textContent = content[locale];

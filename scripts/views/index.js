@@ -4,28 +4,19 @@ import {
     createArticle,
     createLoadingScreen,
     createNavCard,
-    createResourcesCards,
+    createNavCards,
+    createResourcesCards, createSectionsArticles,
     deleteLoadingScreen,
     getSectionData,
-    setCollapsibles,
-    updateMetadata
+    setCollapsibles
 } from "../basic-structure/main.js";
-import {getViewLang, getViewTheme, setViewLang} from "../basic-structure/meta.js";
+import {getViewLang, setViewLang} from "../basic-structure/meta.js";
 
 const sectionsData = viewData.sections;
 
-updateMetadata(getViewTheme(), getViewLang());
-
 function createBasicStructure(container, locale) {
-    const viewNavCards = createNavCards(container, sectionsData[0].title[locale], "navigation");
-    createViewNavCards(viewNavCards, locale);
-
-    for (let section of viewData.sections) {
-        if (section.id !== "navigation") {
-            let article = createArticle(true, false, section.title[locale], "", section.id);
-            container.appendChild(article);
-        }
-    }
+    createSectionsArticles(viewData.sections, container, locale);
+    createNavCards(getSectionData(viewData, "navigation"), "navigation", "", "static", locale);
     createResourcesCards(getSectionData(viewData, "featured-articles").content, "featured-articles", "article", locale);
     createResourcesCards(getSectionData(viewData, "latest-news").content, "latest-news", "news", locale);
 }
@@ -49,12 +40,6 @@ function reloadView(container, locale) {
 document.addEventListener("DOMContentLoaded", async function () {
     initView(getViewLang());
 });
-
-function createNavCards(container, title, containerId) {
-    const article = createArticle(true, false, title, "", containerId, "nav-cards", "disable-select");
-    container.appendChild(article);
-    return article.querySelector(".article-content");
-}
 
 function createViewNavCards(container, locale) {
     sectionsData[0].content.forEach((section) => {

@@ -348,6 +348,12 @@ export function createResourcesCards(data, containerId, type, locale) {
     }
 }
 
+export function createSectionsArticles(sections, container, locale) {
+    for (let section of sections) {
+        container.appendChild(createArticle(true, false, section.title[locale], (section.hasOwnProperty("subtitle") ? section.subtitle[locale] : ""), section.id));
+    }
+}
+
 export function createNavCard(id, title, refBackPath, classes, type) {
     const card = document.createElement("div");
     card.classList.add("card");

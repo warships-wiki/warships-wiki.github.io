@@ -18,7 +18,7 @@ const data = {
                 es: "Armadas", en: "Armies", pt: "Forças Armadas", ru: "Армии"
             }
         }, {
-            id: "aircrafts", reference: "aircrafts.html", title: {
+            id: "aircraft", reference: "aircraft.html", title: {
                 es: "Aeronaves", en: "Aircraft", pt: "Aeronaves", ru: "Самолёты"
             }
         }, {
