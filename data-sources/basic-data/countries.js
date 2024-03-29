@@ -365,7 +365,9 @@ const data = {
             text: {r: 255, g: 255, b: 255}
         }
     }, {
-        id: "aw", title: {es: "Aruba", en: "Aruba", pt: "Aruba", ru: "Аруба"}, warships: {}, colors: {
+        id: "aw", title: {es: "Aruba", en: "Aruba", pt: "Aruba", ru: "Аруба"}, warships: {
+            es: "Buques de Aruba", en: "Ships of Aruba", pt: "Navios de Aruba", ru: "Корабли Арубы"
+        }, colors: {
             primary: {r: 251, g: 201, b: 61},
             secondary: {r: 0, g: 56, b: 168},
             tertiary: {r: 255, g: 255, b: 255},

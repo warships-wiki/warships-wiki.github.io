@@ -5,7 +5,8 @@ import {
     createArticle,
     createCountryCard,
     createLoadingScreen,
-    createNavCards, createResourcesCards,
+    createNavCards,
+    createResourcesCards,
     deleteLoadingScreen,
     getArticleContent,
     getSectionData,
@@ -47,10 +48,10 @@ function createErasArticle(locale) {
 }
 
 function createCountriesNavCards(locale) {
-    const section = warshipsData.sections.find(section => section.id === "nations");
+    const section = getSectionData(warshipsData, "nations");
     const nationsContainer = document.getElementById("nations");
     section.content.forEach((article) => {
-        let container = createArticle(true, false, article.title[locale], article.subtitle[locale], article.id, "countries,inner-article");
+        let container = createArticle(true, false, article.title[locale], article.subtitle[locale], article.id, "countries, nav-cards, inner-article");
         getArticleContent(nationsContainer).appendChild(container);
         countriesData[article.id === "sovereign" ? "sovereign" : "nonSovereign"].forEach((country) => {
             getArticleContent(container).appendChild(createCountryCard(country, "warships", "nation", locale));
@@ -61,8 +62,8 @@ function createCountriesNavCards(locale) {
 function createBasicStructure(container, locale) {
     createBasicArticles(container, locale);
     createErasArticle(locale);
-    createResourcesCards(getSectionData(warshipsData, "featured-articles").content,"featured-articles", "article",locale);
-    createResourcesCards(getSectionData(warshipsData, "latest-news").content,"latest-news", "news",locale);
+    createResourcesCards(getSectionData(warshipsData, "featured-articles").content, "featured-articles", "article", locale);
+    createResourcesCards(getSectionData(warshipsData, "latest-news").content, "latest-news", "news", locale);
     createNavCards(getSectionData(warshipsData, "navigation"), "navigation", "", "static", locale);
     createNavCards(getSectionData(warshipsData, "types"), "types", "", "dynamic", locale);
     createCountriesNavCards(locale);

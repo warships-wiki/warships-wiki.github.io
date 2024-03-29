@@ -273,7 +273,6 @@ export function createCountryCard(data, section, type, locale) {
 
     const card = document.createElement("div");
     card.classList.add("card");
-    card.setAttribute("data-country-id", data.id);
 
     const container = document.createElement("a");
     container.setAttribute("href", `/${section}/${type}.html?id=${data.id}`);
