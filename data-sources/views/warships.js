@@ -38,6 +38,31 @@ const data = {
             }]
         }]
     }, {
+        id: "videos", title: {
+            es: "Videos", en: "Videos", pt: "Vídeos", ru: "Видеоролики"
+        }, content: [{
+            title: {
+                es: "Acorazado Rivadavia",
+                en: "Acorazado Rivadavia",
+                pt: "Acorazado Rivadavia",
+                ru: "Acorazado Rivadavia"
+            }, reference: "https://www.youtube.com/embed/N-q-KJlmU2c"
+        }, {
+            title: {
+                es: "Acorazado Rivadavia",
+                en: "Acorazado Rivadavia",
+                pt: "Acorazado Rivadavia",
+                ru: "Acorazado Rivadavia"
+            }, reference: "https://www.youtube.com/embed/N-q-KJlmU2c"
+        }, {
+            title: {
+                es: "Acorazado Rivadavia",
+                en: "Acorazado Rivadavia",
+                pt: "Acorazado Rivadavia",
+                ru: "Acorazado Rivadavia"
+            }, reference: "https://www.youtube.com/embed/N-q-KJlmU2c"
+        }]
+    }, {
         id: "nations", reference: "/warships/nation.html", title: {
             es: "Buques de Guerra por Nación",
             en: "Warships by Nation",
