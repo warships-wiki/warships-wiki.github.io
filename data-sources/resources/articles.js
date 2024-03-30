@@ -4,13 +4,16 @@ const data = [{
         es: "18 Marzo, 2024", en: "March 18, 2024", pt: "18 de Março de 2024", ru: "18 марта 2024 года"
     },
     title: {
+        es: "Caza F-22 Raptor sobre Chile",
+        en: "F-22 Raptor Fighter over Chile",
+        pt: "Caça F-22 Raptor sobre o Chile",
+        ru: "Истребитель F-22 Raptor над Чили"
+    },
+    subtitle: {
         es: "Un caza F-22 Raptor de la Fuerza Aérea de EE.UU. surcará los cielos de Santiago de Chile",
         en: "A F-22 Raptor fighter jet from the US Air Force will soar the skies of Santiago, Chile",
         pt: "Um caça F-22 Raptor da Força Aérea dos EUA voará pelos céus de Santiago, Chile",
         ru: "Истребитель F-22 Raptor ВВС США пролетит по небу Сантьяго, Чили"
-    },
-    subtitle: {
-        es: "", en: "", pt: "", ru: ""
     },
     shortDescription: {
         es: "Cada vez falta menos para el inicio de la Feria Internacional del Aire y del Espacio 2024 (FIDAE 2024) en Santiago de Chile, mientras se conocen nuevos detalles de los participantes y exhibiciones aéreas que tendrán lugar. Sin duda uno de los principales atractivos de la feria será la presencia del equipo de demostración F-22 Raptor de la Fuerza Aérea de los Estados Unidos (USAF).",
@@ -27,13 +30,16 @@ const data = [{
         es: "28 Marzo, 2024", en: "March 28, 2024", pt: "28 de Março de 2024", ru: "28 марта 2024 года"
     },
     title: {
-        "es": "La Marina de Brasil pone a flote su nuevo submarino de ataque Tonelero (S42)",
-        "en": "The Brazilian Navy launches its new attack submarine Tonelero (S42)",
-        "pt": "A Marinha do Brasil lança seu novo submarino de ataque Tonelero (S42)",
-        "ru": "Бразильский ВМФ спускает на воду свою новую атакующую подводную лодку Тонелеро (S42)"
+        es: "La Marina de Brasil lanza su nuevo submarino",
+        en: "The Brazilian Navy launches its new submarine",
+        pt: "A Marinha do Brasil lança seu novo submarino",
+        ru: "Бразильский ВМФ запускает свою новую подводную лодку"
     },
     subtitle: {
-        es: "", en: "", pt: "", ru: ""
+        es: "Brasil pone a flote su nuevo submarino de ataque Tonelero (S42)",
+        en: "Brazil launches its new attack submarine Tonelero (S42)",
+        pt: "Brasil lança seu novo submarino de ataque Tonelero (S42)",
+        ru: "Бразилия спускает на воду свою новую атакующую подводную лодку Тонелеро (S42)"
     },
     shortDescription: {
         "es": "Durante la jornada de ayer, 27 de marzo, el Programa PROSUB de la Marina de Brasil ha sumado un nuevo hito con la puesta a flote del submarino de ataque Tonelero (S42), tercera unidad de la Clase Riachuelo construida localmente con asistencia de la empresa Naval Group.",
@@ -50,10 +56,10 @@ const data = [{
         es: "28 Marzo, 2024", en: "March 28, 2024", pt: "28 de Março de 2024", ru: "28 марта 2024 года"
     },
     title: {
-        es: "La Armada Argentina exhibe a dos Super Étendard en la Base Aeronaval Comandante Espora",
-        en: "The Argentine Navy displays two Super Étendard aircraft at the Comandante Espora Naval Air Base",
-        pt: "A Marinha Argentina exibe dois Super Étendard na Base Aeronaval Comandante Espora",
-        ru: "Аргентинское ВМФ демонстрирует два истребителя Super Étendard на базе ВМС Команданте Эспора"
+        es: "La Armada Argentina exhibe a dos Super Étendard",
+        en: "The Argentine Navy displays two Super Étendard aircraft",
+        pt: "A Marinha Argentina exibe dois Super Étendard",
+        ru: "Аргентинское ВМФ демонстрирует два истребителя Super Étendard"
     },
     subtitle: {
         es: "", en: "", pt: "", ru: ""

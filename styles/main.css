@@ -374,27 +374,27 @@ main {
 #main-section > article {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: baseline;
     flex: 0;
-    width: 100%;
     height: 100%;
-    border: 1px solid #fff;
+    margin: 0 auto;
+    row-gap: 1rem;
+    text-align: justify;
+}
+
+#main-section > article > .article-header {
+    width: 80%;
+    background-color: var(--dark-color);
 }
 
 .article-content > article {
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: 1px solid #fff;
 }
 
-.article-content > article .article-header {
-    border-bottom: solid var(--lightest-color) 1px !important;
-}
-
-.article-content > article .article-content {
-    background-color: var(--dark-color);
+.article-content > article .article-content p {
+    text-align: justify;
 }
 
 .article-header {
@@ -403,7 +403,8 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: var(--darkest-color);
+    margin: 0 auto;
+    background-color: var(--darker-color);
     border-bottom: solid var(--lightest-color) 1px;
     color: var(--lightest-color);
     padding: .75rem;
@@ -418,7 +419,6 @@ main {
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    background-color: var(--darker-color);
     color: var(--lighter-color);
     padding: 1rem;
     gap: 1rem;
@@ -441,6 +441,18 @@ article.collapsed .article-content {
     display: none !important;
 }
 
+article.text-article .article-content {
+    flex-direction: column;
+}
+
+.inner-article .article-header {
+    background-color: var(--dark-color);
+}
+
+.inner-article .article-content {
+    border: none !important;
+}
+
 .nav-cards .article-content {
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(var(--card-h), 1fr));
@@ -452,7 +464,7 @@ article.collapsed .article-content {
 .nav-cards .article-content .card {
     width: 100%;
     height: 100%;
-    background-color: var(--darkest-color);
+    background-color: var(--darker-color);
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
@@ -460,7 +472,7 @@ article.collapsed .article-content {
 }
 
 .nav-cards .card:hover {
-    box-shadow: 0 0 .5rem .25rem var(--accent-color);
+    box-shadow: 0 0 .5rem .25rem var(--light-color);
 }
 
 .nav-cards .card a {
@@ -483,6 +495,8 @@ article.collapsed .article-content {
 
 .resources-container > .article-content {
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    grid-template-rows: repeat(auto-fill, 1fr);
     width: 100%;
     flex-wrap: wrap;
 
@@ -490,8 +504,12 @@ article.collapsed .article-content {
         width: .5rem;
     }
 
+    ::-webkit-scrollbar-track {
+        background-color: var(--darker-color);
+    }
+
     ::-webkit-scrollbar-thumb {
-        border: 0.16rem solid var(--darkest-color);
+        border: 0.16rem solid var(--darker-color);
     }
 }
 
@@ -501,7 +519,7 @@ article.collapsed .article-content {
     flex: 1;
     height: 250px;
     color: var(--lightest-color);
-    background: var(--darkest-color);
+    background: var(--darker-color);
     border-radius: var(--border-r);
 }
 
@@ -586,11 +604,12 @@ article.collapsed .article-content {
     text-overflow: ellipsis;
     flex: 1;
     padding: 0 .5rem 0 1rem;
-    background-color: var(--darkest-color);
+    background-color: var(--darker-color);
 }
 
 #converters .article-content {
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--converter-w), 1fr));
     justify-content: space-around;
     align-items: baseline;
     flex-wrap: wrap;
@@ -685,61 +704,44 @@ main input[type="type"]::-webkit-outer-spin-button {
 
 @media (min-width: 1441px) {
 
-    #converters .article-content {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .resources-container > .article-content {
-        grid-template-columns: repeat(2, 1fr);
+    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+        width: 70%;
+        margin: 0 auto;
     }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
 
-    #converters .article-content {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .resources-container > .article-content {
-        grid-template-columns: repeat(2, 1fr);
+    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+        width: 75%;
+        margin: 0 auto;
     }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
 
-    #converters .article-content {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .resources-container > .article-content {
-        grid-template-columns: repeat(2, 1fr);
+    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+        width: 100%;
     }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
 
-    #converters .article-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .resources-container > .article-content {
-        grid-template-columns: repeat(1, 1fr);
+    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+        width: 100%;
     }
 }
 
 @media (max-width: 480px) {
 
-    #converters .article-content {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .resources-container > .article-content {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
     .resource-card-image-box {
         display: none;
         flex: 0;
+    }
+
+    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+        width: 100%;
+        margin: 0;
     }
 }
 
@@ -747,15 +749,12 @@ main input[type="type"]::-webkit-outer-spin-button {
     --wave-duration: 7s;
 }
 
-.countries .card {
-    position: relative;
-}
-
 .countries .card:hover {
     box-shadow: 0 0 10px 4px white;
 }
 
 .countries .card-wave-container {
+    position: relative;
     text-decoration: none;
     display: flex;
     justify-content: center;
@@ -792,7 +791,7 @@ main input[type="type"]::-webkit-outer-spin-button {
     justify-content: center;
     align-items: center;
     z-index: 2;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
     text-shadow: 0 0 10px rgba(0, 0, 0, 1);
     width: 100%;
@@ -811,4 +810,9 @@ main input[type="type"]::-webkit-outer-spin-button {
     to {
         transform: rotate(360deg);
     }
+}
+
+#links a {
+    text-decoration: none;
+    color: var(--lighter-color);
 }

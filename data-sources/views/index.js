@@ -14,8 +14,8 @@ const data = {
                 es: "Inicio", en: "Home", pt: "Início", ru: "Домой"
             }
         }, {
-            id: "armies", reference: "armies.html", title: {
-                es: "Armadas", en: "Armies", pt: "Forças Armadas", ru: "Армии"
+            id: "navies", reference: "navies.html", title: {
+                es: "Armadas", en: "Navies", pt: "Forças Armadas", ru: "Армии"
             }
         }, {
             id: "aircraft", reference: "aircraft.html", title: {

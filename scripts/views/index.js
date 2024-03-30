@@ -1,16 +1,15 @@
 import {data as viewData} from "../../data-sources/views/index.js";
 import {
     addLangEventListener,
-    createArticle,
     createLoadingScreen,
-    createNavCard,
     createNavCards,
-    createResourcesCards, createSectionsArticles,
+    createResourcesCards,
+    createSectionsArticles,
     deleteLoadingScreen,
     getSectionData,
     setCollapsibles
 } from "../basic-structure/main.js";
-import {getViewLang, setViewLang} from "../basic-structure/meta.js";
+import {getViewLang, setTitle, setViewLang} from "../basic-structure/meta.js";
 
 const sectionsData = viewData.sections;
 
@@ -35,16 +34,9 @@ function reloadView(container, locale) {
     createBasicStructure(container, locale);
     setCollapsibles();
     addLangEventListener(initView);
+    setTitle(viewData.title[locale]);
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
     initView(getViewLang());
 });
-
-function createViewNavCards(container, locale) {
-    sectionsData[0].content.forEach((section) => {
-        if (section.id !== "index") {
-            container.appendChild(createNavCard(section.id, section.title[locale], ""));
-        }
-    });
-}

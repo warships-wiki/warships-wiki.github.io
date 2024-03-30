@@ -16,11 +16,38 @@ import {
 } from "./meta.js";
 import {data as articlesData} from "../../data-sources/resources/articles.js";
 import {data as newsData} from "../../data-sources/resources/news.js";
+import {data as countriesData} from "../../data-sources/basic-data/countries.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     const {currentTheme, currentLocale} = await setBasicInfo();
     await initBasicPage(currentTheme, currentLocale);
 });
+
+export function createCountriesNavCards(data, view, locale) {
+    const nationsContainer = document.getElementById("nations");
+    getSectionData(data, "nations").content.forEach((article) => {
+        let container = createArticle(true, false, article.title[locale], article.subtitle[locale], article.id, "countries, nav-cards, inner-article");
+        getArticleContent(nationsContainer).appendChild(container);
+        countriesData[article.id === "sovereign" ? "sovereign" : "nonSovereign"].forEach((country) => {
+            getArticleContent(container).appendChild(createCountryCard(country, view, "nation", locale));
+        });
+    });
+}
+
+export function initView(data, locale, createBasicStructure) {
+    const mainSection = document.getElementById("main-section");
+    mainSection.innerHTML = "";
+    reloadView(mainSection, data, locale, createBasicStructure);
+    deleteLoadingScreen(mainSection);
+}
+
+export function reloadView(container, data, locale, createBasicStructure) {
+    createLoadingScreen(container);
+    createBasicStructure(container, locale);
+    setCollapsibles();
+    addLangEventListener(data, initView, createBasicStructure);
+    setTitle(data.title[locale]);
+}
 
 async function setBasicInfo() {
     const currentTheme = getViewTheme() || mainData.themes.default;
@@ -243,23 +270,6 @@ export function updateLang(locale) {
     updateMetadata(getViewTheme(), locale);
 }
 
-export function createCompleteNavCard(data, locale) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    let container = document.createElement("a");
-    container.classList.add("nav-card");
-    if (!data.disabled) container.setAttribute("href", createPathReference(window.location.pathname, data.id, data.reference));
-    container.appendChild(data.title[locale]);
-    container.appendChild(data.year[locale]);
-    container.appendChild(data.type[locale]);
-    container.appendChild(data.subtitle[locale]);
-    container.setAttribute("data-button-id", data.id);
-
-    card.appendChild(container);
-    return card;
-}
-
 export function getArticleContent(container) {
     return container.querySelector(".article-content");
 }
@@ -353,6 +363,57 @@ export function createSectionsArticles(sections, container, locale) {
     }
 }
 
+export function createTextArticles(data, sections, locale) {
+    for (let sectionId of sections) {
+        let sectionData = getSectionData(data, sectionId);
+        for (let content of sectionData.content) {
+            let paragraph = document.createElement("p");
+            let contentText = content[locale];
+            let lines = contentText.split('\n');
+            lines.forEach(line => {
+                if (line.trim() !== '') {
+                    let description = document.createElement("span");
+                    if (line.trim().startsWith("\\b")) {
+                        description.textContent = "\u2022 " + line.trim().substring(2);
+                    } else {
+                        description.textContent = line.trim();
+                    }
+                    paragraph.appendChild(description);
+                    paragraph.appendChild(document.createElement("br")); // Salto de línea
+                }
+            });
+
+            let container = document.getElementById(sectionId);
+            container.classList.add("text-article");
+            getArticleContent(container).appendChild(paragraph);
+        }
+    }
+}
+
+export function createLinksArticle(container, data, locale) {
+    for (let linkData of data) {
+        let linkContainer = document.createElement("a");
+        linkContainer.textContent = linkData.title[locale];
+        linkContainer.setAttribute("href", linkData.reference);
+        linkContainer.setAttribute("title", linkData.title[locale]);
+        linkContainer.setAttribute("target", "_blank");
+        getArticleContent(container).appendChild(linkContainer);
+    }
+    container.classList.add("text-article");
+}
+
+export function createInnerTextArticles(parentContainer, data, sections, locale) {
+    for (let description of data.description) {
+        let container = createArticle(true, false, description.title[locale], (description.hasOwnProperty("subtitle") ? description.subtitle[locale] : ""), "", "inner-article");
+        for (let content of description.content) {
+            let descriptionContainer = document.createElement("p");
+            descriptionContainer.textContent = content[locale];
+            getArticleContent(container).appendChild(descriptionContainer);
+        }
+        getArticleContent(parentContainer).appendChild((container));
+    }
+}
+
 export function createNavCard(id, title, refBackPath, classes, type) {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -375,7 +436,7 @@ export function createNavCard(id, title, refBackPath, classes, type) {
 }
 
 export function getSectionData(data, sectionId) {
-    return data.sections.find(section => section.id === sectionId)
+    return data.sections.find(section => section.id === sectionId);
 }
 
 export function createSimpleDiv(parent, classes, title) {
@@ -425,11 +486,11 @@ export function setCollapsibles() {
     });
 }
 
-export function addLangEventListener(initView) {
+export function addLangEventListener(data, initView, createBasicStructure) {
     const langOptions = document.querySelectorAll(".lang-option");
     for (let langOption of langOptions) {
         langOption.addEventListener("click", function () {
-            initView(langOption.dataset.langId);
+            initView(data, langOption.dataset.langId, createBasicStructure);
         });
     }
 }

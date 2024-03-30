@@ -40,7 +40,7 @@ const data = {
             }
         }]
     }, {
-        id: "armies", reference: "armies.html", icon: "person-military-rifle", hrAfter: false, disabled: false, title: {
+        id: "navies", reference: "navies.html", icon: "person-military-rifle", hrAfter: false, disabled: false, title: {
             es: "Armadas", en: "Navies", pt: "Marinhas", ru: "Военно-морские силы"
         }
     }, {
@@ -136,7 +136,7 @@ const data = {
             ru: "Типы судов страны"
         }
     }, {
-        id: "armies", subId: "evolution", title: {
+        id: "navies", subId: "evolution", title: {
             "es": "Evolución de las Armadas",
             "en": "Evolution of the Navies",
             "pt": "Evolução das Marinhas",

@@ -140,7 +140,7 @@ const data = {
         id: "navigation", title: {
             es: "Contenidos del sitio", en: "Site contents", pt: "Conteúdo do site", ru: "Содержание сайта"
         }, content: [{
-            id: "armies", title: {
+            id: "navies", title: {
                 es: "Armadas de Latinoamérica",
                 en: "Latin American Navies",
                 pt: "Marinhas da América Latina",
@@ -152,26 +152,29 @@ const data = {
                 en: "Evolution of Latin American Navies",
                 pt: "Evolução das Marinhas da América Latina",
                 ru: "Эволюция морских сил Латинской Америки"
-            }, backPath: "/armies/"
+            }, backPath: "/navies/"
         }, {
             id: "index", title: {
                 es: "Menú principal", en: "Main Menu", pt: "Menu Principal", ru: "Главное меню"
             }, backPath: ""
         }]
     }, {
+        id: "featured-articles", title: {
+            es: "Artículos destacados", en: "Features Articles", pt: "Artigos em destaque", ru: "Выдающиеся статьи"
+        }, content: [0, 3]
+    }, {
+        id: "comparative", reference: "warships", title: {
+            es: "Comparativa de Buques",
+            en: "Comparison of Warships",
+            pt: "Comparação de Navios de Guerra",
+            ru: "Сравнение военных кораблей"
+        }
+    }, {
         id: "notes", title: {
             es: "Notas de Observación", en: "Observation Notes", pt: "Notas de Observação", ru: "Заметки наблюдения"
         }, content: [{es: "[1] Nota", en: "[1] Note", pt: "[1] Nota", ru: "[1] Примечание"}, {
             es: "[2] Nota", en: "[2] Note", pt: "[2] Nota", ru: "[2] Примечание"
         }, {es: "[3] Nota", en: "[3] Note", pt: "[3] Nota", ru: "[3] Примечание"}]
-    }, {
-        id: "featured-articles", title: {
-            es: "Artículos destacados", en: "Features Articles", pt: "Artigos em destaque", ru: "Выдающиеся статьи"
-        }, content: [0, 3]
-    }, {
-        id: "latest-news", title: {
-            es: "Novedades destacadas", en: "Highlighted news", pt: "Novidades em destaque", ru: "Выделенные новости"
-        }, content: [1, 2]
     }, {
         id: "sources", title: {
             es: "Fuentes de Información",
