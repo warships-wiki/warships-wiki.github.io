@@ -148,12 +148,6 @@ const data = {
             en: "Warships Wiki",
             pt: "Wiki de Navios de Guerra",
             ru: "Военные корабли Вики"
-        }, searchBar: {
-            placeholder: {
-                es: "Buscar", en: "Search", pt: "Procurar", ru: "Поиск"
-            }, searchIcon: {
-                es: "Ícono de Búsqueda", en: "Search icon", pt: "Ícone de pesquisa", ru: "Значок поиска"
-            }
         }
     }, footer: {
         donationButton: {

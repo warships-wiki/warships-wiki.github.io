@@ -5,7 +5,10 @@ const data = {
         pt: "Esta plataforma multilíngue é dedicada a coletar e disseminar Dados, Informações e Conhecimento Histórico e Técnico sobre os Navios de Guerra da América Latina desde os anos da Independência até o Presente.",
         ru: "Эта многоязычная платформа посвящена сбору и распространению данных, информации и исторических и технических знаний о военных кораблях Латинской Америки с момента независимости до настоящего времени."
     }, id: "evolution", title: {
-        es: "Buques", en: "Evolution", pt: "Navios", ru: "Военные корабли"
+        "es": "Evolución de las Armadas",
+        "en": "Evolution of the Navies",
+        "pt": "Evolução das Marinhas",
+        "ru": "Эволюция военно-морских"
     }, sections: [{
         id: "introduction", title: {
             es: "Evolución según el Desplazamiento total",
