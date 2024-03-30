@@ -334,7 +334,7 @@ export function createNavCards(data, containerId, classes, type, locale) {
     const container = document.getElementById(containerId);
     container.classList.add("nav-cards");
     data.content.forEach((item) => {
-        getArticleContent(container).appendChild(createNavCard(item.id, item.title[locale], ((item.hasOwnProperty("backPath")) ? item.backPath : ""), classes, type));
+        getArticleContent(container).appendChild(createNavCard(item.id, item.title[locale], ((item.hasOwnProperty("backPath")) ? item.backPath : ""), classes, type, ((item.hasOwnProperty("background")) ? item.background : "")));
     });
 }
 
@@ -414,7 +414,7 @@ export function createInnerTextArticles(parentContainer, data, sections, locale)
     }
 }
 
-export function createNavCard(id, title, refBackPath, classes, type) {
+export function createNavCard(id, title, refBackPath, classes, type, imageURL) {
     const card = document.createElement("div");
     card.classList.add("card");
 
@@ -428,7 +428,7 @@ export function createNavCard(id, title, refBackPath, classes, type) {
         container.setAttribute("href", ((refBackPath) ? refBackPath : "") + id + ".html");
     }
 
-    //container.setAttribute(attrName, id);
+    if (imageURL) card.style.backgroundImage = "url(" + imageURL + ")";
     container.textContent = title;
 
     card.appendChild(container);

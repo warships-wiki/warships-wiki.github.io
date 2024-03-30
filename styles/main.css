@@ -816,3 +816,10 @@ main input[type="type"]::-webkit-outer-spin-button {
     text-decoration: none;
     color: var(--lighter-color);
 }
+
+#types .card {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-blend-mode: multiply;
+}

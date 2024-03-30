@@ -82,7 +82,7 @@ const data = {
         }, content: [{
             id: "battleship", title: {
                 es: "Acorazado", en: "Battleship", pt: "Couraçado", ru: "Линкор"
-            }, backPath: "/warships/type"
+            }, backPath: "/warships/type", background: "../../assets/warships/types/battleship.png"
         }, {
             id: "amphibious", title: {
                 es: "Anfibio", en: "Amphibious", pt: "Anfíbio", ru: "Амфибийный"
@@ -102,7 +102,7 @@ const data = {
         }, {
             id: "cruiser", title: {
                 es: "Crucero", en: "Cruiser", pt: "Cruzador", ru: "Крейсер"
-            }, backPath: "/warships/type"
+            }, backPath: "/warships/type", background: "../../assets/warships/types/cruiser.png"
         }, {
             id: "destroyer", title: {
                 es: "Destructor", en: "Destroyer", pt: "Destróier", ru: "Эсминец"
