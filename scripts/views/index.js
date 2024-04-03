@@ -28,11 +28,6 @@ async function createLangModal(container) {
         langModal.classList.add("disable-select");
 
         let locales = [{
-            id: "en",
-            name: "English",
-            icon: "us",
-            title: "Welcome to 'Warships Wiki'<br><br>The website is primarily in English. It can also be viewed in Spanish and Portuguese, among other languages<br><br>Enter by clicking here"
-        }, {
             id: "es",
             name: "Español",
             icon: "es",
@@ -42,6 +37,11 @@ async function createLangModal(container) {
             name: "Portugués",
             icon: "pt",
             title: "Bem-vindo a 'Wiki de Navios de Guerra'<br><br>O site está principalmente em inglês. Também pode ser visualizado em espanhol e português, entre outros idiomas<br><br>Clique aqui para entrar"
+        }, {
+            id: "en",
+            name: "English",
+            icon: "us",
+            title: "Welcome to 'Warships Wiki'<br><br>The website is primarily in English. It can also be viewed in Spanish and Portuguese, among other languages<br><br>Enter by clicking here"
         }];
 
         let langContent = document.createElement("div");

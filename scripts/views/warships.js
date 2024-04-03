@@ -6,7 +6,7 @@ import {
     createResourcesCards,
     createSectionsArticles,
     createTextArticles,
-    getArticleContent,
+    createVideosArticle,
     getSectionData,
     initView,
 } from "../basic-structure/main.js";
@@ -24,17 +24,5 @@ function createBasicStructure(container, locale) {
     createNavCards(getSectionData(warshipsData, "types"), "types", "", "dynamic", locale);
     createCountriesNavCards(warshipsData, "warships", locale);
     createTextArticles(warshipsData, ["notes", "sources", "authors", "editions"], locale);
-    createVideosArticle(locale);
-}
-
-function createVideosArticle(locale) {
-    let sectionData = getSectionData(warshipsData, "videos");
-    let videosContainer = getArticleContent(document.getElementById("videos"));
-    for (let videoData of sectionData.content) {
-        let video = document.createElement("iframe");
-        video.title = videoData.title[locale];
-        video.src = videoData.reference;
-        video.allowFullscreen = true;
-        videosContainer.appendChild(video);
-    }
+    createVideosArticle(warshipsData, "videos", locale);
 }

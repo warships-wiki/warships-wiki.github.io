@@ -893,5 +893,5 @@ main input[type="type"]::-webkit-outer-spin-button {
 
 #lang-modal .lang-block i {
     width: 100%;
-    min-height: 54px;
+    min-height: var(--nav-button-h);
 }

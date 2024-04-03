@@ -414,6 +414,18 @@ export function createInnerTextArticles(parentContainer, data, sections, locale)
     }
 }
 
+export function createVideosArticle(data, containerId, locale) {
+    let sectionData = getSectionData(data, containerId);
+    let videosContainer = getArticleContent(document.getElementById(containerId));
+    for (let videoData of sectionData.content) {
+        let video = document.createElement("iframe");
+        video.title = videoData.title[locale];
+        video.src = videoData.reference;
+        video.allowFullscreen = true;
+        videosContainer.appendChild(video);
+    }
+}
+
 export function createNavCard(id, title, refBackPath, classes, type, imageURL) {
     const card = document.createElement("div");
     card.classList.add("card");
