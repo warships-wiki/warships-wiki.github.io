@@ -1,2 +1,2 @@
 # warships-wiki.github.io
-Esta plataforma multilenguaje está dedicada a recopilar y difundir Datos, Información y Conocimiento Histórico y Técnico sobre los Buques de Guerra de Latinoamérica desde los años de la Independencia hasta el Presente.
+This multilingual platform is dedicated to collecting and disseminating Data, Information, and Historical and Technical Knowledge about Warships of Latin America from the years of Independence to the Present.

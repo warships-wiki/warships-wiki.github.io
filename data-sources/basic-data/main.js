@@ -11,14 +11,24 @@ const data = {
             es: "Modo Claro", en: "Light Mode", pt: "Modo Claro", ru: "Светлый режим"
         }
     }, locales: {
-        default: "es", es: {
+        default: "en", es: {
             id: "es", name: "Español", icon: "mx",
-        }, en: {
-            id: "en", name: "English", icon: "us",
         }, pt: {
             id: "pt", name: "Português", icon: "br",
+        }, en: {
+            id: "en", name: "English", icon: "us",
         }, ru: {
             id: "ru", name: "Русский", icon: "ru",
+        }, it: {
+            id: "it", name: "Italiano", icon: "it",
+        }, fr: {
+            id: "fr", name: "Français", icon: "fr",
+        }, de: {
+            id: "de", name: "Deutsch", icon: "de",
+        }, cn: {
+            id: "cn", name: "汉语", icon: "cn",
+        }, sa: {
+            id: "sa", name: "اَلْعَرَبِيَّة", icon: "sa",
         }
     }, views: [{
         id: "index", reference: "", icon: "home", hrAfter: true, disabled: false, title: {
@@ -113,7 +123,12 @@ const data = {
             es: "Nuestros integrantes", en: "Our Team", pt: "Nossa Equipe", ru: "Наша команда"
         }
     }, {
-        id: "collaborators", reference: "collaborators.html", icon: "user-pen", hrAfter: false, disabled: false, title: {
+        id: "collaborators",
+        reference: "collaborators.html",
+        icon: "user-pen",
+        hrAfter: false,
+        disabled: false,
+        title: {
             es: "Nuestros colaboradores", en: "Our Collaborators", pt: "Nossos Colaboradores", ru: "Наши соавторы"
         }
     }, {

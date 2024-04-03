@@ -491,6 +491,7 @@ export function addLangEventListener(data, initView, createBasicStructure) {
     for (let langOption of langOptions) {
         langOption.addEventListener("click", function () {
             initView(data, langOption.dataset.langId, createBasicStructure);
+            setViewLang(langOption.dataset.langId);
         });
     }
 }

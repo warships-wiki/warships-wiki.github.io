@@ -1,7 +1,6 @@
 import {data as naviesData} from "../../data-sources/views/navies.js";
 import {
     createCountriesNavCards,
-    createInnerTextArticles,
     createNavCards,
     createResourcesCards,
     createSectionsArticles,
@@ -20,5 +19,5 @@ function createBasicStructure(container, locale) {
     createResourcesCards(getSectionData(naviesData, "featured-articles").content, "featured-articles", "article", locale);
     createNavCards(getSectionData(naviesData, "navigation"), "navigation", "", "static", locale);
     createCountriesNavCards(naviesData, "navies", locale);
-    createTextArticles(naviesData, ["introduction", "not-considered","notes", "sources", "authors", "editions"], locale);
+    createTextArticles(naviesData, ["introduction", "not-considered", "notes", "sources", "authors", "editions"], locale);
 }
