@@ -205,7 +205,7 @@ main {
 }
 
 #main-header h1 {
-    font-size: 2.5em;
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
     font-weight: 700;
     letter-spacing: .01em;
     text-shadow: .022em .022em .022em #111;
@@ -290,10 +290,6 @@ main {
 
 @media (min-width: 320px) and (max-width: 768px) {
 
-    #main-header h1 {
-        font-size: 1.15rem;
-    }
-
     #main-footer {
         height: calc(var(--nav-button-h) * 3);
         flex-direction: column;
@@ -377,14 +373,15 @@ main {
     align-items: baseline;
     flex: 0;
     height: 100%;
+    width: 100%;
     margin: 0 auto;
     row-gap: 1rem;
     text-align: justify;
 }
 
 #main-section > article > .article-header {
-    width: 80%;
     background-color: var(--dark-color);
+    row-gap: 5px;
 }
 
 .article-content > article {
@@ -433,7 +430,7 @@ article.collapsed {
     border-bottom: none;
 }
 
-article.collapsed .article-header {
+article article.collapsed .article-header {
     border-bottom: none;
 }
 
@@ -443,6 +440,18 @@ article.collapsed .article-content {
 
 article.text-article .article-content {
     flex-direction: column;
+}
+
+article i.collapsible-icon {
+    transition: transform 0.3s ease;
+}
+
+article i.rotate {
+    transform: rotate(180deg);
+}
+
+.inner-article {
+    padding: 0 2rem;
 }
 
 .inner-article .article-header {
@@ -491,6 +500,7 @@ article.text-article .article-content {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
+    padding: 5px;
 }
 
 .resources-container > .article-content {
@@ -704,7 +714,7 @@ main input[type="type"]::-webkit-outer-spin-button {
 
 @media (min-width: 1441px) {
 
-    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+    #main-section {
         width: 70%;
         margin: 0 auto;
     }
@@ -712,7 +722,7 @@ main input[type="type"]::-webkit-outer-spin-button {
 
 @media (min-width: 1025px) and (max-width: 1440px) {
 
-    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+    #main-section {
         width: 75%;
         margin: 0 auto;
     }
@@ -720,14 +730,14 @@ main input[type="type"]::-webkit-outer-spin-button {
 
 @media (min-width: 769px) and (max-width: 1024px) {
 
-    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+    #main-section {
         width: 100%;
     }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
 
-    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+    #main-section {
         width: 100%;
     }
 }
@@ -739,7 +749,7 @@ main input[type="type"]::-webkit-outer-spin-button {
         flex: 0;
     }
 
-    #main-section > article, .inner-article .article-content, .inner-article .article-header {
+    #main-section {
         width: 100%;
         margin: 0;
     }

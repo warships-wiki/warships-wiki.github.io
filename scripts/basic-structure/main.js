@@ -307,13 +307,10 @@ export function createArticle(isCollapsible, isCollapsed, title, subtitle, conta
     if (containerId) container.setAttribute("id", containerId);
     if (containerClasses) for (let c of containerClasses.split(",")) container.classList.add(c.trim());
 
-    if (isCollapsible) container.classList.add("collapsible");
-    if (isCollapsed) container.classList.add("collapsed");
 
     const header = document.createElement("h2");
     header.classList.add("article-header");
     if (headerClasses) for (let c of headerClasses.split(",")) container.classList.add(c.trim());
-
     header.textContent = title;
     container.appendChild(header);
 
@@ -326,6 +323,15 @@ export function createArticle(isCollapsible, isCollapsed, title, subtitle, conta
         contentSubtitle.textContent = subtitle;
         header.append(contentSubtitle);
     }
+
+    if (isCollapsible) {
+        container.classList.add("collapsible");
+        let headerIcon = document.createElement("i");
+        headerIcon.classList.add("collapsible-icon", "fa-solid", "fa-caret-up");
+        header.appendChild(headerIcon);
+    }
+    if (isCollapsed) container.classList.add("collapsed");
+
     container.appendChild(content);
     return container;
 }
@@ -494,6 +500,8 @@ export function setCollapsibles() {
     containers.forEach(function (container) {
         container.querySelector(".article-header").addEventListener("click", function () {
             this.parentElement.classList.toggle("collapsed");
+            let icon = this.querySelector("i");
+            icon.classList.toggle('rotate');
         });
     });
 }
