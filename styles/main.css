@@ -640,7 +640,7 @@ article i.rotate {
     --converter-h: 400px;
 }
 
-[id^="armor-pen"] .article-content {
+#armor-pen .article-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -648,7 +648,7 @@ article i.rotate {
     flex-wrap: wrap;
 }
 
-[id^="armor-pen"] .card {
+#armor-pen .card {
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
@@ -672,19 +672,19 @@ article i.rotate {
     flex: 0;
 }
 
-[id^="armor-pen"] .card-header, #converters .card-header {
+#armor-pen .card-header, #converters .card-header {
     font-size: 34px;
     background-color: var(--darkest-color);
     border: none;
 }
 
-[id^="armor-pen"] .card-title, #converters .card-title {
+#armor-pen .card-title, #converters .card-title {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
 }
 
-[id^="armor-pen"] form {
+#armor-pen form {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
@@ -696,21 +696,21 @@ article i.rotate {
     column-gap: 20px;
 }
 
-[id^="armor-pen"] textarea:focus, #converters textarea:focus,
-[id^="armor-pen"] input:focus, #converters input:focus {
+#armor-pen textarea:focus, #converters textarea:focus,
+#armor-pen input:focus, #converters input:focus {
     outline: var(--accent-color) solid 2px;
 }
 
-[id^="armor-pen"] .input-group, #converters .input-group,
-[id^="armor-pen"] .output-group, #converters .output-group {
+#armor-pen .input-group, #converters .input-group,
+#armor-pen .output-group, #converters .output-group {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
     row-gap: 5px;
 }
 
-[id^="armor-pen"] input, #converters input,
-[id^="armor-pen"] select, #converters select {
+#armor-pen input, #converters input,
+#armor-pen select, #converters select {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--darker-color);
@@ -727,18 +727,18 @@ main input[type="type"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-[id^="armor-pen"] input, #converters input {
+#armor-pen input, #converters input {
     background-color: var(--darker-color);
 }
 
-[id^="armor-pen"] select, #converters select {
+#armor-pen select, #converters select {
     background-color: var(--darkest-color);
     border: none;
     cursor: pointer;
     text-align: center;
 }
 
-[id^="armor-pen"] label.hidden, #converters label {
+#armor-pen label.hidden, #converters label {
     position: absolute;
     width: 1px;
     height: 1px;
