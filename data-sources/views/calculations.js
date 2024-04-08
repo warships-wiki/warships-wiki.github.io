@@ -168,6 +168,30 @@ const data = {
                 'feet per second': {toMain: 0.3048, fromMain: 3.28084}
             }
         }]
+    }, {
+        id: "armor-pen", title: {
+            en: "Armor Penetration Calculator", es: "Armor Penetration Calculator"
+        }, results: {
+            en: "Results", es: "Resultados"
+        }, button: {
+            en: "Calculate", es: "Calcular"
+        }, labels: {
+            range: {
+                en: "Range", es: "Rango"
+            }, pen: {
+                en: "Penetration", es: "Penetración"
+            }, angle: {
+                en: "Angle", es: "Ángulo"
+            }
+        }, placeholders: {
+            range: {
+                en: "Enter range...", es: "Introduce rango..."
+            }, pen: {
+                en: "Enter penetration...", es: "Introduce penetración..."
+            }, angle: {
+                en: "Enter angle...", es: "Introduce ángulo..."
+            }
+        }
     }],
 };
 

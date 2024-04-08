@@ -1,8 +1,8 @@
 import {data as calculationsData} from "../../data-sources/views/calculations.js";
-import {createArticle, setCollapsibles} from "../basic-structure/main.js";
+import {createArticle, getArticleContent, getSectionData, setCollapsibles} from "../basic-structure/main.js";
 import {getViewLang} from "../basic-structure/meta.js";
 
-const convertersData = calculationsData.sections[0];
+const convertersData = getSectionData(calculationsData, "converters");
 
 document.addEventListener("DOMContentLoaded", async function () {
     let currentLocale = getViewLang();
@@ -25,12 +25,75 @@ async function initConverters(container) {
     }
 }
 
+async function createPenetrationCalcutator(parentContainer, locale) {
+    const container = createArticle(true, false, getSectionData(calculationsData, "armor-pen").title[locale], "", "armor-pen");
+    parentContainer.appendChild(container);
+    createPenetrationForm(getArticleContent(document.getElementById('armor-pen')), "input", 2, locale);
+    createPenetrationForm(getArticleContent(document.getElementById('armor-pen')), "results", 5, locale);
+}
+
+function createPenetrationForm(container, title, rows, locale) {
+    const penetrationData = getSectionData(calculationsData, "armor-pen");
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const header = document.createElement("header");
+    header.classList.add("card-header", "flex-m");
+    header.textContent = penetrationData[(title === "results") ? "results" : "title"][locale];
+
+    const form = document.createElement("form");
+    form.classList.add("flex-m");
+    form.setAttribute("id", `armor-pen-${title}`);
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < 3; j++) {
+
+            let inputGroup = document.createElement("div");
+            inputGroup.classList.add("flex-m", ((title === "results") ? "output-group" : "input-group"));
+
+            const inputLabel = document.createElement("label");
+            inputLabel.textContent = (i !== 0) ? "" : penetrationData.labels[(j === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')][locale];
+            inputLabel.setAttribute("for", `${(j === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')}-value-input-${i}`);
+
+            const inputValue = document.createElement("input");
+            inputValue.type = "number";
+            inputValue.placeholder = penetrationData.placeholders[(j === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')][locale];
+            inputValue.classList.add((title === "results") ? "output-value" : "input-value");
+            if (title === "results" && (j !== 0)) inputValue.readOnly = true;
+            inputValue.id = `${(i === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')}-value-input-${i}`;
+            inputGroup.appendChild(inputLabel);
+            inputGroup.appendChild(inputValue);
+
+            form.appendChild(inputGroup);
+            container.appendChild(card);
+        }
+    }
+
+    if (title === "input") {
+        let button = document.createElement("button");
+        button.setAttribute("type", "button");
+        button.classList.add("flex-m", "button");
+        button.textContent = penetrationData.button[locale];
+        button.addEventListener("click", calculateArmorPen);
+        form.appendChild(button);
+    }
+
+    card.appendChild(header);
+    card.appendChild(form);
+}
+
+function calculateArmorPen() {
+
+}
+
 async function createBasicStructure(container, locale) {
     await createConverters(container, locale);
+    await createPenetrationCalcutator(container, locale);
 }
 
 async function createConverters(parentContainer, locale) {
-    const container = createArticle(true, false, calculationsData.title[locale], "", "converters");
+    const container = createArticle(true, true, convertersData.title[locale], "", "converters");
     await initConverters(container.querySelector(".article-content"));
     parentContainer.appendChild(container);
 }
@@ -145,17 +208,21 @@ function calculateConversion(value, fromUnit, toUnit, output, conversions) {
 }
 
 function updateLang(locale) {
-    const convertersContainers = document.getElementById('converters');
-    convertersContainers.querySelector(".article-header").textContent = convertersData.title[locale]
+    const convertersContainer = document.getElementById('converters');
+    const convertersHeader = convertersContainer.querySelector(".article-header");
+    convertersContainer.querySelector(".article-header").textContent = convertersData.title[locale];
+    let headerIcon = document.createElement("i");
+    headerIcon.classList.add("collapsible-icon", "fa-solid", "fa-caret-up");
+    convertersHeader.appendChild(headerIcon);
 
-    const cardHeaders = convertersContainers.querySelectorAll('.card header');
+    const cardHeaders = convertersContainer.querySelectorAll('.card header');
     cardHeaders.forEach(header => {
         let unitName = header.dataset.unitName.toLowerCase();
         let unitType = convertersData.types.find(unitType => unitType.title.en.toLowerCase() === unitName);
         header.textContent = unitType.title[locale];
     });
 
-    const inputGroups = convertersContainers.querySelectorAll('.card .input-group');
+    const inputGroups = convertersContainer.querySelectorAll('.card .input-group');
     inputGroups.forEach(inputGroup => {
         let unitName = inputGroup.dataset.unitName.toLowerCase();
         let unitType = convertersData.types.find(unitType => unitType.title.en.toLowerCase() === unitName);
@@ -177,7 +244,7 @@ function updateLang(locale) {
         });
     });
 
-    const outputGroups = convertersContainers.querySelectorAll('.card .output-group');
+    const outputGroups = convertersContainer.querySelectorAll('.card .output-group');
     outputGroups.forEach(outputGroup => {
         let unitName = outputGroup.dataset.unitName.toLowerCase();
         let unitType = convertersData.types.find(unitType => unitType.title.en.toLowerCase() === unitName);

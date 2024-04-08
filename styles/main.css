@@ -298,6 +298,10 @@ main {
     #main-footer .developer-info, #main-footer .social-icons, #main-footer .donate-banner {
         width: 100%;
     }
+
+    #main-section > article.collapsed .article-header {
+        width: 100% !important;
+    }
 }
 
 #main-section section {
@@ -382,6 +386,7 @@ main {
 #main-section > article > .article-header {
     background-color: var(--dark-color);
     row-gap: 5px;
+    width: 100%;
 }
 
 .article-content > article {
@@ -407,6 +412,7 @@ main {
     padding: .75rem;
     flex: 0;
     text-align: center;
+    transition: width 0.3s ease;
 }
 
 .article-content {
@@ -428,6 +434,10 @@ article.collapsible .article-header {
 article.collapsed {
     height: auto;
     border-bottom: none;
+}
+
+#main-section > article.collapsed .article-header {
+    width: 50%;
 }
 
 article article.collapsed .article-header {
@@ -630,6 +640,26 @@ article i.rotate {
     --converter-h: 400px;
 }
 
+[id^="armor-pen"] .article-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+[id^="armor-pen"] .card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    background-color: var(--darkest-color);
+    color: var(--lightest-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1;
+}
+
 #converters .card {
     display: flex;
     flex-direction: column;
@@ -642,16 +672,23 @@ article i.rotate {
     flex: 0;
 }
 
-#converters .card-header {
+[id^="armor-pen"] .card-header, #converters .card-header {
     font-size: 34px;
     background-color: var(--darkest-color);
     border: none;
 }
 
-#converters .card-title {
+[id^="armor-pen"] .card-title, #converters .card-title {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
+}
+
+[id^="armor-pen"] form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 1rem 2rem;
 }
 
 #converters form {
@@ -659,21 +696,21 @@ article i.rotate {
     column-gap: 20px;
 }
 
-#converters textarea:focus,
-#converters input:focus {
+[id^="armor-pen"] textarea:focus, #converters textarea:focus,
+[id^="armor-pen"] input:focus, #converters input:focus {
     outline: var(--accent-color) solid 2px;
 }
 
-#converters .input-group,
-#converters .output-group {
+[id^="armor-pen"] .input-group, #converters .input-group,
+[id^="armor-pen"] .output-group, #converters .output-group {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
     row-gap: 5px;
 }
 
-#converters input,
-#converters select {
+[id^="armor-pen"] input, #converters input,
+[id^="armor-pen"] select, #converters select {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--darker-color);
@@ -690,18 +727,18 @@ main input[type="type"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-#converters input {
+[id^="armor-pen"] input, #converters input {
     background-color: var(--darker-color);
 }
 
-#converters select {
+[id^="armor-pen"] select, #converters select {
     background-color: var(--darkest-color);
     border: none;
     cursor: pointer;
     text-align: center;
 }
 
-#converters label {
+[id^="armor-pen"] label.hidden, #converters label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -811,7 +848,7 @@ main input[type="type"]::-webkit-outer-spin-button {
     justify-content: center;
     align-items: center;
     z-index: 2;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-shadow: 0 0 10px rgba(0, 0, 0, 1);
     width: 100%;
@@ -904,4 +941,58 @@ main input[type="type"]::-webkit-outer-spin-button {
 #lang-modal .lang-block i {
     width: 100%;
     min-height: var(--nav-button-h);
+}
+
+.button {
+    appearance: none;
+    background-color: var(--accent-color);
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: var(--lightest-color);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.button:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+}
+
+.button:hover {
+    background-color: var(--dark-color);
+}
+
+.button:focus {
+    box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+    outline: none;
+}
+
+.button:disabled {
+    background-color: var(--dark-color);
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+}
+
+.button:active {
+    background-color: var(--dark-color);
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+#armor-pen .button {
+    grid-column: 2;
 }

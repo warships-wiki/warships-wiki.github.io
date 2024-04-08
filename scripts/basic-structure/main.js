@@ -309,8 +309,8 @@ export function createArticle(isCollapsible, isCollapsed, title, subtitle, conta
 
 
     const header = document.createElement("h2");
-    header.classList.add("article-header");
-    if (headerClasses) for (let c of headerClasses.split(",")) container.classList.add(c.trim());
+    header.classList.add("article-header", "disable-select");
+    if (headerClasses) for (let c of headerClasses.split(",")) header.classList.add(c.trim());
     header.textContent = title;
     container.appendChild(header);
 
