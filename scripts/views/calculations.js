@@ -32,6 +32,37 @@ async function createPenetrationCalcutator(parentContainer, locale) {
     createPenetrationForm(getArticleContent(document.getElementById('armor-pen')), "results", 5, locale);
 }
 
+function calculatePenetration() {
+
+    const convertToDegrees = (2 * Math.PI) / 360.0;
+
+    const inputs = document.querySelectorAll("#armor-pen-input .input-value");
+    const range1 = parseInt(inputs[0].value) || 0;
+    const angle1 = (parseInt(inputs[2].value) || 0) * convertToDegrees;
+    const pen1 = parseInt(inputs[1].value) / Math.pow(Math.cos(angle1), 1.5);
+    if (!inputs[3].value) inputs[3].value = 500;
+    const range2 = parseInt(inputs[3].value);
+    const angle2 = (parseInt(inputs[5].value) || 0) * convertToDegrees;
+    const pen2 = parseInt(inputs[4].value) / Math.pow(Math.cos(angle2), 1.5);
+
+    const c2 = Math.log(Math.pow(pen2, 1.4286) / Math.pow(pen1, 1.4286)) / (-range2 + range1);
+    const c1 = Math.pow(pen1, 1.4286) * Math.exp(range1 * c2);
+
+    const outputForms = document.querySelectorAll("#armor-pen-results .output-value");
+
+    for (let i = 0; i < outputForms.length; i += 3) {
+
+        let range = outputForms[i].value || i * 100 + 100;
+        let newPen = Math.pow((c1 * Math.exp(-c2 * range)), 0.7);
+        let angle = outputForms[i + 2].value;
+        if (angle !== "") newPen = newPen * Math.pow(Math.cos(parseInt(angle) * convertToDegrees), 1.5);
+
+        outputForms[i].value = range;
+        outputForms[i + 1].value = Math.round(newPen, 2);
+        outputForms[i + 2].value = angle;
+    }
+}
+
 function createPenetrationForm(container, title, rows, locale) {
     const penetrationData = getSectionData(calculationsData, "armor-pen");
 
@@ -54,14 +85,14 @@ function createPenetrationForm(container, title, rows, locale) {
 
             const inputLabel = document.createElement("label");
             inputLabel.textContent = (i !== 0) ? "" : penetrationData.labels[(j === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')][locale];
-            inputLabel.setAttribute("for", `${(j === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')}-value-input-${i}`);
+            inputLabel.setAttribute("for", `${(j === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')}-value-${((title === "results") ? "output" : "input")}-${i}`);
 
             const inputValue = document.createElement("input");
             inputValue.type = "number";
             inputValue.placeholder = penetrationData.placeholders[(j === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')][locale];
             inputValue.classList.add((title === "results") ? "output-value" : "input-value");
-            if (title === "results" && (j !== 0)) inputValue.readOnly = true;
-            inputValue.id = `${(i === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')}-value-input-${i}`;
+            if (title === "results" && (j === 1)) inputValue.readOnly = true;
+            inputValue.id = `${(j === 0) ? 'range' : ((j === 1) ? 'pen' : 'angle')}-value-${((title === "results") ? "output" : "input")}-${i}`;
             inputGroup.appendChild(inputLabel);
             inputGroup.appendChild(inputValue);
 
@@ -75,16 +106,12 @@ function createPenetrationForm(container, title, rows, locale) {
         button.setAttribute("type", "button");
         button.classList.add("flex-m", "button");
         button.textContent = penetrationData.button[locale];
-        button.addEventListener("click", calculateArmorPen);
+        button.addEventListener("click", calculatePenetration);
         form.appendChild(button);
     }
 
     card.appendChild(header);
     card.appendChild(form);
-}
-
-function calculateArmorPen() {
-
 }
 
 async function createBasicStructure(container, locale) {
