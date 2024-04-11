@@ -170,29 +170,101 @@ const data = {
         }]
     }, {
         id: "armor-pen", title: {
-            en: "Armor Penetration Calculator", es: "Armor Penetration Calculator"
+            en: "Armor Penetration Calculator",
+            pt: "Calculadora de Penetração de Blindagem",
+            es: "Calculadora de Penetración de Blindaje",
+            ru: "Калькулятор бронепробития",
+            it: "Calcolatore di Penetrazione della Corazza",
+            fr: "Calculateur de Pénétration d'Armure",
+            de: "Panzerungs-Durchdringungsrechner",
+            cn: "装甲穿透计算器",
+            sa: "آلة حاسبة لاختراق الدروع"
         }, results: {
-            en: "Results", es: "Resultados"
+            en: "Results",
+            pt: "Resultados",
+            es: "Resultados",
+            ru: "Результаты",
+            it: "Risultati",
+            fr: "Résultats",
+            de: "Ergebnisse",
+            cn: "结果",
+            sa: "النتائج"
         }, button: {
-            en: "Calculate", es: "Calcular"
+            en: "Calculate",
+            pt: "Calcular",
+            es: "Calcular",
+            ru: "Рассчитать",
+            it: "Calcolare",
+            fr: "Calculer",
+            de: "Berechnen",
+            cn: "计算",
+            sa: "احتساب"
         }, labels: {
             range: {
-                en: "Range", es: "Rango"
+                en: "Range",
+                pt: "Alcance",
+                es: "Alcance",
+                ru: "Дальность",
+                it: "Gamma",
+                fr: "Portée",
+                de: "Reichweite",
+                cn: "范围",
+                sa: "المدى"
             }, pen: {
-                en: "Penetration", es: "Penetración"
+                en: "Penetration",
+                pt: "Penetração",
+                es: "Penetración",
+                ru: "Проникновение",
+                it: "Penetrazione",
+                fr: "Pénétration",
+                de: "Durchdringung",
+                cn: "穿透",
+                sa: "الاختراق"
             }, angle: {
-                en: "Angle", es: "Ángulo"
+                en: "Angle",
+                pt: "Ângulo",
+                es: "Ángulo",
+                ru: "Угол",
+                it: "Angolo",
+                fr: "Angle",
+                de: "Winkel",
+                cn: "角度",
+                sa: "الزاوية"
             }
         }, placeholders: {
             range: {
-                en: "Enter range...", es: "Introduce rango..."
+                en: "Enter range...",
+                pt: "Digite o alcance...",
+                es: "Ingrese el alcance...",
+                ru: "Введите дальность...",
+                it: "Inserisci la gamma...",
+                fr: "Entrez la portée...",
+                de: "Reichweite eingeben...",
+                cn: "输入范围...",
+                sa: "أدخل المدى..."
             }, pen: {
-                en: "Enter penetration...", es: "Introduce penetración..."
+                en: "Enter penetration...",
+                pt: "Digite a penetração...",
+                es: "Ingrese la penetración...",
+                ru: "Введите проникновение...",
+                it: "Inserisci la penetrazione...",
+                fr: "Entrez la pénétration...",
+                de: "Geben Sie die Durchdringung ein...",
+                cn: "输入穿透...",
+                sa: "أدخل الاختراق..."
             }, angle: {
-                en: "Enter angle...", es: "Introduce ángulo..."
+                en: "Enter angle...",
+                pt: "Digite o ângulo...",
+                es: "Ingrese el ángulo...",
+                ru: "Введите угол...",
+                it: "Inserisci l'angolo...",
+                fr: "Entrez l'angle...",
+                de: "Geben Sie den Winkel ein...",
+                cn: "输入角度...",
+                sa: "أدخل الزاوية..."
             }
         }
     }],
-};
+}
 
 export {data};

@@ -1,13 +1,12 @@
 import {data as calculationsData} from "../../data-sources/views/calculations.js";
-import {createArticle, getArticleContent, getSectionData, setCollapsibles} from "../basic-structure/main.js";
+import {createSectionsArticles, getArticleContent, getSectionData, initView} from "../basic-structure/main.js";
 import {getViewLang} from "../basic-structure/meta.js";
 
 const convertersData = getSectionData(calculationsData, "converters");
 
+
 document.addEventListener("DOMContentLoaded", async function () {
-    let currentLocale = getViewLang();
-    await createBasicStructure(document.getElementById('main-section'), currentLocale);
-    setCollapsibles();
+    initView(calculationsData, getViewLang(), createBasicStructure);
 });
 
 async function initConverters(container) {
@@ -18,22 +17,18 @@ async function initConverters(container) {
                 generateCommonConverterCard(container, unitType, currentLocale, i);
             }
         }
-        addListenerUpdateLang();
     } catch (error) {
         console.error("Error loading converters: ", error);
         throw error;
     }
 }
 
-async function createPenetrationCalcutator(parentContainer, locale) {
-    const container = createArticle(true, false, getSectionData(calculationsData, "armor-pen").title[locale], "", "armor-pen");
-    parentContainer.appendChild(container);
-    createPenetrationForm(getArticleContent(document.getElementById('armor-pen')), "input", 2, locale);
-    createPenetrationForm(getArticleContent(document.getElementById('armor-pen')), "results", 5, locale);
+function createPenetrationCalculator(data, container, locale) {
+    createPenetrationForm(calculationsData, container, "input", 2, locale);
+    createPenetrationForm(calculationsData, container, "results", 5, locale);
 }
 
 function calculatePenetration() {
-
     const convertToDegrees = (2 * Math.PI) / 360.0;
 
     const inputs = document.querySelectorAll("#armor-pen-input .input-value");
@@ -63,8 +58,8 @@ function calculatePenetration() {
     }
 }
 
-function createPenetrationForm(container, title, rows, locale) {
-    const penetrationData = getSectionData(calculationsData, "armor-pen");
+function createPenetrationForm(data, container, title, rows, locale) {
+    const penetrationData = getSectionData(data, "armor-pen");
 
     const card = document.createElement("div");
     card.classList.add("card");
@@ -115,14 +110,9 @@ function createPenetrationForm(container, title, rows, locale) {
 }
 
 async function createBasicStructure(container, locale) {
-    await createConverters(container, locale);
-    await createPenetrationCalcutator(container, locale);
-}
-
-async function createConverters(parentContainer, locale) {
-    const container = createArticle(true, true, convertersData.title[locale], "", "converters");
-    await initConverters(container.querySelector(".article-content"));
-    parentContainer.appendChild(container);
+    createSectionsArticles(calculationsData.sections, container, locale);
+    await initConverters(getArticleContent(document.getElementById("converters")));
+    await createPenetrationCalculator(calculationsData, getArticleContent(document.getElementById("armor-pen")), locale);
 }
 
 function generateCommonConverterCard(container, unitType, locale, converterIndex) {
@@ -234,7 +224,18 @@ function calculateConversion(value, fromUnit, toUnit, output, conversions) {
     }
 }
 
-function updateLang(locale) {
+//OLD VERSION
+/*document.addEventListener("DOMContentLoaded", async function () {
+    let currentLocale = getViewLang();
+    await createBasicStructure(document.getElementById('main-section'), currentLocale);
+    setCollapsibles();
+});
+
+async function updateLang(locale) {
+    const parentContainer = document.getElementById("main-section");
+    parentContainer.removeChild(document.getElementById("armor-pen"));
+    createPenetrationCalculator(calculationsData, document.getElementById("main-section", locale));
+
     const convertersContainer = document.getElementById('converters');
     const convertersHeader = convertersContainer.querySelector(".article-header");
     convertersContainer.querySelector(".article-header").textContent = convertersData.title[locale];
@@ -299,8 +300,8 @@ function updateLang(locale) {
 function addListenerUpdateLang() {
     const langOptions = document.querySelectorAll('.lang-option');
     langOptions.forEach(langOption => {
-        langOption.addEventListener("click", function () {
-            updateLang(langOption.dataset.langId);
+        langOption.addEventListener("click", async function () {
+            await updateLang(langOption.dataset.langId);
         });
     });
-}
+}*/
