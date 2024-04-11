@@ -676,6 +676,7 @@ article i.rotate {
     font-size: 34px;
     background-color: var(--darkest-color);
     border: none;
+    text-align: center;
 }
 
 #armor-pen .card-title, #converters .card-title {
@@ -995,4 +996,5 @@ main input[type="type"]::-webkit-outer-spin-button {
 
 #armor-pen .button {
     grid-column: 2;
+    width: auto;
 }
