@@ -887,11 +887,21 @@ main input[type="type"]::-webkit-outer-spin-button {
     #main-section {
         width: 100%;
     }
+
+    .resource-card-subtitle {
+        display: none;
+        flex: 0;
+    }
 }
 
 @media (max-width: 480px) {
 
     .resource-card-image-box {
+        display: none;
+        flex: 0;
+    }
+
+    .resource-card-subtitle {
         display: none;
         flex: 0;
     }
