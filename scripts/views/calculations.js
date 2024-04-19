@@ -268,8 +268,8 @@ function createAPForm(container, locale) {
             inputValue.placeholder = "...";
             inputValue.classList.add("input-value");
             if (row === 2 && col !== 4 && col !== 2) inputValue.hidden = true; else if (col === 4 || (row === 2 && col === 2)) inputValue.type = "number";
-            if (row === 2 && col === 2) inputValue.placeholder = "Introduce caliber";
-            if (row === 2 && col === 4) inputValue.placeholder = "Introduce piercing";
+            if (row === 2 && col === 2) inputValue.placeholder = formData.placeholders[0][locale];
+            if (row === 2 && col === 4) inputValue.placeholder = formData.placeholders[1][locale];
             inputGroup.appendChild(inputValue);
 
             form.appendChild(inputGroup);

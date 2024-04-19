@@ -347,14 +347,24 @@ const data = {
             sa: "All penetration values are given for a distance of 0 meters and at right angles between the projectile and the armor"
         }, placeholders: [{
             en: "Introduce caliber",
-            pt: "Introduza o calibre",
-            es: "Introduce el calibre",
+            pt: "Digite o calibre",
+            es: "Ingrese el calibre",
             ru: "Введите калибр",
             it: "Introduce caliber",
             fr: "Introduce caliber",
             de: "Introduce caliber",
             cn: "Introduce caliber",
             sa: "Introduce caliber"
+        }, {
+            en: "Introduce penetration",
+            pt: "Digite a penetração",
+            es: "Ingrese la penetración",
+            ru: "Введите проникновение",
+            it: "Introduce penetration",
+            fr: "Introduce penetration",
+            de: "Introduce penetration",
+            cn: "Introduce penetration",
+            sa: "Introduce penetration"
         }], button: {
             en: "Compare",
             pt: "Comparar",
