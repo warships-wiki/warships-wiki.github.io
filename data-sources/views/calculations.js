@@ -264,6 +264,108 @@ const data = {
                 sa: "أدخل الزاوية..."
             }
         }
+    }, {
+        id: "armor-piercing", title: {
+            en: "Armor piercing Calculator",
+            pt: "Calculadora de Perfuração de Armadura",
+            es: "Calculadora de Perforación de blindaje",
+            ru: "Калькулятор Бронебойный",
+            it: "Armor piercing",
+            fr: "Armor piercing",
+            de: "Armor piercing",
+            cn: "Armor piercing",
+            sa: "Armor piercing"
+        }, comparison: {
+            en: "Piercing Comparison",
+            pt: "Comparação de Penetração",
+            es: "Comparación de Penetración",
+            ru: "Сравнение проникновения",
+            it: "Piercing Comparison",
+            fr: "Piercing Comparison",
+            de: "Piercing Comparison",
+            cn: "Piercing Comparison",
+            sa: "Piercing Comparison"
+        }, labels: [{
+            en: "Nation",
+            pt: "Nação",
+            es: "Nación",
+            ru: "Нация",
+            it: "Nation",
+            fr: "Nation",
+            de: "Nation",
+            cn: "Nation",
+            sa: "Nation"
+        }, {
+            en: "Warship",
+            pt: "Navio",
+            es: "Buque",
+            ru: "Военный корабль",
+            it: "Warship",
+            fr: "Warship",
+            de: "Warship",
+            cn: "Warship",
+            sa: "Warship"
+        }, {
+            en: "Cannon",
+            pt: "Canhão",
+            es: "Cañón",
+            ru: "Пушка",
+            it: "Cannon",
+            fr: "Cannon",
+            de: "Cannon",
+            cn: "Cannon",
+            sa: "Cannon"
+        }, {
+            en: "Projectile",
+            pt: "Projétil",
+            es: "Proyectil",
+            ru: "Снаряд",
+            it: "Projectile",
+            fr: "Projectile",
+            de: "Projectile",
+            cn: "Projectile",
+            sa: "Projectile"
+        }, {
+            en: "Penetration",
+            pt: "Penetração",
+            es: "Penetración",
+            ru: "Проникновение",
+            it: "Penetration",
+            fr: "Penetration",
+            de: "Penetration",
+            cn: "Penetration",
+            sa: "Penetration"
+        }], legend: {
+            en: "All penetration values are given for a distance of 0 meters and at right angles between the projectile and the armor",
+            pt: "Todos os valores de penetração são fornecidos para uma distância de 0 metros e em ângulos retos entre o projétil e a blindagem",
+            es: "Todos los valores de penetración se proporcionan para una distancia de 0 metros y a ángulos rectos entre el proyectil y la armadura",
+            ru: "Все значения проникновения указаны для расстояния 0 метров и под прямыми углами между снарядом и броней",
+            it: "All penetration values are given for a distance of 0 meters and at right angles between the projectile and the armor",
+            fr: "All penetration values are given for a distance of 0 meters and at right angles between the projectile and the armor",
+            de: "All penetration values are given for a distance of 0 meters and at right angles between the projectile and the armor",
+            cn: "All penetration values are given for a distance of 0 meters and at right angles between the projectile and the armor",
+            sa: "All penetration values are given for a distance of 0 meters and at right angles between the projectile and the armor"
+        }, placeholders: [{
+            en: "Introduce caliber",
+            pt: "Introduza o calibre",
+            es: "Introduce el calibre",
+            ru: "Введите калибр",
+            it: "Introduce caliber",
+            fr: "Introduce caliber",
+            de: "Introduce caliber",
+            cn: "Introduce caliber",
+            sa: "Introduce caliber"
+        }], button: {
+            en: "Compare",
+            pt: "Comparar",
+            es: "Comparar",
+            ru: "Сравнить",
+            it: "Compare",
+            fr: "Compare",
+            de: "Compare",
+            cn: "Compare",
+            sa: "Compare"
+        }
     }],
 }
 
