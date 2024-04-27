@@ -1,27 +1,109 @@
 const data = [{
-    id: "ag", title: {
-        es: "Antigua y Barbuda",
-        en: "Antigua and Barbuda",
-        it: "Antigua and Barbuda",
-        fr: "Antigua and Barbuda",
-        de: "Antigua and Barbuda",
-        cmn: "Antigua and Barbuda",
-        sa: "Antigua and Barbuda",
-        pt: "Antígua e Barbuda",
-        ru: "Антигуа и Барбуда"
-    }
+    id: "ag", name: "Antigua and Barbuda"
 }, {
-    id: "ar", title: {
-        es: "Argentina",
-        en: "Argentina",
-        it: "Argentina",
-        fr: "Argentina",
-        de: "Argentina",
-        cmn: "Argentina",
-        sa: "Argentina",
-        pt: "Argentina",
-        ru: "Аргентина"
-    }, warshipClasses: [{
+    id: "ar", name: "República Argentina", colors: {
+        primary: {r: 116, g: 172, b: 223},
+        secondary: {r: 246, g: 180, b: 14},
+        tertiary: {r: 133, g: 52, b: 10},
+        text: {r: 255, g: 255, b: 255}
+    }, warshipsTitle: {
+        en: "Argentinian Warships",
+        pt: "Navios Argentinos",
+        es: "Buques Argentinos",
+        ru: "Аргентинские военные корабли",
+        it: "Argentinian Warships",
+        fr: "Argentinian Warships",
+        de: "Argentinian Warships",
+        cn: "Argentinian Warships",
+        sa: "Argentinian Warships"
+    }, warshipTypes: [{
+        id: "bb", warshipClasses: [{
+            id: "riv", name: "Rivadavia", warships: [{
+                id: "mor", name: "Moreno", introduction: [{
+                    id: "intro", title: {
+                        en: "Introduction",
+                        pt: "Introduction",
+                        es: "Introducción",
+                        ru: "Introduction",
+                        it: "Introduction",
+                        fr: "Introduction",
+                        de: "Introduction",
+                        cn: "Introduction",
+                        sa: "Introduction"
+                    }, description: [{
+                        title: {
+                            en: "History",
+                            pt: "History",
+                            es: "Historia",
+                            ru: "History",
+                            it: "History",
+                            fr: "History",
+                            de: "History",
+                            cn: "History",
+                            sa: "History"
+                        }, content: [{
+                            en: "'Moreno' was a dreadnought battleship of the Rivadavia class, ordered in 1910 by the Argentine Navy and launched in 1911 by the American shipyards of New York Shipbuilding. It was a response to the Brazilian Minas Gerais class and to strengthen the Argentine position in the river, maritime and land disputes with Brazil, Chile and Uruguay. It was commissioned in 1915. It did not participate in world conflicts, but it was highly active in its training, surveillance and diplomatic relations tasks. In the mid-1920s, its machinery and firing systems were modernized and throughout the 1930s, complementary armaments and other equipment and structures were modified. A few years after the Second World War, the ship stopped providing active service and in 1956 it was finally decommissioned.",
+                            pt: "'Moreno' foi um navio de guerra tipo dreadnought da classe Rivadavia, encomendado em 1910 pela Marinha Argentina e lançado em 1911 pelos estaleiros americanos da New York Shipbuilding. Foi uma resposta à classe Minas Gerais do Brasil e para fortalecer a posição argentina nas disputas fluviais, marítimas e terrestres com Brasil, Chile e Uruguai. Foi comissionado em 1915. Não participou de conflitos mundiais, mas foi altamente ativo em suas tarefas de treinamento, vigilância e relações diplomáticas. Em meados da década de 1920, sua maquinaria e sistemas de disparo foram modernizados e ao longo da década de 1930, armamentos complementares e outros equipamentos e estruturas foram modificados. Poucos anos após a Segunda Guerra Mundial, o navio deixou de prestar serviço ativo e em 1956 foi finalmente descomissionado.",
+                            es: "'Moreno' fue un acorazado tipo dreadnought de la clase Rivadavia, encargado en 1910 por la Armada Argentina y lanzado en 1911 por los astilleros estadounidenses de New York Shipbuilding. Fue una respuesta a la clase Minas Gerais de Brasil y para fortalecer la posición argentina en las disputas fluviales, marítimas y terrestres con Brasil, Chile y Uruguay. Fue comisionado en 1915. No participó en conflictos mundiales, pero fue muy activo en tareas de entrenamiento, vigilancia y relaciones diplomáticas. A mediados de la década de 1920, su maquinaria y sistemas de disparo fueron modernizados y a lo largo de la década de 1930, se modificaron armamentos complementarios y otros equipos y estructuras. Unos años después de la Segunda Guerra Mundial, el buque dejó de prestar servicio activo y en 1956 fue finalmente dado de baja.",
+                            ru: "'Морено' был линкором типа dreadnought класса Ривадавия, заказанным в 1910 году Аргентинским Военно-морским Флотом и спущенным на воду в 1911 году американской верфью New York Shipbuilding. Это был ответ на бразильский класс 'Минас Жерайс' и для укрепления позиции Аргентины в речных, морских и земельных спорах с Бразилией, Чили и Уругваем. Он был закомандован в 1915 году. Он не участвовал в мировых конфликтах, но был очень активен в своих задачах по тренировке, наблюдению и дипломатическим отношениям. В середине 1920-х годов его машина и системы стрельбы были модернизированы, а в течение 1930-х годов были модифицированы дополнительные вооружения и другое оборудование и конструкции. Через несколько лет после Второй мировой войны корабль прекратил активное обслуживание, и в 1956 году он был окончательно списан.",
+                            it: "'Moreno' was a dreadnought battleship of the Rivadavia class, ordered in 1910 by the Argentine Navy and launched in 1911 by the American shipyards of New York Shipbuilding. It was a response to the Brazilian Minas Gerais class and to strengthen the Argentine position in the river, maritime and land disputes with Brazil, Chile and Uruguay. It was commissioned in 1915. It did not participate in world conflicts, but it was highly active in its training, surveillance and diplomatic relations tasks. In the mid-1920s, its machinery and firing systems were modernized and throughout the 1930s, complementary armaments and other equipment and structures were modified. A few years after the Second World War, the ship stopped providing active service and in 1956 it was finally decommissioned.",
+                            fr: "'Moreno' was a dreadnought battleship of the Rivadavia class, ordered in 1910 by the Argentine Navy and launched in 1911 by the American shipyards of New York Shipbuilding. It was a response to the Brazilian Minas Gerais class and to strengthen the Argentine position in the river, maritime and land disputes with Brazil, Chile and Uruguay. It was commissioned in 1915. It did not participate in world conflicts, but it was highly active in its training, surveillance and diplomatic relations tasks. In the mid-1920s, its machinery and firing systems were modernized and throughout the 1930s, complementary armaments and other equipment and structures were modified. A few years after the Second World War, the ship stopped providing active service and in 1956 it was finally decommissioned.",
+                            de: "'Moreno' was a dreadnought battleship of the Rivadavia class, ordered in 1910 by the Argentine Navy and launched in 1911 by the American shipyards of New York Shipbuilding. It was a response to the Brazilian Minas Gerais class and to strengthen the Argentine position in the river, maritime and land disputes with Brazil, Chile and Uruguay. It was commissioned in 1915. It did not participate in world conflicts, but it was highly active in its training, surveillance and diplomatic relations tasks. In the mid-1920s, its machinery and firing systems were modernized and throughout the 1930s, complementary armaments and other equipment and structures were modified. A few years after the Second World War, the ship stopped providing active service and in 1956 it was finally decommissioned.",
+                            cn: "'Moreno' was a dreadnought battleship of the Rivadavia class, ordered in 1910 by the Argentine Navy and launched in 1911 by the American shipyards of New York Shipbuilding. It was a response to the Brazilian Minas Gerais class and to strengthen the Argentine position in the river, maritime and land disputes with Brazil, Chile and Uruguay. It was commissioned in 1915. It did not participate in world conflicts, but it was highly active in its training, surveillance and diplomatic relations tasks. In the mid-1920s, its machinery and firing systems were modernized and throughout the 1930s, complementary armaments and other equipment and structures were modified. A few years after the Second World War, the ship stopped providing active service and in 1956 it was finally decommissioned.",
+                            sa: "'Moreno' was a dreadnought battleship of the Rivadavia class, ordered in 1910 by the Argentine Navy and launched in 1911 by the American shipyards of New York Shipbuilding. It was a response to the Brazilian Minas Gerais class and to strengthen the Argentine position in the river, maritime and land disputes with Brazil, Chile and Uruguay. It was commissioned in 1915. It did not participate in world conflicts, but it was highly active in its training, surveillance and diplomatic relations tasks. In the mid-1920s, its machinery and firing systems were modernized and throughout the 1930s, complementary armaments and other equipment and structures were modified. A few years after the Second World War, the ship stopped providing active service and in 1956 it was finally decommissioned.",
+                        }, {
+                            en: "'Moreno' and its twin are possibly the best dreadnought-type battleships that have ever sailed (with a 305-millimeter battery), since the set of their main and additional armament, their general protection and their mobility, made them more competent than other ships with similar characteristics and, however, with flaws in some of these aspects. The modernized battleship continued to maintain the characteristic distribution of towers on the center line and in echelon and incorporated new fire directors, anti-aircraft machine-guns, new armor-piercing projectiles and doubled the loading speed of its main battery. However, it removed the 102-millimeter tertiary battery. Protection remained the same, missing the opportunity to add anti-torpedo bulges. With the modernization of the machinery, the maximum power and speed increased and with the compartmentalization to house oil, the displacement increased considerably, even surpassing many super-dreadnoughts. In addition, the warship tested and/or incorporated optics, paravanes, seaplanes, smoke screens, sonar, and others.",
+                            pt: "'Moreno' e seu gêmeo são possivelmente os melhores encouraçados do tipo dreadnought que já navegaram (com uma bateria de 305 milímetros), já que o conjunto de seu armamento principal e adicional, sua proteção geral e sua mobilidade, os tornaram mais competentes do que outros navios com características similares e, no entanto, com falhas em alguns desses aspectos. O encouraçado modernizado continuou a manter a distribuição característica de torres na linha central e em esquadra e incorporou novos diretores de tiro, metralhadoras antiaéreas, novos projéteis perfurantes de armadura e duplicou a velocidade de carregamento de sua bateria principal. No entanto, removeu a bateria terciária de 102 milímetros. A proteção permaneceu a mesma, perdendo a oportunidade de adicionar bulges antitorpedo. Com a modernização da maquinaria, a potência máxima e a velocidade aumentaram e, com a compartimentação para abrigar óleo, o deslocamento aumentou consideravelmente, até ultrapassando muitos superdreadnoughts. Além disso, o navio de guerra testou e/ou incorporou ópticas, paravanes, hidroaviões, telas de fumaça, sonar e outros.",
+                            es: "'Moreno' y su gemelo son posiblemente los mejores acorazados del tipo dreadnought que hayan navegado (con una batería de 305 milímetros), ya que el conjunto de su armamento principal y adicional, su protección general y su movilidad, los hizo más competentes que otros buques con características similares y, sin embargo, con fallos en algunos de estos aspectos. El acorazado modernizado continuó manteniendo la distribución característica de torres en la línea central y en escuadrón e incorporó nuevos directores de tiro, ametralladoras antiaéreas, nuevos proyectiles perforantes de armadura y duplicó la velocidad de carga de su batería principal. Sin embargo, eliminó la batería terciaria de 102 milímetros. La protección permaneció igual, perdiendo la oportunidad de agregar bulges antitorpedo. Con la modernización de la maquinaria, la potencia máxima y la velocidad aumentaron y, con la compartimentación para alojar aceite, el desplazamiento aumentó considerablemente, incluso superando a muchos superdreadnoughts. Además, el buque de guerra probó y/o incorporó ópticas, paravanes, hidroaviones, pantallas de humo, sonar y otros.",
+                            ru: "'Морено' и его близнец, возможно, являются лучшими линкорами типа дредноут, которые когда-либо ходили (с батареей калибра 305 мм), поскольку набор их основного и дополнительного вооружения, их общая защита и их мобильность делали их более компетентными, чем другие корабли с аналогичными характеристиками и, тем не менее, с недостатками в некоторых из этих аспектов. Модернизированный линкор продолжал поддерживать характерное распределение башен по центральной линии и в эшелоне и включал в себя новые директоры стрельбы, противовоздушные пулеметы, новые бронебойные снаряды и удвоенную скорость загрузки своей основной батареи. Однако он убрал терциарную батарею калибра 102 мм. Защита осталась прежней, упустив возможность добавить антиторпедные баллоны. С модернизацией механизмов увеличилась максимальная мощность и скорость, а с отсеками для хранения масла увеличилось смещение, даже превзойдя многие супердредноуты. Кроме того, военный корабль тестировал и/или внедрял оптику, параваны, гидросамолеты, дымовые завесы, гидролокаторы и другие.",
+                            it: "'Moreno' and its twin are possibly the best dreadnought-type battleships that have ever sailed (with a 305-millimeter battery), since the set of their main and additional armament, their general protection and their mobility, made them more competent than other ships with similar characteristics and, however, with flaws in some of these aspects. The modernized battleship continued to maintain the characteristic distribution of towers on the center line and in echelon and incorporated new fire directors, anti-aircraft machine-guns, new armor-piercing projectiles and doubled the loading speed of its main battery. However, it removed the 102-millimeter tertiary battery. Protection remained the same, missing the opportunity to add anti-torpedo bulges. With the modernization of the machinery, the maximum power and speed increased and with the compartmentalization to house oil, the displacement increased considerably, even surpassing many super-dreadnoughts. In addition, the warship tested and/or incorporated optics, paravanes, seaplanes, smoke screens, sonar, and others.",
+                            fr: "'Moreno' and its twin are possibly the best dreadnought-type battleships that have ever sailed (with a 305-millimeter battery), since the set of their main and additional armament, their general protection and their mobility, made them more competent than other ships with similar characteristics and, however, with flaws in some of these aspects. The modernized battleship continued to maintain the characteristic distribution of towers on the center line and in echelon and incorporated new fire directors, anti-aircraft machine-guns, new armor-piercing projectiles and doubled the loading speed of its main battery. However, it removed the 102-millimeter tertiary battery. Protection remained the same, missing the opportunity to add anti-torpedo bulges. With the modernization of the machinery, the maximum power and speed increased and with the compartmentalization to house oil, the displacement increased considerably, even surpassing many super-dreadnoughts. In addition, the warship tested and/or incorporated optics, paravanes, seaplanes, smoke screens, sonar, and others.",
+                            de: "'Moreno' and its twin are possibly the best dreadnought-type battleships that have ever sailed (with a 305-millimeter battery), since the set of their main and additional armament, their general protection and their mobility, made them more competent than other ships with similar characteristics and, however, with flaws in some of these aspects. The modernized battleship continued to maintain the characteristic distribution of towers on the center line and in echelon and incorporated new fire directors, anti-aircraft machine-guns, new armor-piercing projectiles and doubled the loading speed of its main battery. However, it removed the 102-millimeter tertiary battery. Protection remained the same, missing the opportunity to add anti-torpedo bulges. With the modernization of the machinery, the maximum power and speed increased and with the compartmentalization to house oil, the displacement increased considerably, even surpassing many super-dreadnoughts. In addition, the warship tested and/or incorporated optics, paravanes, seaplanes, smoke screens, sonar, and others.",
+                            cn: "'Moreno' and its twin are possibly the best dreadnought-type battleships that have ever sailed (with a 305-millimeter battery), since the set of their main and additional armament, their general protection and their mobility, made them more competent than other ships with similar characteristics and, however, with flaws in some of these aspects. The modernized battleship continued to maintain the characteristic distribution of towers on the center line and in echelon and incorporated new fire directors, anti-aircraft machine-guns, new armor-piercing projectiles and doubled the loading speed of its main battery. However, it removed the 102-millimeter tertiary battery. Protection remained the same, missing the opportunity to add anti-torpedo bulges. With the modernization of the machinery, the maximum power and speed increased and with the compartmentalization to house oil, the displacement increased considerably, even surpassing many super-dreadnoughts. In addition, the warship tested and/or incorporated optics, paravanes, seaplanes, smoke screens, sonar, and others.",
+                            sa: "'Moreno' and its twin are possibly the best dreadnought-type battleships that have ever sailed (with a 305-millimeter battery), since the set of their main and additional armament, their general protection and their mobility, made them more competent than other ships with similar characteristics and, however, with flaws in some of these aspects. The modernized battleship continued to maintain the characteristic distribution of towers on the center line and in echelon and incorporated new fire directors, anti-aircraft machine-guns, new armor-piercing projectiles and doubled the loading speed of its main battery. However, it removed the 102-millimeter tertiary battery. Protection remained the same, missing the opportunity to add anti-torpedo bulges. With the modernization of the machinery, the maximum power and speed increased and with the compartmentalization to house oil, the displacement increased considerably, even surpassing many super-dreadnoughts. In addition, the warship tested and/or incorporated optics, paravanes, seaplanes, smoke screens, sonar, and others."
+                        }]
+                    }, {
+                        title: {
+                            en: "Specifications",
+                            pt: "Specifications",
+                            es: "Características",
+                            ru: "Specifications",
+                            it: "Specifications",
+                            fr: "Specifications",
+                            de: "Specifications",
+                            cn: "Specifications",
+                            sa: "Specifications"
+                        }, content: [{
+                            en: "'Moreno (1938)' is here suggested with the characteristics that it had before the start of World War Two. In other words, it represents the design of its class after its modernization and, additionally, with a set of additional modifications that occurred in the following years.",
+                            pt: "'Moreno (1938)' is here suggested with the characteristics that it had before the start of World War Two. In other words, it represents the design of its class after its modernization and, additionally, with a set of additional modifications that occurred in the following years.",
+                            es: "'Moreno (1938)' se sugiere aquí con las características que tenía antes del inicio de la Segunda Guerra Mundial. En otras palabras, representa el diseño de su clase después de su modernización y, además, con un conjunto de modificaciones adicionales que ocurrieron en los años siguientes.",
+                            ru: "'Moreno (1938)' is here suggested with the characteristics that it had before the start of World War Two. In other words, it represents the design of its class after its modernization and, additionally, with a set of additional modifications that occurred in the following years.",
+                            it: "'Moreno (1938)' is here suggested with the characteristics that it had before the start of World War Two. In other words, it represents the design of its class after its modernization and, additionally, with a set of additional modifications that occurred in the following years.",
+                            fr: "'Moreno (1938)' is here suggested with the characteristics that it had before the start of World War Two. In other words, it represents the design of its class after its modernization and, additionally, with a set of additional modifications that occurred in the following years.",
+                            de: "'Moreno (1938)' is here suggested with the characteristics that it had before the start of World War Two. In other words, it represents the design of its class after its modernization and, additionally, with a set of additional modifications that occurred in the following years.",
+                            cn: "'Moreno (1938)' is here suggested with the characteristics that it had before the start of World War Two. In other words, it represents the design of its class after its modernization and, additionally, with a set of additional modifications that occurred in the following years.",
+                            sa: "'Moreno (1938)' is here suggested with the characteristics that it had before the start of World War Two. In other words, it represents the design of its class after its modernization and, additionally, with a set of additional modifications that occurred in the following years."
+                        }]
+                    }], specs: {
+                        survivability: {
+                            dimensions: {
+                                length: {meters: 181.3, feet: 594.8}, beam: {meters: 30.0, feet: 98.4},
+                            }, displacement: {metricTons: 34130, longTons: 0}, crew: 1200, armour: {
+                                citadel: {millimeters: "229 | 305-254+38 | 223", material: "krupp-steel"},
+                                decks: {millimeters: "38 | 38 | 38 | 38-51-76/51", material: "nickel-steel"},
+                                mainFirePower: {millimeters: "305 | 229 | 241 / 76", material: "krupp-steel"},
+                                conningTower: {millimeters: "305", material: "steel"}
+                            }
+                        }
+                    }
+                }]
+            }]
+        }, {
+            id: "altBr", name: "Almirante Brown"
+        }],
+    }, {id: "amp"}, {id: "ant"}, {id: "aux"}, {id: "gb"}, {id: "cr"}, {id: "dd"}, {id: "esc"}, {id: "ts"}, {id: "hyb"}, {id: "min"}, {id: "ml"}, {id: "cv"}, {
+        id: "sub"
+    }], warshipClasses: [{
         id: "riv", name: "Rivadavia", cannons: [{
             id: "bet-305", name: "Bethlehem 305/50", caliber: 305, len: 50, projectiles: [{
                 id: "apc-gpa-gp-548", name: "APC GPA-GP", perforation: 548, manufacturer: "Bethlehem", nomen: "apc"
@@ -67,65 +149,15 @@ const data = [{
         }]
     }]
 }, {
-    id: "bs", title: {
-        es: "Bahamas",
-        en: "Bahamas",
-        it: "Bahamas",
-        fr: "Bahamas",
-        de: "Bahamas",
-        cmn: "Bahamas",
-        sa: "Bahamas",
-        pt: "Bahamas",
-        ru: "Багамские острова"
-    }
+    id: "bs", name: "Commonwealth of the Bahamas"
 }, {
-    id: "bb", title: {
-        es: "Barbados",
-        en: "Barbados",
-        it: "Barbados",
-        fr: "Barbados",
-        de: "Barbados",
-        cmn: "Barbados",
-        sa: "Barbados",
-        pt: "Barbados",
-        ru: "Барбадос"
-    }
+    id: "bb", name: "Barbados"
 }, {
-    id: "bz", title: {
-        es: "Belice",
-        en: "Belize",
-        it: "Belize",
-        fr: "Belize",
-        de: "Belize",
-        cmn: "Belize",
-        sa: "Belize",
-        pt: "Belize",
-        ru: "Белиз"
-    }
+    id: "bz", name: "Belize"
 }, {
-    id: "bo", title: {
-        es: "Bolivia",
-        en: "Bolivia",
-        it: "Bolivia",
-        fr: "Bolivia",
-        de: "Bolivia",
-        cmn: "Bolivia",
-        sa: "Bolivia",
-        pt: "Bolívia",
-        ru: "Боливия"
-    }
+    id: "bo", name: "Estado Plurinacional de Bolivia"
 }, {
-    id: "br", title: {
-        es: "Brasil",
-        en: "Brazil",
-        it: "Brazil",
-        fr: "Brazil",
-        de: "Brazil",
-        cmn: "Brazil",
-        sa: "Brazil",
-        pt: "Brasil",
-        ru: "Бразилия"
-    }, warshipClasses: [{
+    id: "br", name: "República Federativa de Brasil", warshipClasses: [{
         id: "riv", name: "Rivadavia", cannons: [{
             id: "bet-305", name: "Bethlehem 305/50", caliber: 305, len: 50, projectiles: [{
                 id: "apc-gpa-gp-548", name: "APC GPA-GP", perforation: 548, manufacturer: "Bethlehem", nomen: "apc"
@@ -171,469 +203,101 @@ const data = [{
         }]
     }]
 }, {
-    id: "cl", title: {
-        es: "Chile",
-        en: "Chile",
-        it: "Chile",
-        fr: "Chile",
-        de: "Chile",
-        cmn: "Chile",
-        sa: "Chile",
-        pt: "Chile",
-        ru: "Чили"
-    }
+    id: "cl", name: "República de Chile"
 }, {
-    id: "co", title: {
-        es: "Colombia",
-        en: "Colombia",
-        it: "Colombia",
-        fr: "Colombia",
-        de: "Colombia",
-        cmn: "Colombia",
-        sa: "Colombia",
-        pt: "Colômbia",
-        ru: "Колумбия"
-    }
+    id: "co", name: "República de Colombia"
 }, {
-    id: "cr", title: {
-        es: "Costa Rica",
-        en: "Costa Rica",
-        it: "Costa Rica",
-        fr: "Costa Rica",
-        de: "Costa Rica",
-        cmn: "Costa Rica",
-        sa: "Costa Rica",
-        pt: "Costa Rica",
-        ru: "Коста-Рика"
-    }
+    id: "cr", name: "República de Costa Rica"
 }, {
-    id: "cu", title: {
-        es: "Cuba", en: "Cuba", it: "Cuba", fr: "Cuba", de: "Cuba", cmn: "Cuba", sa: "Cuba", pt: "Cuba", ru: "Куба"
-    }
+    id: "cu", name: "República de Cuba"
 }, {
-    id: "dm", title: {
-        es: "República Dominicana",
-        en: "Dominican Republic",
-        it: "Dominican Republic",
-        fr: "Dominican Republic",
-        de: "Dominican Republic",
-        cmn: "Dominican Republic",
-        sa: "Dominican Republic",
-        pt: "República Dominicana",
-        ru: "Доминиканская Республика"
-    }
+    id: "dm", name: "República Dominicana"
 }, {
-    id: "ec", title: {
-        es: "Ecuador",
-        en: "Ecuador",
-        it: "Ecuador",
-        fr: "Ecuador",
-        de: "Ecuador",
-        cmn: "Ecuador",
-        sa: "Ecuador",
-        pt: "Equador",
-        ru: "Эквадор"
-    }
+    id: "ec", name: "República del Ecuador"
 }, {
-    id: "gd", title: {
-        es: "Granada",
-        en: "Grenada",
-        it: "Grenada",
-        fr: "Grenada",
-        de: "Grenada",
-        cmn: "Grenada",
-        sa: "Grenada",
-        pt: "Granada",
-        ru: "Гренада"
-    }
+    id: "gd", name: "Granada"
 }, {
-    id: "gt", title: {
-        es: "Guatemala",
-        en: "Guatemala",
-        it: "Guatemala",
-        fr: "Guatemala",
-        de: "Guatemala",
-        cmn: "Guatemala",
-        sa: "Guatemala",
-        pt: "Guatemala",
-        ru: "Гватемала"
-    }
+    id: "gt", name: "República de Guatemala"
 }, {
-    id: "gy", title: {
-        es: "Guyana",
-        en: "Guyana",
-        it: "Guyana",
-        fr: "Guyana",
-        de: "Guyana",
-        cmn: "Guyana",
-        sa: "Guyana",
-        pt: "Guiana",
-        ru: "Гайана"
-    }
+    id: "gy", name: "Co-operative Republic of Guyana"
 }, {
-    id: "ht", title: {
-        es: "Haití",
-        en: "Haiti",
-        it: "Haiti",
-        fr: "Haiti",
-        de: "Haiti",
-        cmn: "Haiti",
-        sa: "Haiti",
-        pt: "Haiti",
-        ru: "Гаити"
-    }
+    id: "ht", name: "République d'Haïti"
 }, {
-    id: "hn", title: {
-        es: "Honduras",
-        en: "Honduras",
-        it: "Honduras",
-        fr: "Honduras",
-        de: "Honduras",
-        cmn: "Honduras",
-        sa: "Honduras",
-        pt: "Honduras",
-        ru: "Гондурас"
-    }
+    id: "hn", name: "República de Honduras"
 }, {
-    id: "jm", title: {
-        es: "Jamaica",
-        en: "Jamaica",
-        it: "Jamaica",
-        fr: "Jamaica",
-        de: "Jamaica",
-        cmn: "Jamaica",
-        sa: "Jamaica",
-        pt: "Jamaica",
-        ru: "Ямайка"
-    }
+    id: "jm", name: "Jamaica"
 }, {
-    id: "mx", title: {
-        es: "México",
-        en: "Mexico",
-        it: "Mexico",
-        fr: "Mexico",
-        de: "Mexico",
-        cmn: "Mexico",
-        sa: "Mexico",
-        pt: "México",
-        ru: "Мексика"
-    }
+    id: "mx", name: "Estados Unidos Mexicanos"
 }, {
-    id: "ni", title: {
-        es: "Nicaragua",
-        en: "Nicaragua",
-        it: "Nicaragua",
-        fr: "Nicaragua",
-        de: "Nicaragua",
-        cmn: "Nicaragua",
-        sa: "Nicaragua",
-        pt: "Nicarágua",
-        ru: "Никарагуа"
-    }
+    id: "ni", name: "República de Nicaragua"
 }, {
-    id: "pa", title: {
-        es: "Panamá",
-        en: "Panama",
-        it: "Panama",
-        fr: "Panama",
-        de: "Panama",
-        cmn: "Panama",
-        sa: "Panama",
-        pt: "Panamá",
-        ru: "Панама"
-    }
+    id: "pa", name: "República de Panamá"
 }, {
-    id: "py", title: {
-        es: "Paraguay",
-        en: "Paraguay",
-        it: "Paraguay",
-        fr: "Paraguay",
-        de: "Paraguay",
-        cmn: "Paraguay",
-        sa: "Paraguay",
-        pt: "Paraguai",
-        ru: "Парагвай"
-    }
+    id: "py", name: "República del Paraguay"
 }, {
-    id: "pe", title: {
-        es: "Perú", en: "Peru", it: "Peru", fr: "Peru", de: "Peru", cmn: "Peru", sa: "Peru", pt: "Peru", ru: "Перу"
-    }
+    id: "pe", name: "República del Perú"
 }, {
-    id: "pr", title: {
-        es: "Puerto Rico",
-        en: "Puerto Rico",
-        it: "Puerto Rico",
-        fr: "Puerto Rico",
-        de: "Puerto Rico",
-        cmn: "Puerto Rico",
-        sa: "Puerto Rico",
-        pt: "Porto Rico",
-        ru: "Пуэрто-Рико"
-    }
+    id: "pr", name: "Estado Libre Asociado de Puerto Rico"
 }, {
-    id: "kn", title: {
-        es: "San Cristóbal y Nieves",
-        en: "Saint Kitts and Nevis",
-        it: "Saint Kitts and Nevis",
-        fr: "Saint Kitts and Nevis",
-        de: "Saint Kitts and Nevis",
-        cmn: "Saint Kitts and Nevis",
-        sa: "Saint Kitts and Nevis",
-        pt: "São Cristóvão e Nevis",
-        ru: "Сент-Китс и Невис"
-    }
+    id: "kn", name: "Saint Kitts and Nevis"
 }, {
-    id: "lc", title: {
-        es: "Santa Lucía",
-        en: "Saint Lucia",
-        it: "Saint Lucia",
-        fr: "Saint Lucia",
-        de: "Saint Lucia",
-        cmn: "Saint Lucia",
-        sa: "Saint Lucia",
-        pt: "Santa Lúcia",
-        ru: "Сент-Люсия"
-    }
+    id: "lc", name: "Saint Lucia"
 }, {
-    id: "vc", title: {
-        es: "San Vicente y Granadinas",
-        en: "Saint Vincent and the Grenadines",
-        it: "Saint Vincent and the Grenadines",
-        fr: "Saint Vincent and the Grenadines",
-        de: "Saint Vincent and the Grenadines",
-        cmn: "Saint Vincent and the Grenadines",
-        sa: "Saint Vincent and the Grenadines",
-        pt: "São Vicente e Granadinas",
-        ru: "Сент-Винсент и Гренадины"
-    }
+    id: "vc", name: "Saint Vincent and the Grenadines"
 }, {
-    id: "sr", title: {
-        es: "Surinam",
-        en: "Suriname",
-        it: "Suriname",
-        fr: "Suriname",
-        de: "Suriname",
-        cmn: "Suriname",
-        sa: "Suriname",
-        pt: "Suriname",
-        ru: "Суринам"
-    }
+    id: "sr", name: "Republiek Suriname"
 }, {
-    id: "tt", title: {
-        es: "Trinidad y Tobago",
-        en: "Trinidad and Tobago",
-        it: "Trinidad and Tobago",
-        fr: "Trinidad and Tobago",
-        de: "Trinidad and Tobago",
-        cmn: "Trinidad and Tobago",
-        sa: "Trinidad and Tobago",
-        pt: "Trinidad e Tobago",
-        ru: "Тринидад и Тобаго"
-    }
+    id: "tt", name: "Republic of Trinidad and Tobago"
 }, {
-    id: "uy", title: {
-        es: "Uruguay",
-        en: "Uruguay",
-        it: "Uruguay",
-        fr: "Uruguay",
-        de: "Uruguay",
-        cmn: "Uruguay",
-        sa: "Uruguay",
-        pt: "Uruguai",
-        ru: "Уругвай"
-    }
+    id: "uy", name: "República Oriental del Uruguay"
 }, {
-    id: "ve", title: {
-        es: "Venezuela",
-        en: "Venezuela",
-        it: "Venezuela",
-        fr: "Venezuela",
-        de: "Venezuela",
-        cmn: "Venezuela",
-        sa: "Venezuela",
-        pt: "Venezuela",
-        ru: "Венесуэла"
-    }
+    id: "ve", name: "República Bolivariana de Venezuela"
 }, {
-    id: "ai", title: {
-        es: "Anguila",
-        en: "Anguilla",
-        it: "Anguilla",
-        fr: "Anguilla",
-        de: "Anguilla",
-        cmn: "Anguilla",
-        sa: "Anguilla",
-        pt: "Anguila",
-        ru: "Ангилья"
-    }
+    id: "ai", name: "Anguilla", dependency: {id: "uk", name: "United Kingdom"}
 }, {
-    id: "aw", title: {
-        es: "Aruba",
-        en: "Aruba",
-        it: "Aruba",
-        fr: "Aruba",
-        de: "Aruba",
-        cmn: "Aruba",
-        sa: "Aruba",
-        pt: "Aruba",
-        ru: "Аруба"
-    }
+    id: "aw", name: "Land Aruba", dependency: {id: "nl", name: "Nederland"}
 }, {
-    id: "bm", title: {
-        es: "Bermudas",
-        en: "Bermuda",
-        it: "Bermuda",
-        fr: "Bermuda",
-        de: "Bermuda",
-        cmn: "Bermuda",
-        sa: "Bermuda",
-        pt: "Bermudas",
-        ru: "Бермудские острова"
-    }
+    id: "bm", name: "Bermuda", dependency: {id: "uk", name: "United Kingdom"}
 }, {
-    id: "bq", title: {
-        es: "Bonaire",
-        en: "Bonaire",
-        it: "Bonaire",
-        fr: "Bonaire",
-        de: "Bonaire",
-        cmn: "Bonaire",
-        sa: "Bonaire",
-        pt: "Bonaire",
-        ru: "Бонайре"
-    }
+    id: "bq", name: "Bonaire", dependency: {id: "nl", name: "Nederland"}
 }, {
-    id: "cw", title: {
-        es: "Curazao",
-        en: "Curaçao",
-        it: "Curaçao",
-        fr: "Curaçao",
-        de: "Curaçao",
-        cmn: "Curaçao",
-        sa: "Curaçao",
-        pt: "Curaçao",
-        ru: "Кюрасао"
-    }
+    id: "cw", name: "Curaçao", dependency: {id: "nl", name: "Nederland"}
 }, {
-    id: "gl", title: {
-        es: "Groenlandia",
-        en: "Greenland",
-        it: "Greenland",
-        fr: "Greenland",
-        de: "Greenland",
-        cmn: "Greenland",
-        sa: "Greenland",
-        pt: "Groenlândia",
-        ru: "Гренландия"
-    }
+    id: "gl", name: "Kalaallit Nunaat", dependency: {id: "dk", name: "Kongeriget Danmark"}
 }, {
-    id: "gp", title: {
-        es: "Guadalupe",
-        en: "Guadeloupe",
-        it: "Guadeloupe",
-        fr: "Guadeloupe",
-        de: "Guadeloupe",
-        cmn: "Guadeloupe",
-        sa: "Guadeloupe",
-        pt: "Guadalupe",
-        ru: "Гваделупа"
-    }
+    id: "gp", name: "Guadeloupe", dependency: {id: "fr", name: "République française"}
 }, {
-    id: "gf", title: {
-        es: "Guayana",
-        en: "French Guiana",
-        it: "French Guiana",
-        fr: "French Guiana",
-        de: "French Guiana",
-        cmn: "French Guiana",
-        sa: "French Guiana",
-        pt: "Guiana Francesa",
-        ru: "Французская Гвиана"
-    }
+    id: "gf", name: "Guyane française", dependency: {id: "fr", name: "République française"}
 }, {
-    id: "cp", title: {
-        es: "Isla Clipperton",
-        en: "Clipperton Island",
-        it: "Clipperton Island",
-        fr: "Clipperton Island",
-        de: "Clipperton Island",
-        cmn: "Clipperton Island",
-        sa: "Clipperton Island",
-        pt: "Ilha Clipperton",
-        ru: "Остров Клиппертон"
-    }
+    id: "cp", name: "Île Clipperton", dependency: {id: "fr", name: "République française"}
 }, {
-    id: "um", title: {
-        es: "Isla de Navaza",
-        en: "Navassa Island",
-        it: "Navassa Island",
-        fr: "Navassa Island",
-        de: "Navassa Island",
-        cmn: "Navassa Island",
-        sa: "Navassa Island",
-        pt: "Ilha de Navassa",
-        ru: "Остров Наваса"
-    }
+    id: "um", name: "Navassa Island", dependency: {id: "us", name: "United States of America"}
 }, {
-    id: "ky", title: {
-        es: "Islas Caimán",
-        en: "Cayman Islands",
-        it: "Cayman Islands",
-        fr: "Cayman Islands",
-        de: "Cayman Islands",
-        cmn: "Cayman Islands",
-        sa: "Cayman Islands",
-        pt: "Ilhas Cayman",
-        ru: "Каймановы острова"
-    }
+    id: "ky", name: "Cayman Islands", dependency: {id: "uk", name: "United Kingdom"}
 }, {
-    id: "gs", title: {
-        es: "Georgias y Sandwich del Sur",
-        en: "South Georgia and the South Sandwich Islands",
-        it: "South Georgia and the South Sandwich Islands",
-        fr: "South Georgia and the South Sandwich Islands",
-        de: "South Georgia and the South Sandwich Islands",
-        cmn: "South Georgia and the South Sandwich Islands",
-        sa: "South Georgia and the South Sandwich Islands",
-        pt: "Geórgia do Sul e Ilhas Sandwich do Sul",
-        ru: "Южная Георгия и Южные Сандвичевы острова"
-    }
+    id: "fk", name: "Islas Malvinas", dependency: {id: "ar", name: "República Argentina"}
 }, {
-    id: "fk", title: {
-        es: "Islas Malvinas",
-        en: "Falkland Islands",
-        it: "Falkland Islands",
-        fr: "Falkland Islands",
-        de: "Falkland Islands",
-        cmn: "Falkland Islands",
-        sa: "Falkland Islands",
-        pt: "Ilhas Malvinas",
-        ru: "Фолклендские острова"
-    }
+    id: "gs", name: "Islas Georgias del Sur", dependency: {id: "uk", name: "United Kingdom"}
 }, {
-    id: "tc", title: {
-        es: "Islas Turcas y Caicos",
-        en: "Turks and Caicos Islands",
-        it: "Turks and Caicos Islands",
-        fr: "Turks and Caicos Islands",
-        de: "Turks and Caicos Islands",
-        cmn: "Turks and Caicos Islands",
-        sa: "Turks and Caicos Islands",
-        pt: "Ilhas Turks e Caicos",
-        ru: "Теркс и Кайкос"
-    }
+    id: "tc", name: "Turks and Caicos Islands", dependency: {id: "uk", name: "United Kingdom"}
 }, {
-    id: "vi", title: {
-        es: "Islas Vírgenes (EE. UU.)",
-        en: "Virgin Islands (U.S.)",
-        it: "Virgin Islands (U.S.)",
-        fr: "Virgin Islands (U.S.)",
-        de: "Virgin Islands (U.S.)",
-        cmn: "Virgin Islands (U.S.)",
-        sa: "Virgin Islands (U.S.)",
-        pt: "Ilhas Virgens (EUA)",
-        ru: "Виргинские острова (США)"
-    }
+    id: "vi", name: "Virgin Islands", dependency: {id: "uk", name: "United Kingdom"}
+}, {
+    id: "mq", name: "Martinique", dependency: {id: "fr", name: "République française"}
+}, {
+    id: "ms", name: "Montserrat", dependency: {id: "uk", name: "United Kingdom"}
+}, {
+    id: "bq", name: "Saba", dependency: {id: "nl", name: "Nederland"}
+}, {
+    id: "bl", name: "Saint-Barthélemy", dependency: {id: "fr", name: "République française"}
+}, {
+    id: "bq", name: "Sint Eustatius", dependency: {id: "nl", name: "Nederland"}
+}, {
+    id: "mf", name: "Saint-Martin", dependency: {id: "fr", name: "République française"}
+}, {
+    id: "sx", name: "Sint Maarten", dependency: {id: "nl", name: "Nederland"}
+}, {
+    dependency: {id: "fr", name: "République française"}, id: "pm", name: "Saint-Pierre-et-Miquelon"
 }]
 
 export {data}

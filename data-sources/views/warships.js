@@ -452,18 +452,6 @@ const data = {
             ru: "Выдающиеся статьи"
         }, content: [0, 3]
     }, {
-        id: "comparative", reference: "warships", title: {
-            es: "Comparativa de Buques",
-            en: "Comparison of Warships",
-            it: "Comparison of Warships",
-            fr: "Comparison of Warships",
-            de: "Comparison of Warships",
-            cmn: "Comparison of Warships",
-            sa: "Comparison of Warships",
-            pt: "Comparação de Navios de Guerra",
-            ru: "Сравнение военных кораблей"
-        }
-    }, {
         id: "notes", title: {
             es: "Notas de Observación",
             en: "Observation Notes",

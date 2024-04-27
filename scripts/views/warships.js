@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 function createBasicStructure(container, locale) {
     createSectionsArticles(warshipsData.sections, container, locale);
-    createInnerTextArticles(document.getElementById("eras"), getSectionData(warshipsData, "eras"), ["eras"], locale)
+    createInnerTextArticles(document.getElementById("eras"), getSectionData(warshipsData, "eras"), locale);
     createResourcesCards(getSectionData(warshipsData, "featured-articles").content, "featured-articles", "article", locale);
     createNavCards(getSectionData(warshipsData, "navigation"), "navigation", "", "static", locale);
     createNavCards(getSectionData(warshipsData, "types"), "types", "", "dynamic", locale);

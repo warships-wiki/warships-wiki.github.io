@@ -1,7 +1,6 @@
 import {data as evolutionData} from "../../../data-sources/navies/evolution.js";
 import {
-    createCountriesNavCards,
-    createInnerTextArticles, createLinksArticle,
+    createLinksArticle,
     createNavCards,
     createResourcesCards,
     createSectionsArticles,
